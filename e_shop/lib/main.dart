@@ -16,14 +16,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-
-  NavigatorState? get _navigator => _navigatorKey.currentState;
-
-  void onNavigate(String route) {
-    _navigator!.pushNamedAndRemoveUntil(route, (route) => false);
-  }
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
