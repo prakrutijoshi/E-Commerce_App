@@ -1,9 +1,11 @@
+import 'package:e_shop/presentation/screens/register/components/body.dart';
+import 'package:e_shop/presentation/screens/register/components/register_form.dart';
+import 'package:e_shop/presentation/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../injection_container.dart' as di;
 import 'cubit/register_cubit.dart';
-import 'widgets/register_form.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -13,32 +15,13 @@ class RegisterScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<RegisterCubit>(),
       child: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            body: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                children: [
-                  Container(
-                    height: 200,
-                    child: Center(
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 35,
-                        ),
-                      ),
-                    ),
-                  ),
-                  RegisterForm(),
-                ],
-              ),
-            ),
-            bottomNavigationBar: _buildHaveAccountText(context),
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: kPrimaryColor,
+            title: Text("Sign Up"),
           ),
+          body: Body(),
+          bottomNavigationBar: _buildHaveAccountText(context),
         ),
       ),
     );
@@ -62,7 +45,7 @@ class RegisterScreen extends StatelessWidget {
             child: Text(
               'Login',
               style: TextStyle(
-                color: Colors.blue,
+                color: kPrimaryColor,
                 fontSize: 17,
               ),
             ),

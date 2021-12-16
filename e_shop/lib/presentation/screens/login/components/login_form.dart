@@ -1,9 +1,15 @@
+import 'package:e_shop/presentation/screens/home/home_screen.dart';
+import 'package:e_shop/presentation/widgets/constants.dart';
+import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'package:e_shop/utils/default_button.dart';
+
 import '../../../common_blocs/cubit/cubit/authentication_cubit.dart';
 import '../cubit/login_cubit.dart';
 import '../../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:e_shop/utils/theme.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -11,10 +17,12 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   bool isShowPassword = false;
+  bool? remember = false;
 
   @override
   void dispose() {
@@ -59,33 +67,58 @@ class _LoginFormState extends State<LoginForm> {
       },
       child: BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) {
-          return Container(
-            child: Form(
-              child: Column(
-                children: [
-                  _buildTextFieldUsername(),
-                  SizedBox(height: 20),
-                  _buildTextFieldPassword(),
-                  SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
+          return Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: getProportionateScreenHeight(30),
+                ),
+                _buildTextFieldUsername(),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                ),
+                _buildTextFieldPassword(),
+                SizedBox(height: getProportionateScreenHeight(20)),
+                Row(
+                  children: [
+                    Checkbox(
+                        value: remember,
+                        activeColor: kPrimaryColor,
+                        onChanged: (value) {
+                          setState(() {
+                            remember = value;
+                          });
+                        }),
+                    Text("Remember Me"),
+                    Spacer(),
+                    GestureDetector(
                       onTap: () {},
                       child: Text(
-                        'forgot password?',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                        ),
+                        "Forgot Password",
+                        style: TextStyle(decoration: TextDecoration.underline),
                       ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  _buildButtonLogin(),
-                  SizedBox(height: 20),
-                  _buildTextOr(),
-                ],
-              ),
+                    )
+                  ],
+                ),
+                // Align(
+                //   alignment: Alignment.centerRight,
+                //   child: GestureDetector(
+                //     onTap: () {},
+                //     child: Text(
+                //       'forgot password?',
+                //       style: TextStyle(
+                //         color: Colors.blue,
+                //         fontSize: 16,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                SizedBox(height: getProportionateScreenHeight(10)),
+                _buildButtonLogin(),
+                SizedBox(height: getProportionateScreenHeight(10)),
+                _buildTextOr(),
+              ],
             ),
           );
         },
@@ -108,14 +141,13 @@ class _LoginFormState extends State<LoginForm> {
       textInputAction: TextInputAction.next,
       controller: emailController,
       validator: emailValidator,
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        hintText: 'email',
-        suffixIcon: Icon(Icons.email_outlined),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        labelText: "Email",
+        hintText: 'Enter your Email',
+        labelStyle: TextStyle(color: kPrimaryColor),
+        suffixIcon: Icon(Icons.email_outlined, color: kPrimaryColor),
       ),
     );
   }
@@ -131,12 +163,16 @@ class _LoginFormState extends State<LoginForm> {
       controller: passwordController,
       textInputAction: TextInputAction.go,
       validator: passwordValidator,
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.text,
       obscureText: !isShowPassword,
       decoration: InputDecoration(
-        hintText: 'password',
+        hintText: 'Enter your Password',
+        labelText: "Password",
+        labelStyle: TextStyle(color: kPrimaryColor),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: IconButton(
+          color: kPrimaryColor,
           icon: isShowPassword
               ? Icon(Icons.visibility_outlined)
               : Icon(Icons.visibility_off_outlined),
@@ -145,38 +181,17 @@ class _LoginFormState extends State<LoginForm> {
             setState(() => isShowPassword = !isShowPassword);
           },
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
       ),
     );
   }
 
   _buildButtonLogin() {
-    return ElevatedButton(
-      onPressed: onLogin,
-      style: ElevatedButton.styleFrom(
-        fixedSize: Size(
-          250,
-          50,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
-      child: Text(
-        "LOGIN",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
-      ),
-    );
+    return DefaultButton(text: "LOGIN", press: onLogin);
   }
 
   _buildTextOr() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
+      padding: EdgeInsets.symmetric(vertical: getProportionateScreenHeight(15)),
       child: Row(
         children: [
           Expanded(
@@ -185,7 +200,8 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(10)),
             child: Text(
               "Or Sign in with",
               style: TextStyle(

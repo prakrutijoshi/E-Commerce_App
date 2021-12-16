@@ -1,10 +1,13 @@
+import 'package:e_shop/presentation/screens/login/components/body.dart';
+import 'package:e_shop/presentation/screens/login/components/login_form.dart';
+import 'package:e_shop/presentation/widgets/constants.dart';
+import 'package:e_shop/presentation/widgets/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../injection_container.dart' as di;
 import '../register/register_screen.dart';
 import 'cubit/login_cubit.dart';
-import 'widgets/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -12,32 +15,14 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<LoginCubit>(),
       child: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            body: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                children: [
-                  Container(
-                    height: 200,
-                    child: Center(
-                      child: Text(
-                        "Sign in",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 35,
-                        ),
-                      ),
-                    ),
-                  ),
-                  LoginForm(),
-                ],
-              ),
-            ),
-            bottomNavigationBar: _buildNoAccountText(context),
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: kPrimaryColor,
+            title: Text("SIGN IN"),
+            centerTitle: true,
           ),
+          body: Body(),
+          bottomNavigationBar: _buildNoAccountText(context),
         ),
       ),
     );
@@ -45,7 +30,7 @@ class LoginScreen extends StatelessWidget {
 
   _buildNoAccountText(context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: getProportionateScreenHeight(10)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +50,7 @@ class LoginScreen extends StatelessWidget {
             child: Text(
               'Register',
               style: TextStyle(
-                color: Colors.blue,
+                color: kPrimaryColor,
                 fontSize: 17,
               ),
             ),

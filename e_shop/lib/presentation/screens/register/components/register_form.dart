@@ -1,3 +1,6 @@
+import 'package:e_shop/presentation/widgets/constants.dart';
+import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'package:e_shop/utils/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -16,6 +19,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -32,6 +36,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
   bool isShowPassword = false;
   bool isShowConfirmPassword = false;
+  bool? remember = false;
 
   String password = "";
 
@@ -88,22 +93,21 @@ class _RegisterFormState extends State<RegisterForm> {
       },
       child: BlocBuilder<RegisterCubit, RegisterState>(
         builder: (context, state) {
-          return Container(
-            child: Form(
-              child: Column(
-                children: [
-                  _buildNameInput(),
-                  SizedBox(height: 20),
-                  _buildEmailInput(),
-                  SizedBox(height: 20),
-                  _buildPasswordInput(),
-                  SizedBox(height: 20),
-                  _buildConfirmPasswordInput(),
-                  SizedBox(height: 20),
-                  _buildButtonRegister(),
-                  SizedBox(height: 20),
-                ],
-              ),
+          return Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                _buildNameInput(),
+                SizedBox(height: getProportionateScreenHeight(30)),
+                _buildEmailInput(),
+                SizedBox(height: getProportionateScreenHeight(30)),
+                _buildPasswordInput(),
+                SizedBox(height: getProportionateScreenHeight(30)),
+                _buildConfirmPasswordInput(),
+                SizedBox(height: getProportionateScreenHeight(30)),
+                _buildButtonRegister(),
+                SizedBox(height: getProportionateScreenHeight(30)),
+              ],
             ),
           );
         },
@@ -126,13 +130,15 @@ class _RegisterFormState extends State<RegisterForm> {
       textInputAction: TextInputAction.next,
       controller: nameController,
       validator: nameValidator,
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        hintText: 'name',
-        suffixIcon: Icon(Icons.person_outline),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+        hintText: 'Enter your Name',
+        labelText: "Name",
+        labelStyle: TextStyle(color: kPrimaryColor),
+        suffixIcon: Icon(
+          Icons.person_outline,
+          color: kPrimaryColor,
         ),
       ),
     );
@@ -152,13 +158,15 @@ class _RegisterFormState extends State<RegisterForm> {
       textInputAction: TextInputAction.next,
       controller: emailController,
       validator: emailValidator,
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        hintText: 'email',
-        suffixIcon: Icon(Icons.email_outlined),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+        hintText: 'Enter your Email',
+        labelText: "Email",
+        labelStyle: TextStyle(color: kPrimaryColor),
+        suffixIcon: Icon(
+          Icons.email_outlined,
+          color: kPrimaryColor,
         ),
       ),
     );
@@ -184,22 +192,27 @@ class _RegisterFormState extends State<RegisterForm> {
       controller: passwordController,
       onChanged: (val) => password = val,
       validator: passwordValidator,
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.text,
       obscureText: !isShowPassword,
       decoration: InputDecoration(
-        hintText: 'password',
+        hintText: 'Enter Password',
+        labelText: "Password",
+        labelStyle: TextStyle(color: kPrimaryColor),
         suffixIcon: IconButton(
           icon: isShowPassword
-              ? Icon(Icons.visibility_outlined)
-              : Icon(Icons.visibility_off_outlined),
+              ? Icon(
+                  Icons.visibility_outlined,
+                  color: kPrimaryColor,
+                )
+              : Icon(
+                  Icons.visibility_off_outlined,
+                  color: kSecondaryColor,
+                ),
           splashRadius: 15,
           onPressed: () {
             setState(() => isShowPassword = !isShowPassword);
           },
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );
@@ -214,42 +227,29 @@ class _RegisterFormState extends State<RegisterForm> {
       keyboardType: TextInputType.text,
       obscureText: !isShowConfirmPassword,
       decoration: InputDecoration(
-        hintText: 'confirm password',
+        hintText: 'Re-enter your password',
+        labelText: "Confirm Password",
+        labelStyle: TextStyle(color: kPrimaryColor),
         suffixIcon: IconButton(
           icon: isShowPassword
-              ? Icon(Icons.visibility_outlined)
-              : Icon(Icons.visibility_off_outlined),
+              ? Icon(
+                  Icons.visibility_outlined,
+                  color: kPrimaryColor,
+                )
+              : Icon(
+                  Icons.visibility_off_outlined,
+                  color: kSecondaryColor,
+                ),
           splashRadius: 15,
           onPressed: () {
             setState(() => isShowConfirmPassword = !isShowConfirmPassword);
           },
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );
   }
 
   _buildButtonRegister() {
-    return ElevatedButton(
-      onPressed: onRegister,
-      style: ElevatedButton.styleFrom(
-        fixedSize: Size(
-          250,
-          50,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
-      child: Text(
-        "Register",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
-      ),
-    );
+    return DefaultButton(text: "Continue", press: onRegister);
   }
 }

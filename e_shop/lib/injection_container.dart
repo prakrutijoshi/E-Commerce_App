@@ -1,4 +1,3 @@
-import 'domain/repositories/firebase_user_repository.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasource/remote_datasource/firebase_auth_remote_datasource.dart';
