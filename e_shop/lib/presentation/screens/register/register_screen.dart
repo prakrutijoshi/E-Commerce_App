@@ -1,10 +1,9 @@
-import '../login/login_screen.dart';
-import 'cubit/register_cubit.dart';
-import 'widgets/register_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../injection_container.dart' as di;
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'cubit/register_cubit.dart';
+import 'widgets/register_form.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -59,8 +58,7 @@ class RegisterScreen extends StatelessWidget {
           ),
           SizedBox(width: 5),
           GestureDetector(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LoginScreen())),
+            onTap: () => Navigator.pop(context),
             child: Text(
               'Login',
               style: TextStyle(

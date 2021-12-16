@@ -1,11 +1,12 @@
-import '../../../../data/model/user_model.dart';
-import '../../../../domain/entities/user_entity.dart';
-import '../../../common_blocs/cubit/cubit/authentication_cubit.dart';
-import '../cubit/register_cubit.dart';
-import '../../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+
+import '../../../../data/model/user_model.dart';
+import '../../../../domain/entities/user_entity.dart';
+import '../../../../utils/utils.dart';
+import '../../../common_blocs/cubit/cubit/authentication_cubit.dart';
+import '../cubit/register_cubit.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
@@ -35,6 +37,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   void dispose() {
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
@@ -42,6 +45,7 @@ class _RegisterFormState extends State<RegisterForm> {
   }
 
   bool get isPopulated =>
+      nameController.text.isNotEmpty &&
       emailController.text.isNotEmpty &&
       passwordController.text.isNotEmpty &&
       confirmPasswordController.text.isNotEmpty;
@@ -53,7 +57,8 @@ class _RegisterFormState extends State<RegisterForm> {
   void onRegister() {
     if (isRegisterButtonEnabled()) {
       UserEntity newUser = initialUser.cloneWith(
-        email: emailController.text,
+        name: nameController.text.trim(),
+        email: emailController.text.trim(),
       );
       BlocProvider.of<RegisterCubit>(context).registerNewUser(
         newUser,
@@ -73,6 +78,7 @@ class _RegisterFormState extends State<RegisterForm> {
         if (state is RegisterSuccess) {
           UtilDialog.hideWaiting(context);
           BlocProvider.of<AuthenticationCubit>(context).loggedIn();
+          Navigator.pop(context);
         }
 
         if (state is RegisterFailure) {
@@ -86,6 +92,8 @@ class _RegisterFormState extends State<RegisterForm> {
             child: Form(
               child: Column(
                 children: [
+                  _buildNameInput(),
+                  SizedBox(height: 20),
                   _buildEmailInput(),
                   SizedBox(height: 20),
                   _buildPasswordInput(),
@@ -103,10 +111,37 @@ class _RegisterFormState extends State<RegisterForm> {
     );
   }
 
+  _buildNameInput() {
+    final nameValidator = MultiValidator([
+      RequiredValidator(
+        errorText: "name is required",
+      ),
+      MaxLengthValidator(
+        40,
+        errorText: "name is too big!",
+      ),
+    ]);
+
+    return TextFormField(
+      textInputAction: TextInputAction.next,
+      controller: nameController,
+      validator: nameValidator,
+      autovalidateMode: AutovalidateMode.always,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        hintText: 'name',
+        suffixIcon: Icon(Icons.person_outline),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
+  }
+
   _buildEmailInput() {
     final emailValidator = MultiValidator([
       RequiredValidator(
-        errorText: 'email is required',
+        errorText: "email is required",
       ),
       EmailValidator(
         errorText: "enter a valid email address",
