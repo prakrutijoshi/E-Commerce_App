@@ -1,3 +1,5 @@
+import 'package:e_shop/presentation/screens/splash/splash_screen.dart';
+
 import '../../../../domain/usecases/auth_usecases/is_logged_in_usecase.dart';
 import '../../../../domain/usecases/auth_usecases/log_out_usecase.dart';
 import '../../../../domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
@@ -22,7 +24,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     try {
       bool isLoggedIn = await isLoggedInUseCase.call();
 
-      await Future.delayed(Duration(minutes: 5));
+      await Future.delayed(Duration(seconds: 5));
 
       if (isLoggedIn) {
         final loggedFirebase = await loggedFirebaseUserUseCase.call();

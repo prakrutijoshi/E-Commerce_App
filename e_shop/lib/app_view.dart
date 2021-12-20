@@ -23,13 +23,13 @@ class _AppViewState extends State<AppView> {
       theme: theme(),
       home: BlocBuilder<AuthenticationCubit, AuthenticationState>(
         builder: (context, authState) {
+          BlocProvider.of<AuthenticationCubit>(context).appStarted();
           if (authState is AuthInitial) {
-            BlocProvider.of<AuthenticationCubit>(context).appStarted();
             return SplashScreen();
           } else if (authState is Unauthenticated) {
             return LoginScreen();
           } else if (authState is Authenticated) {
-            return HomeScreen(currentUser: authState.loggedFirebaseUser);
+            return HomeScreen();
           } else {
             return SplashScreen();
           }
