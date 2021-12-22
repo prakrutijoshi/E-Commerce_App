@@ -1,13 +1,10 @@
-import 'package:e_shop/presentation/common_blocs/cubit/cubit/authentication_cubit.dart';
+import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
 import 'package:e_shop/presentation/screens/profile/components/profile_avatar.dart';
 import 'package:e_shop/presentation/screens/profile/components/profile_list.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: must_be_immutable
 class Body extends StatelessWidget {
-  var BlocProvider;
-
   Body({Key? key}) : super(key: key);
 
   @override
@@ -41,8 +38,10 @@ class Body extends StatelessWidget {
           ProfileList(
             text: "LogOut",
             icon: "assets/icons/Log out.svg",
-            press: () =>
-                BlocProvider.of<AuthenticationCubit>(context).loggedOut(),
+            press: () {
+              BlocProvider.of<AuthenticationCubit>(context).loggedOut();
+              Navigator.popUntil(context, ModalRoute.withName("/"));
+            },
           ),
         ],
       ),

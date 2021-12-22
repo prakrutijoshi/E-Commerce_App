@@ -8,7 +8,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import '../../../../data/model/user_model.dart';
 import '../../../../domain/entities/user_entity.dart';
 import '../../../../utils/utils.dart';
-import '../../../common_blocs/cubit/cubit/authentication_cubit.dart';
+import '../../../common_cubits/cubit/cubit/authentication_cubit.dart';
 import '../cubit/register_cubit.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -223,7 +223,7 @@ class _RegisterFormState extends State<RegisterForm> {
       controller: confirmPasswordController,
       validator: (val) => MatchValidator(errorText: 'passwords do not match')
           .validateMatch(val!, password),
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.text,
       obscureText: !isShowConfirmPassword,
       decoration: InputDecoration(

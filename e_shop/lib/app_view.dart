@@ -1,6 +1,6 @@
+import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
 import 'package:e_shop/utils/theme.dart';
 
-import 'presentation/common_blocs/cubit/cubit/authentication_cubit.dart';
 import 'presentation/screens/home/home_screen.dart';
 import 'presentation/screens/login/login_screen.dart';
 import 'presentation/screens/splash/splash_screen.dart';

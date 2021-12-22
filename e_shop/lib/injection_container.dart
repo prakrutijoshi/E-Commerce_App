@@ -1,3 +1,10 @@
+import 'package:e_shop/data/repositories/firebase_user_repository_impl.dart';
+import 'package:e_shop/domain/repositories/firebase_user_repository.dart';
+import 'package:e_shop/domain/usecases/user_usecases/add_user_data_usecase.dart';
+import 'package:e_shop/domain/usecases/user_usecases/get_user_by_id_usecase.dart';
+import 'package:e_shop/domain/usecases/user_usecases/update_user_data_usecase.dart';
+import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'package:e_shop/presentation/screens/shipping_address/cubit/address_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasource/remote_datasource/firebase_auth_remote_datasource.dart';
@@ -10,7 +17,6 @@ import 'domain/usecases/auth_usecases/log_in_with_email_and_password_usecase.dar
 import 'domain/usecases/auth_usecases/log_out_usecase.dart';
 import 'domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
 import 'domain/usecases/auth_usecases/sign_up_usecase.dart';
-import 'presentation/common_blocs/cubit/cubit/authentication_cubit.dart';
 import 'presentation/screens/login/cubit/login_cubit.dart';
 import 'presentation/screens/register/cubit/register_cubit.dart';
 
@@ -39,8 +45,15 @@ Future<void> init() async {
       authExceptionUseCase: sl.call(),
     ),
   );
+  sl.registerFactory<AddressCubit>(
+    () => AddressCubit(
+      getUserByIdUseCase: sl.call(),
+      updateUserDataUseCase: sl.call(),
+      addUserDataUseCase: sl.call(),
+    ),
+  );
 
-  // usecase
+  // auth usecase
   sl.registerLazySingleton<IsLoggedInUseCase>(
       () => IsLoggedInUseCase(sl.call()));
   sl.registerLazySingleton<LogInWithEmailAndPasswordUseCase>(
@@ -52,11 +65,19 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthExceptionUseCase>(
       () => AuthExceptionUseCase(sl.call()));
 
+  // user usecase
+  sl.registerLazySingleton<AddUserDataUseCase>(
+      () => AddUserDataUseCase(sl.call()));
+  sl.registerLazySingleton<GetUserByIdUseCase>(
+      () => GetUserByIdUseCase(sl.call()));
+  sl.registerLazySingleton<UpdateUserDataUseCase>(
+      () => UpdateUserDataUseCase(sl.call()));
+
   // repository
   sl.registerLazySingleton<FirebaseAuthRepository>(
       () => FirebaseAuthRepositoryImpl(sl.call()));
-  // sl.registerLazySingleton<FirebaseUserRepository>(
-  //     () => FirebaseUserRepositoryImpl(sl.call()));
+  sl.registerLazySingleton<FirebaseUserRepository>(
+      () => FirebaseUserRepositoryImpl(sl.call()));
 
   // datasource
   sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(

@@ -36,8 +36,15 @@ class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
   @override
   Future<void> logInWithEmailAndPassword(String email, String password) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+      var userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      var isUser =
+          await _userDatasource.isExistInCollection(userCredential.user!.uid);
+      if (!isUser) {
+        await logOut();
+      }
     } on FirebaseAuthException catch (e) {
       _authException = e.message.toString();
     }

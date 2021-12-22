@@ -8,6 +8,8 @@ abstract class FirebaseUserRemoteDatasource {
 
   Future<void> updateUserData(UserModel updatedUser);
 
+  Future<bool> isExistInCollection(String uid);
+
   // Stream<UserModel> loggedUserStream(User loggedFirebaseUser);
 }
 
@@ -39,5 +41,16 @@ class FirebaseUserRemoteDatasourceImpl implements FirebaseUserRemoteDatasource {
         await doc.reference.update(updatedUser.toMap());
       }
     }).catchError((error) => print(error));
+  }
+
+  @override
+  Future<bool> isExistInCollection(String uid) async {
+    return await _userCollection.doc(uid).get().then((doc) {
+      if (doc.exists) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 }

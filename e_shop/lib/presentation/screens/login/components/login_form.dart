@@ -1,15 +1,13 @@
-import 'package:e_shop/presentation/screens/home/home_screen.dart';
 import 'package:e_shop/presentation/widgets/constants.dart';
 import 'package:e_shop/presentation/widgets/size_config.dart';
 import 'package:e_shop/utils/default_button.dart';
 
-import '../../../common_blocs/cubit/cubit/authentication_cubit.dart';
+import '../../../common_cubits/cubit/cubit/authentication_cubit.dart';
 import '../cubit/login_cubit.dart';
 import '../../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:e_shop/utils/theme.dart';
 
 class LoginForm extends StatefulWidget {
   @override

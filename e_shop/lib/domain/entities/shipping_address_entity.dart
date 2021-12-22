@@ -2,7 +2,8 @@ import 'package:equatable/equatable.dart';
 
 class ShippingAddressEntity extends Equatable {
   final String fullName;
-  final String address;
+  final String phoneNumber;
+  final String deatiledAddress;
   final String city;
   final String state;
   final String postal;
@@ -11,7 +12,8 @@ class ShippingAddressEntity extends Equatable {
 
   ShippingAddressEntity({
     required this.fullName,
-    required this.address,
+    required this.phoneNumber,
+    required this.deatiledAddress,
     required this.city,
     required this.state,
     required this.postal,
@@ -22,7 +24,8 @@ class ShippingAddressEntity extends Equatable {
   @override
   List<Object> get props => [
         fullName,
-        address,
+        phoneNumber,
+        deatiledAddress,
         city,
         state,
         postal,

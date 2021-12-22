@@ -65,7 +65,7 @@ class _BodyState extends State<Body> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
                         splashData.length,
-                        (index) => BuildDot(index: index),
+                        (index) => buildDot(index: index),
                       ),
                     ),
                     Spacer(),
@@ -96,7 +96,7 @@ class _BodyState extends State<Body> {
     );
   }
 
-  AnimatedContainer BuildDot({required int index}) {
+  AnimatedContainer buildDot({required int index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,
       margin: EdgeInsets.only(right: 5),
