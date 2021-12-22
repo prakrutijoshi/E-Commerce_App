@@ -1,4 +1,5 @@
 import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'package:e_shop/presentation/screens/myaccount/myaccount_screen.dart';
 import 'package:e_shop/presentation/screens/profile/components/profile_avatar.dart';
 import 'package:e_shop/presentation/screens/profile/components/profile_list.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class Body extends StatelessWidget {
           ProfileList(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () {},
+            press: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MyAccount())),
           ),
           ProfileList(
             text: "Notifications",
