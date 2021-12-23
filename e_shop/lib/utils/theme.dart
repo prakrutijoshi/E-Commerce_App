@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
+import '../presentation/widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme() {

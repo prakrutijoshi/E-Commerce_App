@@ -1,7 +1,8 @@
-import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
-import 'package:e_shop/presentation/screens/myaccount/myaccount_screen.dart';
-import 'package:e_shop/presentation/screens/profile/components/profile_avatar.dart';
-import 'package:e_shop/presentation/screens/profile/components/profile_list.dart';
+import '../../../common_cubits/cubit/cubit/authentication_cubit.dart';
+import '../../myaccount/myaccount_screen.dart';
+import 'profile_avatar.dart';
+import 'profile_list.dart';
+import '../../shipping_address/shipping_address_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,6 +37,18 @@ class Body extends StatelessWidget {
             text: "Support",
             icon: "assets/icons/Question mark.svg",
             press: () {},
+          ),
+          ProfileList(
+            text: "Addresses",
+            icon: "assets/icons/Settings.svg",
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ShippingAddressScreen(),
+                ),
+              );
+            },
           ),
           ProfileList(
             text: "LogOut",

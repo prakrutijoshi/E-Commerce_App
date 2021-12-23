@@ -1,6 +1,6 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
-import 'package:e_shop/utils/default_button.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';

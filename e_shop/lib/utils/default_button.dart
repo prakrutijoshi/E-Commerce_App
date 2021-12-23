@@ -1,5 +1,5 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import '../presentation/widgets/constants.dart';
+import '../presentation/widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatelessWidget {

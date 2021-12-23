@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
+import '../../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

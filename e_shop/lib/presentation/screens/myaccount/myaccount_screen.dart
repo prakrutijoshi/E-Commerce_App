@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
+import '../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 class MyAccount extends StatelessWidget {

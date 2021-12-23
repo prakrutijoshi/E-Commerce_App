@@ -1,7 +1,7 @@
-import 'package:e_shop/presentation/screens/register/components/register_form.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
-import 'package:e_shop/presentation/widgets/social_card.dart';
+import 'register_form.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../../../widgets/social_card.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

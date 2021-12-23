@@ -1,6 +1,6 @@
-import 'package:e_shop/presentation/screens/home/components/iconbtnwithcounter.dart';
-import 'package:e_shop/presentation/screens/home/components/searchfield.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'iconbtnwithcounter.dart';
+import 'searchfield.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
