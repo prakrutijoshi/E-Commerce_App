@@ -1,11 +1,11 @@
-import '../../common_cubits/cubit/cubit/authentication_cubit.dart';
-import 'components/body.dart';
-import 'components/customnavbar.dart';
-import '../../widgets/constants.dart';
-import '../../../utils/enum.dart';
+import 'package:e_shop/presentation/screens/Cart/cart_screen.dart';
+import 'package:e_shop/presentation/screens/home/components/body.dart';
+import 'package:e_shop/presentation/screens/home/components/customnavbar.dart';
+import 'package:e_shop/presentation/screens/home/components/iconbtnwithcounter.dart';
+import 'package:e_shop/presentation/widgets/constants.dart';
+import 'package:e_shop/utils/enum.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   //final User currentUser;
@@ -20,15 +20,18 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: kPrimaryColor,
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              BlocProvider.of<AuthenticationCubit>(context).loggedOut();
-              Navigator.popUntil(context, ModalRoute.withName("/"));
+          IconBtnWithCounter(
+            svgSrc: "assets/icons/Heart Icon.svg",
+            color: Colors.white,
+            press: () {},
+          ),
+          IconBtnWithCounter(
+            svgSrc: "assets/icons/Cart Icon.svg",
+            color: Colors.white,
+            press: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CartScreen()));
             },
-            child: Text("Logout"),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.red,
-            ),
           ),
         ],
       ),

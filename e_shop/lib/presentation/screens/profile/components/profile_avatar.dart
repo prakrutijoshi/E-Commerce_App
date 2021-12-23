@@ -8,8 +8,8 @@ class ProfileAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 115,
-      width: 115,
+      height: 130,
+      width: 130,
       child: Stack(
         fit: StackFit.expand,
         clipBehavior: Clip.none,
@@ -18,7 +18,7 @@ class ProfileAvatar extends StatelessWidget {
             backgroundImage: AssetImage("assets/images/Profile Image.png"),
           ),
           Positioned(
-            height: -16,
+            right: -12,
             bottom: 0,
             child: SizedBox(
               height: 46,
@@ -27,13 +27,16 @@ class ProfileAvatar extends StatelessWidget {
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side: BorderSide(color: Colors.white),
+                    side: BorderSide(color: kPrimaryColor),
                   ),
-                  primary: Colors.white,
-                  backgroundColor: kSecondaryColor,
+                  primary: kPrimaryColor,
+                  backgroundColor: Colors.white,
                 ),
                 onPressed: () {},
-                child: SvgPicture.asset("assets/icons/Camera Icon.svg"),
+                child: SvgPicture.asset(
+                  "assets/icons/Camera Icon.svg",
+                  color: kPrimaryColor,
+                ),
               ),
             ),
           ),

@@ -1,3 +1,5 @@
+import 'package:e_shop_seller/utils/theme.dart';
+
 import 'presentation/common_cubits/authentication/authentication_cubit.dart';
 import 'presentation/screens/home/home_screen.dart';
 import 'presentation/screens/login/login_screen.dart';
@@ -18,9 +20,7 @@ class _AppViewState extends State<AppView> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'eShop Seller',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme(),
       home: BlocBuilder<AuthenticationCubit, AuthenticationState>(
         builder: (context, authState) {
           if (authState is AuthenticationInitial) {

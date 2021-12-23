@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "We are Happy you are Here!",
+                  "We Are Happy You Are Here!",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: getProportionateScreenWidth(23),
