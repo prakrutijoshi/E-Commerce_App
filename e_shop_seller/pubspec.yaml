@@ -30,10 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.0
-  flutter_svg: ^0.22.0
+  flutter_svg: ^1.0.0
   form_field_validator: ^1.1.0
   get_it: ^7.2.0
-
 
 dev_dependencies:
   flutter_test:
