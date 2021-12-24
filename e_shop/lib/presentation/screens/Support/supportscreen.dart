@@ -18,7 +18,6 @@ class _SupportScreenState extends State<SupportScreen> {
       appBar: AppBar(
         title: Text("Welcome to Customer Service!"),
         centerTitle: true,
-        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0),

@@ -54,7 +54,7 @@ class Body extends StatelessWidget {
           ),
           ProfileList(
             text: "Addresses",
-            icon: "assets/icons/Settings.svg",
+            icon: "assets/icons/Location point.svg",
             press: () {
               Navigator.push(
                 context,

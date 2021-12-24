@@ -19,6 +19,7 @@ class ShippingAddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kSecondaryColor,
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: kPrimaryColor,
