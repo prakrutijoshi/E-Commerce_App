@@ -7,7 +7,7 @@ class ProductRepositoryImpl extends ProductRepository {
 
   ProductRepositoryImpl(this.productDataSource);
   @override
-  Future<void> fetchProducts() async {
+  Future<List<ProductEntity>> fetchProducts() async {
     return await productDataSource.fetchProducts();
   }
 

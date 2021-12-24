@@ -31,7 +31,7 @@ class ProductModel extends ProductEntity {
       price: json["price"] ?? "",
       category: json["category"] ?? "",
       description: json["description"] ?? "",
-      images: json["images"] ?? "",
+      images: List.castFrom<dynamic, String>(json["images"]),
       isAvailable: json["isAvailable"] ?? "",
       quantity: json["quantity"] ?? "",
       rating: json["rating"] ?? "",

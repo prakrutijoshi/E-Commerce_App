@@ -1,23 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_shop/data/model/product_model.dart';
+import 'package:flutter/widgets.dart';
 
 abstract class ProductDataSource {
-  Future<void> fetchProducts();
+  Future<List<ProductModel>> fetchProducts();
   Future<void> addTocart();
   Future<ProductModel> findProduct();
 }
 
 class ProductDataSourceImpl extends ProductDataSource {
-  var _productcollaction = FirebaseFirestore.instance;
+  var _productcollaction = FirebaseFirestore.instance.collection('products');
 
   @override
-  Future<void> fetchProducts() async {
+  Future<List<ProductModel>> fetchProducts() async {
     return await _productcollaction
-        .collection('products')
         .get()
-        .then((value) => value.docs.forEach((result) {
-              print(result);
-            }));
+        .then((snapshot) => snapshot.docs
+            .map((doc) => ProductModel.fromMap(doc.data()))
+            .toList())
+        .catchError((error) {
+      print(error);
+    });
   }
 
   @override

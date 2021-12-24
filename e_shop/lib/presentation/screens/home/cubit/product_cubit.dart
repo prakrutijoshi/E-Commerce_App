@@ -18,7 +18,7 @@ class ProductCubit extends Cubit<ProductState> {
       required this.fetchProductUsecase})
       : super(ProductInitial());
 
-  Future<void> getProduct() async {
+  Future<void> fetchProducts() async {
     emit(ProductLoading());
 
     try {
