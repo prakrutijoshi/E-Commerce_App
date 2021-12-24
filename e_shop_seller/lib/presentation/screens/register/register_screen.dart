@@ -20,7 +20,6 @@ class RegisterScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text("SIGN UP"),
             centerTitle: true,
-            backgroundColor: kPrimaryColor,
           ),
           body: Body(),
           bottomNavigationBar: _buildHaveAccountText(context),
