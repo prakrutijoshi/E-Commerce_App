@@ -1,9 +1,15 @@
+import 'package:e_shop/data/datasource/remote_datasource/productdatasource.dart';
 import 'package:e_shop/data/repositories/firebase_user_repository_impl.dart';
+import 'package:e_shop/data/repositories/product_repository_impl.dart';
 import 'package:e_shop/domain/repositories/firebase_user_repository.dart';
+import 'package:e_shop/domain/repositories/product_repository.dart';
+import 'package:e_shop/domain/usecases/product_usecases/addtocart_usecase.dart';
+import 'package:e_shop/domain/usecases/product_usecases/fetch_product_usecase.dart';
 import 'package:e_shop/domain/usecases/user_usecases/add_user_data_usecase.dart';
 import 'package:e_shop/domain/usecases/user_usecases/get_user_by_id_usecase.dart';
 import 'package:e_shop/domain/usecases/user_usecases/update_user_data_usecase.dart';
 import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
 import 'package:e_shop/presentation/screens/shipping_address/cubit/address_cubit.dart';
 import 'package:get_it/get_it.dart';
 
@@ -17,6 +23,7 @@ import 'domain/usecases/auth_usecases/log_in_with_email_and_password_usecase.dar
 import 'domain/usecases/auth_usecases/log_out_usecase.dart';
 import 'domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
 import 'domain/usecases/auth_usecases/sign_up_usecase.dart';
+import 'domain/usecases/product_usecases/find_product_usecase.dart';
 import 'presentation/screens/login/cubit/login_cubit.dart';
 import 'presentation/screens/register/cubit/register_cubit.dart';
 
@@ -84,4 +91,27 @@ Future<void> init() async {
       () => FirebaseAuthRemoteDatasourceImpl());
   sl.registerLazySingleton<FirebaseUserRemoteDatasource>(
       () => FirebaseUserRemoteDatasourceImpl());
+
+  //Product Cubit
+  sl.registerFactory<ProductCubit>(
+    () => ProductCubit(
+      addToCartUsecase: sl.call(),
+      findProductUsecase: sl.call(),
+      fetchProductUsecase: sl.call(),
+    ),
+  );
+
+  // Product Usecases
+  sl.registerLazySingleton<FetchProductUsecase>(
+      () => FetchProductUsecase(sl.call()));
+  sl.registerLazySingleton<FindProductUsecase>(
+      () => FindProductUsecase(sl.call()));
+  sl.registerLazySingleton<AddToCartUsecase>(() => AddToCartUsecase(sl.call()));
+
+  //Product Repository
+  sl.registerLazySingleton<ProductRepository>(
+      () => ProductRepositoryImpl(sl.call()));
+
+  //Product Datasource
+  sl.registerLazySingleton<ProductDataSource>(() => ProductDataSourceImpl());
 }
