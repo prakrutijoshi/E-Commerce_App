@@ -1,3 +1,6 @@
+import 'package:e_shop_seller/presentation/screens/register/components/body.dart';
+import 'package:e_shop_seller/utils/constants.dart';
+
 import 'components/register_form.dart';
 import 'cubit/register_cubit.dart';
 import 'package:flutter/material.dart';
@@ -13,32 +16,13 @@ class RegisterScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => di.sl<RegisterCubit>(),
       child: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            body: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                children: [
-                  Container(
-                    height: 200,
-                    child: Center(
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 35,
-                        ),
-                      ),
-                    ),
-                  ),
-                  RegisterForm(),
-                ],
-              ),
-            ),
-            bottomNavigationBar: _buildHaveAccountText(context),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("SIGN UP"),
+            centerTitle: true,
           ),
+          body: Body(),
+          bottomNavigationBar: _buildHaveAccountText(context),
         ),
       ),
     );
@@ -62,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
             child: Text(
               'Login',
               style: TextStyle(
-                color: Colors.blue,
+                color: kPrimaryColor,
                 fontSize: 17,
               ),
             ),

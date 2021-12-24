@@ -1,5 +1,5 @@
-import 'package:e_shop/presentation/screens/home/components/sectiontitle.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'sectiontitle.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class SpecialOffers extends StatelessWidget {

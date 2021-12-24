@@ -1,8 +1,8 @@
-import 'package:e_shop/presentation/screens/login/login_screen.dart';
-import 'package:e_shop/presentation/screens/splash/components/splash_content.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
-import 'package:e_shop/utils/default_button.dart';
+import '../../login/login_screen.dart';
+import 'splash_content.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -73,11 +73,6 @@ class _BodyState extends State<Body> {
                         ? DefaultButton(
                             text: "Continue to Login",
                             press: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => LoginScreen()),
-                              // );
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (context) => LoginScreen()),

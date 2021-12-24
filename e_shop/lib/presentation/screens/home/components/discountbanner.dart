@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class DiscountBanner extends StatelessWidget {
@@ -21,10 +21,17 @@ class DiscountBanner extends StatelessWidget {
         TextSpan(
           style: TextStyle(color: Colors.white),
           children: [
-            TextSpan(text: "A Summer Surprise \n"),
             TextSpan(
-              text: "Upto 20% Cashback",
+                text: "Christmas Surprise! \n",
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.red[800])),
+            TextSpan(
+              text: "     Upto 20% Cashback",
               style: TextStyle(
+                fontStyle: FontStyle.italic,
                 fontSize: getProportionateScreenWidth(24),
                 fontWeight: FontWeight.bold,
               ),

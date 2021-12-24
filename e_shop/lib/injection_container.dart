@@ -11,6 +11,13 @@ import 'package:e_shop/domain/usecases/user_usecases/update_user_data_usecase.da
 import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
 import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
 import 'package:e_shop/presentation/screens/shipping_address/cubit/address_cubit.dart';
+import 'data/repositories/firebase_user_repository_impl.dart';
+import 'domain/repositories/firebase_user_repository.dart';
+import 'domain/usecases/user_usecases/add_user_data_usecase.dart';
+import 'domain/usecases/user_usecases/get_user_by_id_usecase.dart';
+import 'domain/usecases/user_usecases/update_user_data_usecase.dart';
+import 'presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'presentation/screens/shipping_address/cubit/address_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasource/remote_datasource/firebase_auth_remote_datasource.dart';
@@ -57,6 +64,7 @@ Future<void> init() async {
       getUserByIdUseCase: sl.call(),
       updateUserDataUseCase: sl.call(),
       addUserDataUseCase: sl.call(),
+      loggedFirebaseUserUseCase: sl.call(),
     ),
   );
 

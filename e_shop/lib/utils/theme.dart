@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
+import '../presentation/widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme() {
@@ -21,11 +21,12 @@ TextTheme texttheme() {
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    color: Colors.white,
+    foregroundColor: Colors.white,
+    color: kPrimaryColor,
     elevation: 0,
     // ignore: deprecated_member_use
     brightness: Brightness.light,
-    iconTheme: IconThemeData(color: Colors.deepPurple),
+    iconTheme: IconThemeData(color: kSecondaryColor),
     // ignore: deprecated_member_use
     textTheme: TextTheme(
       headline6: TextStyle(color: Colors.deepPurple, fontSize: 18),

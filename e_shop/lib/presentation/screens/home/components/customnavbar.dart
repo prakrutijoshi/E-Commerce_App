@@ -1,7 +1,7 @@
-import 'package:e_shop/presentation/screens/home/home_screen.dart';
-import 'package:e_shop/presentation/screens/profile/profile_screen.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/utils/enum.dart';
+import '../home_screen.dart';
+import '../../profile/profile_screen.dart';
+import '../../../widgets/constants.dart';
+import '../../../../utils/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

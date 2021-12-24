@@ -1,5 +1,5 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class SearchField extends StatelessWidget {
@@ -8,9 +8,10 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: SizeConfig.screenWidth * 0.6,
+      width: SizeConfig.screenWidth * 0.9,
+      height: SizeConfig.screenWidth * 0.125,
       decoration: BoxDecoration(
-        color: kSecondaryColor.withOpacity(0.1),
+        color: kPrimaryColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(

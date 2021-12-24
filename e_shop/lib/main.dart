@@ -1,4 +1,5 @@
-import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'presentation/screens/shipping_address/cubit/address_cubit.dart';
 
 import 'app_view.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.sl<AuthenticationCubit>(),
         ),
+        BlocProvider(
+          create: (_) => di.sl<AddressCubit>(),
+        )
       ],
       child: AppView(),
     );

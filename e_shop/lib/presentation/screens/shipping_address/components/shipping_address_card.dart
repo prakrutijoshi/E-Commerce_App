@@ -1,14 +1,15 @@
-import 'package:e_shop/data/model/shipping_address_model.dart';
+import '../../../../data/model/shipping_address_model.dart';
+import '../../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 class ShippingAddressCard extends StatelessWidget {
-  final ShippingAddressModel deliveryAddress;
+  final ShippingAddressModel shippingAddress;
   final Function()? onPressed;
   final bool showDefautTick;
 
   const ShippingAddressCard({
     Key? key,
-    required this.deliveryAddress,
+    required this.shippingAddress,
     this.onPressed,
     this.showDefautTick = true,
   }) : super(key: key);
@@ -19,6 +20,8 @@ class ShippingAddressCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
+          margin: EdgeInsets.all(8),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.grey.withOpacity(0.3)),
@@ -39,7 +42,12 @@ class ShippingAddressCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "delivery_address",
+                    "Delivery Address",
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                   Spacer(),
                   _buildDefaultText(context),
@@ -47,15 +55,27 @@ class ShippingAddressCard extends StatelessWidget {
               ),
               textRow(
                 title: "Name",
-                content: deliveryAddress.fullName,
+                content: shippingAddress.fullName,
               ),
               textRow(
                 title: "Phone number",
-                content: deliveryAddress.phoneNumber,
+                content: shippingAddress.phoneNumber,
               ),
               textRow(
-                title: "Detail address",
-                content: deliveryAddress.deatiledAddress,
+                title: "Address",
+                content: shippingAddress.detailedAddress,
+              ),
+              textRow(
+                title: "City",
+                content: shippingAddress.city,
+              ),
+              textRow(
+                title: "State ",
+                content: shippingAddress.state,
+              ),
+              textRow(
+                title: "Postal Code",
+                content: shippingAddress.postal,
               ),
             ],
           ),
@@ -65,9 +85,14 @@ class ShippingAddressCard extends StatelessWidget {
   }
 
   _buildDefaultText(BuildContext context) {
-    return deliveryAddress.isDefault && showDefautTick
+    return shippingAddress.isDefault && showDefautTick
         ? Text(
             "[default]",
+            style: TextStyle(
+              color: Colors.green,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           )
         : Container();
   }
@@ -77,6 +102,7 @@ class ShippingAddressCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
+          width: 110,
           child: Text(
             title,
           ),

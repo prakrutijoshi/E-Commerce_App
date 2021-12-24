@@ -2,18 +2,20 @@ import '../../domain/entities/shipping_address_entity.dart';
 
 class ShippingAddressModel extends ShippingAddressEntity {
   ShippingAddressModel({
+    required String aid,
     required String fullName,
     required String phoneNumber,
-    required String deatiledAddress,
+    required String detailedAddress,
     required String city,
     required String state,
     required String postal,
     required String country,
     required bool isDefault,
   }) : super(
+          aid: aid,
           fullName: fullName,
           phoneNumber: phoneNumber,
-          deatiledAddress: deatiledAddress,
+          detailedAddress: detailedAddress,
           city: city,
           state: state,
           postal: postal,
@@ -23,9 +25,10 @@ class ShippingAddressModel extends ShippingAddressEntity {
 
   factory ShippingAddressModel.fromMap(Map<String, dynamic> json) {
     return ShippingAddressModel(
+      aid: json["aid"] ?? "",
       fullName: json["fullName"] ?? "",
       phoneNumber: json["phoneNumber"] ?? "",
-      deatiledAddress: json["address"] ?? "",
+      detailedAddress: json["detailedAddress"] ?? "",
       city: json["city"] ?? "",
       state: json["state"] ?? "",
       postal: json["postal"] ?? "",
@@ -36,9 +39,10 @@ class ShippingAddressModel extends ShippingAddressEntity {
 
   Map<String, dynamic> toMap() {
     return {
+      "aid": this.aid,
       "fullName": this.fullName,
       "phoneNumber": this.phoneNumber,
-      "deatiledAddress": this.deatiledAddress,
+      "detailedAddress": this.detailedAddress,
       "city": this.city,
       "state": this.state,
       "postal": this.postal,
@@ -48,9 +52,10 @@ class ShippingAddressModel extends ShippingAddressEntity {
   }
 
   ShippingAddressModel cloneWith({
+    aid,
     fullName,
     phoneNumber,
-    deatiledAddress,
+    detailedAddress,
     city,
     state,
     postal,
@@ -58,9 +63,10 @@ class ShippingAddressModel extends ShippingAddressEntity {
     isDefault,
   }) {
     return ShippingAddressModel(
+        aid: aid ?? this.aid,
         fullName: fullName ?? this.fullName,
         phoneNumber: phoneNumber ?? this.phoneNumber,
-        deatiledAddress: deatiledAddress ?? this.deatiledAddress,
+        detailedAddress: detailedAddress ?? this.detailedAddress,
         city: city ?? this.city,
         state: state ?? this.state,
         postal: postal ?? this.postal,

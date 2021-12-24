@@ -1,6 +1,6 @@
-import 'package:e_shop/presentation/screens/login/components/login_form.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'login_form.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "We are Happy you are Here!",
+                  "We Are Happy You Are Here!",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: getProportionateScreenWidth(23),
