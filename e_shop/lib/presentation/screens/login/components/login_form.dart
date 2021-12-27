@@ -1,3 +1,5 @@
+import 'package:e_shop/presentation/screens/ForgetPassword/forgetpassword.dart';
+
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
 import '../../../../utils/default_button.dart';
@@ -91,7 +93,12 @@ class _LoginFormState extends State<LoginForm> {
                     Text("Remember Me"),
                     Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgetPassword()));
+                      },
                       child: Text(
                         "Forgot Password",
                         style: TextStyle(decoration: TextDecoration.underline),
