@@ -12,8 +12,6 @@ import 'package:e_shop/presentation/screens/profile/components/profile_list.dart
 import 'package:e_shop/presentation/screens/settings/settings_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter/material.dart';
-
 class Body extends StatelessWidget {
   Body({Key? key}) : super(key: key);
 
