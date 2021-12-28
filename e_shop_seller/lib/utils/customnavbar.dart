@@ -1,3 +1,4 @@
+import 'package:e_shop_seller/presentation/screens/Profile/profile_screen.dart';
 import 'package:e_shop_seller/presentation/screens/home/home_screen.dart';
 import 'package:e_shop_seller/utils/constants.dart';
 import 'package:e_shop_seller/utils/enum.dart';
@@ -52,18 +53,14 @@ class CustomNavBar extends StatelessWidget {
               onPressed: () {},
             ),
             IconButton(
-              icon: SvgPicture.asset(
-                "assets/icons/User Icon.svg",
-                color: Menu.profile == selected
-                    ? kPrimaryColor
-                    : inActiveIconColor,
-              ),
-              onPressed: () => {},
-              //  Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => ProfileScreen()))
-            ),
+                icon: SvgPicture.asset(
+                  "assets/icons/User Icon.svg",
+                  color: Menu.profile == selected
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfileScreen()))),
           ],
         ),
       ),
