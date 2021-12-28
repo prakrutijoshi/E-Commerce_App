@@ -15,6 +15,7 @@ class LoginScreen extends StatelessWidget {
       create: (context) => di.sl<LoginCubit>(),
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.amber[50],
           appBar: AppBar(
             title: Text("SIGN IN"),
             centerTitle: true,

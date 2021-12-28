@@ -23,7 +23,7 @@ class SocalCard extends StatelessWidget {
         height: getProportionateScreenHeight(40),
         width: getProportionateScreenWidth(40),
         decoration: BoxDecoration(
-          color: Color(0xFFF5F6F9),
+          color: Colors.amber[200],
           shape: BoxShape.circle,
         ),
         child: SvgPicture.asset(icon!),

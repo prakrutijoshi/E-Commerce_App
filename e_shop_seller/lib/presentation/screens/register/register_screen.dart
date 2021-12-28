@@ -16,6 +16,7 @@ class RegisterScreen extends StatelessWidget {
       create: (context) => di.sl<RegisterCubit>(),
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.amber[50],
           appBar: AppBar(
             title: Text("SIGN UP"),
             centerTitle: true,
