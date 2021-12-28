@@ -1,7 +1,6 @@
-import 'package:e_shop_seller/presentation/screens/register/components/register_form.dart';
-import 'package:e_shop_seller/presentation/screens/register/components/socialcard.dart';
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/size_config.dart';
+import 'register_form.dart';
+import 'socialcard.dart';
+import '../../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

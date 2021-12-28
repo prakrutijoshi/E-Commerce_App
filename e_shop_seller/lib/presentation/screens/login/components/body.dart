@@ -1,5 +1,5 @@
-import 'package:e_shop_seller/presentation/screens/login/components/login_form.dart';
-import 'package:e_shop_seller/utils/size_config.dart';
+import 'login_form.dart';
+import '../../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

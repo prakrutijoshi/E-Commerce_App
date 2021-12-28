@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../models/seller_model.dart';
 
 abstract class FirebaseSellerRemoteDatasource {
-  Future<SellerModel?> getSellerById(String sid);
+  Future<SellerModel> getSellerById(String sid);
 
   Future<void> addSellerData(SellerModel newSeller);
 
@@ -26,12 +26,11 @@ class FirebaseSellerRemoteDatasourceImpl
   }
 
   @override
-  Future<SellerModel?> getSellerById(String sid) async {
-    return await _sellerCollection.doc(sid).get().then((doc) {
-      if (doc.exists) {
-        SellerModel.fromMap(doc.data()!);
-      }
-    });
+  Future<SellerModel> getSellerById(String sid) async {
+    return await _sellerCollection
+        .doc(sid)
+        .get()
+        .then((doc) => SellerModel.fromMap(doc.data()!));
   }
 
   @override

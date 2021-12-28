@@ -1,4 +1,4 @@
-import 'package:e_shop_seller/utils/size_config.dart';
+import '../../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

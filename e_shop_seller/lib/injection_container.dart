@@ -1,3 +1,23 @@
+import 'presentation/screens/product/cubit/product_cubit.dart';
+
+import 'data/datasources/remote_datasource/firebase_product_remote_datasource.dart';
+import 'data/datasources/remote_datasource/firebase_storage_remote_datasource.dart';
+import 'data/repositories/firbase_storage_repository_impl.dart';
+import 'data/repositories/firebase_product_repository_impl.dart';
+import 'data/repositories/firebase_seller_repository_impl.dart';
+import 'domain/repositories/firebase_product_repository.dart';
+import 'domain/repositories/firebase_seller_repository.dart';
+import 'domain/repositories/firebase_storage_repository.dart';
+import 'domain/usecases/product_usecase/add_product_data_usecase.dart';
+import 'domain/usecases/product_usecase/get_product_by_id_usecase.dart';
+import 'domain/usecases/product_usecase/get_product_by_seller_id_usecase.dart';
+import 'domain/usecases/product_usecase/remove_product_usecase.dart';
+import 'domain/usecases/product_usecase/update_product_data_usecase.dart';
+import 'domain/usecases/seller_usecase/add_seller_data_usecase.dart';
+import 'domain/usecases/seller_usecase/get_seller_by_id_usecase.dart';
+import 'domain/usecases/seller_usecase/is_exist_in_collection_usecase.dart';
+import 'domain/usecases/seller_usecase/update_seller_data_usecase.dart';
+import 'domain/usecases/storage_usecase/upload_image_file_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasources/remote_datasource/firebase_auth_remote_datasource.dart';
@@ -39,8 +59,16 @@ Future<void> init() async {
       authExceptionUseCase: sl.call(),
     ),
   );
+  sl.registerFactory<ProductCubit>(
+    () => ProductCubit(
+      uploadImageFileUseCase: sl.call(),
+      addProductDataUseCase: sl.call(),
+      updateProductDataUseCase: sl.call(),
+      loggedFirebaseSellerUseCase: sl.call(),
+    ),
+  );
 
-  // usecase
+  // auth usecase
   sl.registerLazySingleton<IsLoggedInUseCase>(
       () => IsLoggedInUseCase(sl.call()));
   sl.registerLazySingleton<LogInWithEmailAndPasswordUseCase>(
@@ -52,15 +80,49 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthExceptionUseCase>(
       () => AuthExceptionUseCase(sl.call()));
 
+  // seller usecase
+  sl.registerLazySingleton<AddSellerDataUseCase>(
+      () => AddSellerDataUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetSellerByIdUseCase>(
+      () => GetSellerByIdUseCase(repository: sl.call()));
+  sl.registerLazySingleton<IsExistInCollectionUseCase>(
+      () => IsExistInCollectionUseCase(repository: sl.call()));
+  sl.registerLazySingleton<UpdateSellerDataUseCase>(
+      () => UpdateSellerDataUseCase(repository: sl.call()));
+
+  // product usecase
+  sl.registerLazySingleton<AddProductDataUseCase>(
+      () => AddProductDataUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetProductByIdUseCase>(
+      () => GetProductByIdUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetProductBySellerIdUseCase>(
+      () => GetProductBySellerIdUseCase(repository: sl.call()));
+  sl.registerLazySingleton<RemoveProductUseCase>(
+      () => RemoveProductUseCase(repository: sl.call()));
+  sl.registerLazySingleton<UpdateProductDataUseCase>(
+      () => UpdateProductDataUseCase(repository: sl.call()));
+
+  // storage usecase
+  sl.registerLazySingleton<UploadImageFileUseCase>(
+      () => UploadImageFileUseCase(repository: sl.call()));
+
   // repository
   sl.registerLazySingleton<FirebaseAuthRepository>(
       () => FirebaseAuthRepositoryImpl(sl.call()));
-  // sl.registerLazySingleton<FirebaseUserRepository>(
-  //     () => FirebaseUserRepositoryImpl(sl.call()));
+  sl.registerLazySingleton<FirebaseSellerRepository>(
+      () => FirebaseSellerRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<FirebaseProductRepository>(
+      () => FirebaseProductRepositoryImpl(sl.call()));
+  sl.registerLazySingleton<FirebaseStorageRepository>(
+      () => FirebaseStorageRepositoryImpl(remoteDataSource: sl.call()));
 
   // datasource
   sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(
       () => FirebaseAuthRemoteDatasourceImpl());
   sl.registerLazySingleton<FirebaseSellerRemoteDatasource>(
       () => FirebaseSellerRemoteDatasourceImpl());
+  sl.registerLazySingleton<FirebaseProductRemoteDatasource>(
+      () => FirebaseProductRemoteDatasourceImpl());
+  sl.registerLazySingleton<FirebaseStorageRemoteDatasource>(
+      () => FirebaseStorageRemoteDatasourceImpl());
 }

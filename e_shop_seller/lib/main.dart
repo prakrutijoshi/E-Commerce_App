@@ -1,3 +1,5 @@
+import 'presentation/screens/product/cubit/product_cubit.dart';
+
 import 'app_view.dart';
 import 'presentation/common_cubits/authentication/authentication_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,7 +20,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => di.sl<AuthenticationCubit>()),
+        BlocProvider(
+          create: (_) => di.sl<AuthenticationCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<ProductCubit>(),
+        ),
       ],
       child: AppView(),
     );

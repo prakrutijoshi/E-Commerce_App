@@ -1,7 +1,7 @@
-import 'package:e_shop_seller/presentation/screens/login/login_screen.dart';
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/default_button.dart';
-import 'package:e_shop_seller/utils/size_config.dart';
+import '../../login/login_screen.dart';
+import '../../../../utils/constants.dart';
+import '../../../../utils/default_button.dart';
+import '../../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

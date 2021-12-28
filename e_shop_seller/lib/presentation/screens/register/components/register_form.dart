@@ -1,6 +1,6 @@
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/default_button.dart';
-import 'package:e_shop_seller/utils/size_config.dart';
+import '../../../../utils/constants.dart';
+import '../../../../utils/default_button.dart';
+import '../../../../utils/size_config.dart';
 
 import '../../../../data/models/seller_model.dart';
 import '../../../../domain/entities/seller_entity.dart';
@@ -19,7 +19,6 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  final _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

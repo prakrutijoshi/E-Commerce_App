@@ -1,7 +1,6 @@
-import 'package:e_shop_seller/presentation/screens/register/components/body.dart';
-import 'package:e_shop_seller/utils/constants.dart';
+import 'components/body.dart';
+import '../../../utils/constants.dart';
 
-import 'components/register_form.dart';
 import 'cubit/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

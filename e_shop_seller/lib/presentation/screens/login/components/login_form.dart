@@ -1,6 +1,6 @@
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/default_button.dart';
-import 'package:e_shop_seller/utils/size_config.dart';
+import '../../../../utils/constants.dart';
+import '../../../../utils/default_button.dart';
+import '../../../../utils/size_config.dart';
 
 import '../../../common_cubits/authentication/authentication_cubit.dart';
 import '../cubit/login_cubit.dart';

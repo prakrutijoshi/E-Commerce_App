@@ -1,6 +1,6 @@
-import 'package:e_shop_seller/presentation/screens/login/components/body.dart';
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/size_config.dart';
+import 'components/body.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

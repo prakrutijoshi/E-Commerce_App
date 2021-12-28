@@ -1,4 +1,4 @@
-import 'package:e_shop_seller/utils/theme.dart';
+import 'utils/theme.dart';
 
 import 'presentation/common_cubits/authentication/authentication_cubit.dart';
 import 'presentation/screens/home/home_screen.dart';
