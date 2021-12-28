@@ -111,7 +111,7 @@ class ShippingAddressCard extends StatelessWidget {
           child: Text(
             content,
           ),
-        )
+        ),
       ],
     );
   }

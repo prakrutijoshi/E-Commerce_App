@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'size_config.dart';
 
 const kPrimaryColor = Color(0xFFFFB74D);
-const kPrimaryLightColor = Color(0xFFFFE0B2);
+const kPrimaryLightColor = Color(0xFFFFECB3);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,

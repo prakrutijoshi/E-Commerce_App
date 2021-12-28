@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("e-Shop"),
         centerTitle: true,
-        backgroundColor: kPrimaryColor,
         actions: [
           IconBtnWithCounter(
             svgSrc: "assets/icons/Heart Icon.svg",

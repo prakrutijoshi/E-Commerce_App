@@ -1,6 +1,7 @@
-import '../../../../utils/constants.dart';
-import '../../../../utils/default_button.dart';
-import '../../../../utils/size_config.dart';
+import 'package:e_shop_seller/presentation/screens/forgetPassword/forgetpassword.dart';
+import 'package:e_shop_seller/utils/constants.dart';
+import 'package:e_shop_seller/utils/default_button.dart';
+import 'package:e_shop_seller/utils/size_config.dart';
 
 import '../../../common_cubits/authentication/authentication_cubit.dart';
 import '../cubit/login_cubit.dart';
@@ -93,7 +94,12 @@ class _LoginFormState extends State<LoginForm> {
                     Text("Remember Me"),
                     Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgetPassword()));
+                      },
                       child: Text(
                         "Forgot Password",
                         style: TextStyle(decoration: TextDecoration.underline),
@@ -101,19 +107,6 @@ class _LoginFormState extends State<LoginForm> {
                     )
                   ],
                 ),
-                // Align(
-                //   alignment: Alignment.centerRight,
-                //   child: GestureDetector(
-                //     onTap: () {},
-                //     child: Text(
-                //       'forgot password?',
-                //       style: TextStyle(
-                //         color: Colors.blue,
-                //         fontSize: 16,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 SizedBox(height: getProportionateScreenHeight(10)),
                 _buildButtonLogin(),
                 SizedBox(height: getProportionateScreenHeight(10)),

@@ -1,8 +1,10 @@
+import 'package:e_shop/presentation/widgets/constants.dart';
+import 'package:e_shop/presentation/widgets/size_config.dart';
+
 import '../../../data/model/shipping_address_model.dart';
 import 'cubit/address_cubit.dart';
 import '../../../utils/default_button.dart';
 import '../../../utils/utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -142,73 +144,80 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
               controller: fullNameController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "Name",
+                labelText: "Full Name",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: getProportionateScreenHeight(12)),
             // Phone number input
             TextFormField(
               controller: phoneNumberController,
               keyboardType: TextInputType.text,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
-                labelText: "Phone number",
+                labelText: "Phone Number",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: getProportionateScreenHeight(12)),
 
             TextFormField(
               controller: detailAddressController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "Detailed address",
+                labelText: "Address",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
               maxLines: null,
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: getProportionateScreenHeight(12)),
 
             TextFormField(
               controller: cityController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: "City",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: getProportionateScreenHeight(12)),
 
             TextFormField(
               controller: stateController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: "State",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: getProportionateScreenHeight(12)),
 
             TextFormField(
               controller: postalController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: "Poatal",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: getProportionateScreenHeight(12)),
 
             TextFormField(
               controller: countryController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: "Country",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: getProportionateScreenHeight(12)),
           ],
         ),
       ),
@@ -227,7 +236,7 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
             Text(
               "Put this as default address",
             ),
-            CupertinoSwitch(
+            Switch(
               value: isDefaultAddress,
               onChanged: onSwitchButtonChanged(),
             ),
@@ -240,8 +249,8 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
   _buildSubmitButton() {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 10,
+        vertical: 30,
+        horizontal: 30,
       ),
       child: DefaultButton(
         text: "confirm",

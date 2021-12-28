@@ -16,7 +16,6 @@ class LoginScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: kPrimaryColor,
             title: Text("SIGN IN"),
             centerTitle: true,
           ),

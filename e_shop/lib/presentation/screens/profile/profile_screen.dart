@@ -14,7 +14,6 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Your Profile"),
         centerTitle: true,
-        backgroundColor: kPrimaryColor,
       ),
       body: Body(),
       bottomNavigationBar: CustomNavBar(selected: Menu.profile),

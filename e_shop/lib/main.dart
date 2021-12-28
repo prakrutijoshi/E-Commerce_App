@@ -1,3 +1,5 @@
+import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
+
 import 'presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
 import 'presentation/screens/shipping_address/cubit/address_cubit.dart';
 
@@ -25,7 +27,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.sl<AddressCubit>(),
-        )
+        ),
+        BlocProvider(
+          create: (_) => di.sl<ProductCubit>(),
+        ),
       ],
       child: AppView(),
     );

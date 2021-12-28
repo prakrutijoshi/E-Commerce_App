@@ -12,7 +12,6 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Settings"),
         centerTitle: true,
-        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 30.0),

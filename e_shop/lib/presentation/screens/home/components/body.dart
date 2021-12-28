@@ -1,5 +1,6 @@
 import 'package:e_shop/presentation/screens/home/components/categories.dart';
 import 'package:e_shop/presentation/screens/home/components/discountbanner.dart';
+import 'package:e_shop/presentation/screens/home/components/products.dart';
 import 'package:e_shop/presentation/screens/home/components/searchfield.dart';
 import 'package:e_shop/presentation/screens/home/components/specialoffers.dart';
 import 'package:e_shop/presentation/widgets/size_config.dart';
@@ -24,8 +25,8 @@ class Body extends StatelessWidget {
             SizedBox(
               height: getProportionateScreenWidth(30),
             ),
-            // Products(),
-            // SizedBox(height: getProportionateScreenWidth(30),),
+            Products(),
+            SizedBox(height: getProportionateScreenWidth(30)),
           ],
         ),
       ),

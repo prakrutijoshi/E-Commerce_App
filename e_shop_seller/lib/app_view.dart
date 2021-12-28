@@ -29,7 +29,7 @@ class _AppViewState extends State<AppView> {
           } else if (authState is Unauthenticated) {
             return LoginScreen();
           } else if (authState is Authenticated) {
-            return HomeScreen(currentUser: authState.loggedFirebaseSeller);
+            return HomeScreen();
           } else {
             return SplashScreen();
           }
