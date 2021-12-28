@@ -342,11 +342,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "0.4.2"
-=======
     version: "0.4.3"
->>>>>>> f514ece556349f1ef6408d3fce6a0e615c995f98
   typed_data:
     dependency: transitive
     description:

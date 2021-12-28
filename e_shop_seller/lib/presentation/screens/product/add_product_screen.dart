@@ -94,6 +94,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.amber[50],
         appBar: AppBar(
           title: Text("Add Product"),
           backgroundColor: kPrimaryColor,
@@ -148,14 +149,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
         padding: EdgeInsets.all(8),
         child: Column(
           children: [
+            SizedBox(height: 30),
             // category input
             DropdownButtonFormField<String>(
               value: dropdownValue,
               icon: const Icon(Icons.category_outlined),
               elevation: 16,
-              style: const TextStyle(color: Colors.deepPurple),
+              style: const TextStyle(color: Colors.deepOrange),
               decoration: InputDecoration(
                 labelText: "Category",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
               onChanged: (String? newValue) {
                 setState(() {
@@ -185,6 +188,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: "Product Name",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
@@ -195,6 +199,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: "Description",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
@@ -206,6 +211,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
                 labelText: "Quantity",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
@@ -217,12 +223,15 @@ class _AddProductScreenState extends State<AddProductScreen> {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
                 labelText: "Price",
+                labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 35),
             // Images input
             ElevatedButton.icon(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(kPrimaryColor)),
               onPressed: () {
                 selectImages();
               },
@@ -230,7 +239,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               label: Text("Add Images"),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 10),
 
             imageFileList!.length > 0
                 ? Padding(
@@ -250,7 +259,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     ),
                   )
                 : Container(),
-
             SizedBox(height: 20),
           ],
         ),
