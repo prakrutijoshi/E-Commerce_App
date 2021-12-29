@@ -1,8 +1,10 @@
-import 'package:e_shop_seller/presentation/screens/product/add_product_screen.dart';
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/customnavbar.dart';
-import 'package:e_shop_seller/utils/enum.dart';
 import 'package:flutter/material.dart';
+
+import '../../../utils/constants.dart';
+import '../../../utils/customnavbar.dart';
+import '../../../utils/enum.dart';
+import '../product/add_product_screen.dart';
+import '../product/display_products_by_seller_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,24 +23,47 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => AddProductScreen(),
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => AddProductScreen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: kPrimaryColor,
                     ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: kPrimaryColor,
-                ),
-                child: Text(
-                  "Add New Product",
-                  style: TextStyle(
-                    fontSize: 16,
+                    child: Text(
+                      "Add New Product",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
-                ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => DisplayProductsBySellerScreen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: kPrimaryColor,
+                    ),
+                    child: Text(
+                      "Watch you products",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

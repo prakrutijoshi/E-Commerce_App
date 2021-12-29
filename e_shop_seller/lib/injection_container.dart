@@ -1,3 +1,5 @@
+import 'domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
+import 'domain/usecases/product_usecase/get_unAvailable_product_by_seller_id_usecase.dart';
 import 'presentation/screens/product/cubit/product_cubit.dart';
 
 import 'data/datasources/remote_datasource/firebase_product_remote_datasource.dart';
@@ -10,7 +12,7 @@ import 'domain/repositories/firebase_seller_repository.dart';
 import 'domain/repositories/firebase_storage_repository.dart';
 import 'domain/usecases/product_usecase/add_product_data_usecase.dart';
 import 'domain/usecases/product_usecase/get_product_by_id_usecase.dart';
-import 'domain/usecases/product_usecase/get_product_by_seller_id_usecase.dart';
+import 'domain/usecases/product_usecase/get_available_product_by_seller_id_usecase.dart';
 import 'domain/usecases/product_usecase/remove_product_usecase.dart';
 import 'domain/usecases/product_usecase/update_product_data_usecase.dart';
 import 'domain/usecases/seller_usecase/add_seller_data_usecase.dart';
@@ -43,6 +45,7 @@ Future<void> init() async {
       isLoggedInUseCase: sl.call(),
       logOutUseCase: sl.call(),
       loggedFirebaseSellerUseCase: sl.call(),
+      sendPasswordResetEmailUseCase: sl.call(),
     ),
   );
   sl.registerFactory<LoginCubit>(
@@ -65,6 +68,8 @@ Future<void> init() async {
       addProductDataUseCase: sl.call(),
       updateProductDataUseCase: sl.call(),
       loggedFirebaseSellerUseCase: sl.call(),
+      getAvailableProductBySellerIdUseCase: sl.call(),
+      getUnAvailableProductBySellerIdUseCase: sl.call(),
     ),
   );
 
@@ -79,6 +84,8 @@ Future<void> init() async {
   sl.registerLazySingleton<SignUpUseCase>(() => SignUpUseCase(sl.call()));
   sl.registerLazySingleton<AuthExceptionUseCase>(
       () => AuthExceptionUseCase(sl.call()));
+  sl.registerLazySingleton<SendPasswordResetEmailUseCase>(
+      () => SendPasswordResetEmailUseCase(repository: sl.call()));
 
   // seller usecase
   sl.registerLazySingleton<AddSellerDataUseCase>(
@@ -95,8 +102,10 @@ Future<void> init() async {
       () => AddProductDataUseCase(repository: sl.call()));
   sl.registerLazySingleton<GetProductByIdUseCase>(
       () => GetProductByIdUseCase(repository: sl.call()));
-  sl.registerLazySingleton<GetProductBySellerIdUseCase>(
-      () => GetProductBySellerIdUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetAvailableProductBySellerIdUseCase>(
+      () => GetAvailableProductBySellerIdUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetUnAvailableProductBySellerIdUseCase>(
+      () => GetUnAvailableProductBySellerIdUseCase(repository: sl.call()));
   sl.registerLazySingleton<RemoveProductUseCase>(
       () => RemoveProductUseCase(repository: sl.call()));
   sl.registerLazySingleton<UpdateProductDataUseCase>(

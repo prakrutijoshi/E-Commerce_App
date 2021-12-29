@@ -1,9 +1,9 @@
-import 'package:e_shop/presentation/screens/Cart/cart_screen.dart';
-import 'package:e_shop/presentation/screens/home/components/body.dart';
-import 'package:e_shop/presentation/screens/home/components/customnavbar.dart';
-import 'package:e_shop/presentation/screens/home/components/iconbtnwithcounter.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/utils/enum.dart';
+import '../Cart/cart_screen.dart';
+import 'components/body.dart';
+import 'components/customnavbar.dart';
+import 'components/iconbtnwithcounter.dart';
+import '../../widgets/constants.dart';
+import '../../../utils/enum.dart';
 
 import 'package:flutter/material.dart';
 

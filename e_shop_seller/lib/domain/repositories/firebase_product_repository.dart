@@ -5,7 +5,9 @@ abstract class FirebaseProductRepository {
 
   Future<void> updateProductData(ProductEntity updateProduct);
 
-  Future<List<ProductEntity>> getProductsBySellerId(String sellerId);
+  Future<List<ProductEntity>> getAvailableProductsBySellerId(String sellerId);
+
+  Future<List<ProductEntity>> getUnAvailableProductsBySellerId(String sellerId);
 
   Future<ProductEntity> getProductById(String pid);
 

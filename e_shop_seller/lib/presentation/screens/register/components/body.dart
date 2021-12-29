@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
+import '../../../../utils/size_config.dart';
 import 'register_form.dart';
 import 'socialcard.dart';
-import '../../../../utils/size_config.dart';
-import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

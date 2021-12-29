@@ -1,8 +1,9 @@
-import 'package:e_shop_seller/presentation/common_cubits/authentication/authentication_cubit.dart';
-import 'package:e_shop_seller/presentation/screens/Profile/components/profile_avatar.dart';
-import 'package:e_shop_seller/presentation/screens/Profile/components/profile_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../common_cubits/authentication/authentication_cubit.dart';
+import 'profile_avatar.dart';
+import 'profile_list.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

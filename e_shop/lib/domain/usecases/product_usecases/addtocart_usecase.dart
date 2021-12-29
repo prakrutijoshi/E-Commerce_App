@@ -1,4 +1,4 @@
-import 'package:e_shop/domain/repositories/product_repository.dart';
+import '../../repositories/product_repository.dart';
 
 class AddToCartUsecase {
   final ProductRepository repository;

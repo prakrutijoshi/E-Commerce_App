@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/data/model/product_model.dart';
-import 'package:flutter/widgets.dart';
+import '../../model/product_model.dart';
 
 abstract class ProductDataSource {
   Future<List<ProductModel>> fetchProducts();

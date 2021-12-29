@@ -25,7 +25,6 @@ class ProductEntity extends Equatable {
       required this.sellerId});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         pid,
         name,

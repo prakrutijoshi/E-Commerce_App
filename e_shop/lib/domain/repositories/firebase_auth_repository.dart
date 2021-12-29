@@ -1,5 +1,6 @@
-import '../entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../entities/user_entity.dart';
 
 abstract class FirebaseAuthRepository {
   Future<User> get loggedFirebaseUser;
@@ -12,4 +13,6 @@ abstract class FirebaseAuthRepository {
   Future<bool> isLoggedIn();
 
   Future<void> logOut();
+
+  Future<void> sendPasswordResetEmail({required String email});
 }

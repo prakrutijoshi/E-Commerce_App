@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+
 import '../../../../domain/usecases/auth_usecases/auth_exception_usecase.dart';
 import '../../../../domain/usecases/auth_usecases/is_logged_in_usecase.dart';
 import '../../../../domain/usecases/auth_usecases/log_in_with_email_and_password.dart';
-import 'package:equatable/equatable.dart';
 
 part 'login_state.dart';
 

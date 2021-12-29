@@ -1,22 +1,16 @@
-import 'package:e_shop/data/datasource/remote_datasource/productdatasource.dart';
-import 'package:e_shop/data/repositories/firebase_user_repository_impl.dart';
-import 'package:e_shop/data/repositories/product_repository_impl.dart';
-import 'package:e_shop/domain/repositories/firebase_user_repository.dart';
-import 'package:e_shop/domain/repositories/product_repository.dart';
-import 'package:e_shop/domain/usecases/product_usecases/addtocart_usecase.dart';
-import 'package:e_shop/domain/usecases/product_usecases/fetch_product_usecase.dart';
-import 'package:e_shop/domain/usecases/user_usecases/add_user_data_usecase.dart';
-import 'package:e_shop/domain/usecases/user_usecases/get_user_by_id_usecase.dart';
-import 'package:e_shop/domain/usecases/user_usecases/update_user_data_usecase.dart';
-import 'package:e_shop/presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
-import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
-import 'package:e_shop/presentation/screens/shipping_address/cubit/address_cubit.dart';
+import 'data/datasource/remote_datasource/productdatasource.dart';
 import 'data/repositories/firebase_user_repository_impl.dart';
+import 'data/repositories/product_repository_impl.dart';
 import 'domain/repositories/firebase_user_repository.dart';
+import 'domain/repositories/product_repository.dart';
+import 'domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
+import 'domain/usecases/product_usecases/addtocart_usecase.dart';
+import 'domain/usecases/product_usecases/fetch_product_usecase.dart';
 import 'domain/usecases/user_usecases/add_user_data_usecase.dart';
 import 'domain/usecases/user_usecases/get_user_by_id_usecase.dart';
 import 'domain/usecases/user_usecases/update_user_data_usecase.dart';
 import 'presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'presentation/screens/home/cubit/product_cubit.dart';
 import 'presentation/screens/shipping_address/cubit/address_cubit.dart';
 import 'package:get_it/get_it.dart';
 
@@ -40,10 +34,10 @@ Future<void> init() async {
   // cubit
   sl.registerFactory<AuthenticationCubit>(
     () => AuthenticationCubit(
-      isLoggedInUseCase: sl.call(),
-      logOutUseCase: sl.call(),
-      loggedFirebaseUserUseCase: sl.call(),
-    ),
+        isLoggedInUseCase: sl.call(),
+        logOutUseCase: sl.call(),
+        loggedFirebaseUserUseCase: sl.call(),
+        sendPasswordResetEmailUseCase: sl.call()),
   );
   sl.registerFactory<LoginCubit>(
     () => LoginCubit(
@@ -67,6 +61,13 @@ Future<void> init() async {
       loggedFirebaseUserUseCase: sl.call(),
     ),
   );
+  sl.registerFactory<ProductCubit>(
+    () => ProductCubit(
+      addToCartUsecase: sl.call(),
+      findProductUsecase: sl.call(),
+      fetchProductUsecase: sl.call(),
+    ),
+  );
 
   // auth usecase
   sl.registerLazySingleton<IsLoggedInUseCase>(
@@ -79,6 +80,8 @@ Future<void> init() async {
   sl.registerLazySingleton<SignUpUseCase>(() => SignUpUseCase(sl.call()));
   sl.registerLazySingleton<AuthExceptionUseCase>(
       () => AuthExceptionUseCase(sl.call()));
+  sl.registerLazySingleton<SendPasswordResetEmailUseCase>(
+      () => SendPasswordResetEmailUseCase(repository: sl.call()));
 
   // user usecase
   sl.registerLazySingleton<AddUserDataUseCase>(
@@ -88,27 +91,6 @@ Future<void> init() async {
   sl.registerLazySingleton<UpdateUserDataUseCase>(
       () => UpdateUserDataUseCase(sl.call()));
 
-  // repository
-  sl.registerLazySingleton<FirebaseAuthRepository>(
-      () => FirebaseAuthRepositoryImpl(sl.call()));
-  sl.registerLazySingleton<FirebaseUserRepository>(
-      () => FirebaseUserRepositoryImpl(sl.call()));
-
-  // datasource
-  sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(
-      () => FirebaseAuthRemoteDatasourceImpl());
-  sl.registerLazySingleton<FirebaseUserRemoteDatasource>(
-      () => FirebaseUserRemoteDatasourceImpl());
-
-  //Product Cubit
-  sl.registerFactory<ProductCubit>(
-    () => ProductCubit(
-      addToCartUsecase: sl.call(),
-      findProductUsecase: sl.call(),
-      fetchProductUsecase: sl.call(),
-    ),
-  );
-
   // Product Usecases
   sl.registerLazySingleton<FetchProductUsecase>(
       () => FetchProductUsecase(sl.call()));
@@ -116,10 +98,18 @@ Future<void> init() async {
       () => FindProductUsecase(sl.call()));
   sl.registerLazySingleton<AddToCartUsecase>(() => AddToCartUsecase(sl.call()));
 
-  //Product Repository
+  // repository
+  sl.registerLazySingleton<FirebaseAuthRepository>(
+      () => FirebaseAuthRepositoryImpl(sl.call()));
+  sl.registerLazySingleton<FirebaseUserRepository>(
+      () => FirebaseUserRepositoryImpl(sl.call()));
   sl.registerLazySingleton<ProductRepository>(
       () => ProductRepositoryImpl(sl.call()));
 
-  //Product Datasource
+  // datasource
+  sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(
+      () => FirebaseAuthRemoteDatasourceImpl());
+  sl.registerLazySingleton<FirebaseUserRemoteDatasource>(
+      () => FirebaseUserRemoteDatasourceImpl());
   sl.registerLazySingleton<ProductDataSource>(() => ProductDataSourceImpl());
 }

@@ -31,7 +31,9 @@ class FirebaseUserRemoteDatasourceImpl implements FirebaseUserRemoteDatasource {
         .doc(uid)
         .get()
         .then((doc) => UserModel.fromMap(doc.data()!))
-        .catchError((error) => print(error));
+        .catchError((error) {
+      print(error);
+    });
   }
 
   @override
@@ -41,7 +43,9 @@ class FirebaseUserRemoteDatasourceImpl implements FirebaseUserRemoteDatasource {
         // update
         await doc.reference.update(updatedUser.toMap());
       }
-    }).catchError((error) => print(error));
+    }).catchError((error) {
+      print(error);
+    });
   }
 
   @override

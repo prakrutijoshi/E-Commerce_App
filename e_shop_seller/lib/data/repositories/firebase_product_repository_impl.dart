@@ -19,8 +19,15 @@ class FirebaseProductRepositoryImpl implements FirebaseProductRepository {
   }
 
   @override
-  Future<List<ProductEntity>> getProductsBySellerId(String sellerId) async {
-    return await remoteDatasource.getProductsBySellerId(sellerId);
+  Future<List<ProductEntity>> getAvailableProductsBySellerId(
+      String sellerId) async {
+    return await remoteDatasource.getAvailableProductsBySellerId(sellerId);
+  }
+
+  @override
+  Future<List<ProductEntity>> getUnAvailableProductsBySellerId(
+      String sellerId) async {
+    return await remoteDatasource.getUnAvailableProductsBySellerId(sellerId);
   }
 
   @override

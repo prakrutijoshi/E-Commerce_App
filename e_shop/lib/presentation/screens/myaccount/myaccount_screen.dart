@@ -1,8 +1,7 @@
-import 'package:e_shop/presentation/screens/Cart/cart_screen.dart';
+import '../Cart/cart_screen.dart';
 
 import '../../widgets/constants.dart';
-import 'package:e_shop/presentation/screens/profile/components/profile_list.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
+import '../profile/components/profile_list.dart';
 import 'package:flutter/material.dart';
 
 class MyAccount extends StatelessWidget {

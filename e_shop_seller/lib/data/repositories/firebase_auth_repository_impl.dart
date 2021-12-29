@@ -29,11 +29,16 @@ class FirebaseAuthRepositoryImpl implements FirebaseAuthRepository {
 
   @override
   Future<void> logOut() async {
-    await remoteDatasource.logOut();
+    return await remoteDatasource.logOut();
   }
 
   @override
   Future<void> signUp(SellerEntity newSeller, String password) async {
-    await remoteDatasource.signUp(newSeller as SellerModel, password);
+    return await remoteDatasource.signUp(newSeller as SellerModel, password);
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    return await remoteDatasource.sendPasswordResetEmail(email: email);
   }
 }

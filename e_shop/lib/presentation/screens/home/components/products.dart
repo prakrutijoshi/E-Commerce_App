@@ -1,7 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/data/model/product_model.dart';
-import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import '../../../../data/model/product_model.dart';
+import '../cubit/product_cubit.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

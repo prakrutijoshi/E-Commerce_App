@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import '../../../domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
 import '../../../domain/usecases/auth_usecases/is_logged_in_usecase.dart';
 import '../../../domain/usecases/auth_usecases/log_out_usecase.dart';
 import '../../../domain/usecases/auth_usecases/logged_firebase_seller_usecase.dart';
@@ -11,18 +12,20 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final IsLoggedInUseCase isLoggedInUseCase;
   final LogOutUseCase logOutUseCase;
   final LoggedFirebaseSellerUseCase loggedFirebaseSellerUseCase;
+  final SendPasswordResetEmailUseCase sendPasswordResetEmailUseCase;
 
   AuthenticationCubit({
     required this.isLoggedInUseCase,
     required this.logOutUseCase,
     required this.loggedFirebaseSellerUseCase,
+    required this.sendPasswordResetEmailUseCase,
   }) : super(AuthenticationInitial());
 
   Future<void> appStarted() async {
     try {
       bool isLoggedIn = await isLoggedInUseCase.call();
 
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 1));
 
       if (isLoggedIn) {
         final loggedSeller = await loggedFirebaseSellerUseCase.call();
@@ -43,5 +46,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> loggedOut() async {
     await logOutUseCase.call();
     emit(Unauthenticated());
+  }
+
+  Future<void> resetPassword({required String email}) async {
+    await sendPasswordResetEmailUseCase.call(email: email);
   }
 }

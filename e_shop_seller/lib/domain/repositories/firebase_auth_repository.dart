@@ -13,4 +13,6 @@ abstract class FirebaseAuthRepository {
   Future<bool> isLoggedIn();
 
   Future<void> logOut();
+
+  Future<void> sendPasswordResetEmail({required String email});
 }

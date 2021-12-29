@@ -1,5 +1,5 @@
-import 'package:e_shop/presentation/screens/profile/components/profile_list.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
+import '../profile/components/profile_list.dart';
+import '../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {

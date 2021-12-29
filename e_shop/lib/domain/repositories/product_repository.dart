@@ -1,4 +1,4 @@
-import 'package:e_shop/domain/entities/product_entity.dart';
+import '../entities/product_entity.dart';
 
 abstract class ProductRepository {
   Future<List<ProductEntity>> fetchProducts();

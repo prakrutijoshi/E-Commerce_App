@@ -73,7 +73,7 @@ class _BodyState extends State<Body> {
                         ? DefaultButton(
                             text: "Continue to Login",
                             press: () {
-                              Navigator.of(context).pushReplacement(
+                              Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => LoginScreen()),
                               );

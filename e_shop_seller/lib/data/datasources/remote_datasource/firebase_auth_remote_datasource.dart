@@ -1,6 +1,7 @@
-import 'firebase_seller_remote_datasource.dart';
-import '../../models/seller_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../models/seller_model.dart';
+import 'firebase_seller_remote_datasource.dart';
 
 abstract class FirebaseAuthRemoteDatasource {
   Future<User> get loggedFirebaseSeller;
@@ -13,6 +14,8 @@ abstract class FirebaseAuthRemoteDatasource {
   Future<bool> isLoggedIn();
 
   Future<void> logOut();
+
+  Future<void> sendPasswordResetEmail({required String email});
 }
 
 class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
@@ -64,6 +67,15 @@ class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
       newSeller = newSeller.cloneWith(sid: sellerCredential.user!.uid);
 
       await _sellerDatasource.addSellerData(newSeller);
+    } on FirebaseAuthException catch (e) {
+      _authException = e.message.toString();
+    }
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    try {
+      return await _firebaseAuth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       _authException = e.message.toString();
     }

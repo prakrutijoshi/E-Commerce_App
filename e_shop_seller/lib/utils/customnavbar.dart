@@ -1,9 +1,10 @@
-import 'package:e_shop_seller/presentation/screens/Profile/profile_screen.dart';
-import 'package:e_shop_seller/presentation/screens/home/home_screen.dart';
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../presentation/screens/Profile/profile_screen.dart';
+import '../presentation/screens/home/home_screen.dart';
+import 'constants.dart';
+import 'enum.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({Key? key, required this.selected}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/screens/ForgetPassword/forgetpassword.dart';
+import '../../ForgetPassword/forgetpassword.dart';
 
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
@@ -58,6 +58,7 @@ class _LoginFormState extends State<LoginForm> {
         if (state is LoginSuccess) {
           UtilDialog.hideWaiting(context);
           BlocProvider.of<AuthenticationCubit>(context).loggedIn();
+          Navigator.popUntil(context, ModalRoute.withName("/"));
         }
 
         if (state is LoginFailure) {
@@ -106,19 +107,6 @@ class _LoginFormState extends State<LoginForm> {
                     )
                   ],
                 ),
-                // Align(
-                //   alignment: Alignment.centerRight,
-                //   child: GestureDetector(
-                //     onTap: () {},
-                //     child: Text(
-                //       'forgot password?',
-                //       style: TextStyle(
-                //         color: Colors.blue,
-                //         fontSize: 16,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 SizedBox(height: getProportionateScreenHeight(10)),
                 _buildButtonLogin(),
                 SizedBox(height: getProportionateScreenHeight(10)),

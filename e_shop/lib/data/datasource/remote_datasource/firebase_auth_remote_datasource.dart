@@ -14,6 +14,8 @@ abstract class FirebaseAuthRemoteDatasource {
   Future<bool> isLoggedIn();
 
   Future<void> logOut();
+
+  Future<void> sendPasswordResetEmail({required String email});
 }
 
 class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
@@ -65,6 +67,15 @@ class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
       newUser = newUser.cloneWith(uid: userCredential.user!.uid);
 
       await _userDatasource.addUserData(newUser);
+    } on FirebaseAuthException catch (e) {
+      _authException = e.message.toString();
+    }
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    try {
+      return await _firebaseAuth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       _authException = e.message.toString();
     }

@@ -1,6 +1,7 @@
-import '../../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../widgets/constants.dart';
 
 class ProfileList extends StatelessWidget {
   ProfileList(

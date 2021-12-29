@@ -1,9 +1,9 @@
-import 'package:e_shop/presentation/screens/home/components/categories.dart';
-import 'package:e_shop/presentation/screens/home/components/discountbanner.dart';
-import 'package:e_shop/presentation/screens/home/components/products.dart';
-import 'package:e_shop/presentation/screens/home/components/searchfield.dart';
-import 'package:e_shop/presentation/screens/home/components/specialoffers.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'categories.dart';
+import 'discountbanner.dart';
+import 'products.dart';
+import 'searchfield.dart';
+import 'specialoffers.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

@@ -1,9 +1,10 @@
-import '../home_screen.dart';
-import '../../profile/profile_screen.dart';
-import '../../../widgets/constants.dart';
-import '../../../../utils/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../utils/enum.dart';
+import '../../../widgets/constants.dart';
+import '../../profile/profile_screen.dart';
+import '../home_screen.dart';
 
 class CustomNavBar extends StatelessWidget {
   CustomNavBar({Key? key, required this.selected}) : super(key: key);

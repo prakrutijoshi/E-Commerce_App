@@ -1,5 +1,5 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import '../../widgets/constants.dart';
+import '../../widgets/size_config.dart';
 
 import '../../../data/model/shipping_address_model.dart';
 import 'cubit/address_cubit.dart';

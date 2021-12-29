@@ -1,7 +1,7 @@
-import 'package:e_shop_seller/presentation/screens/Profile/components/body.dart';
-import 'package:e_shop_seller/utils/constants.dart';
-import 'package:e_shop_seller/utils/customnavbar.dart';
-import 'package:e_shop_seller/utils/enum.dart';
+import 'components/body.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/customnavbar.dart';
+import '../../../utils/enum.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {

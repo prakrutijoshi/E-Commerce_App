@@ -1,11 +1,11 @@
-import 'utils/theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/common_cubits/authentication/authentication_cubit.dart';
 import 'presentation/screens/home/home_screen.dart';
 import 'presentation/screens/login/login_screen.dart';
 import 'presentation/screens/splash/splash_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'utils/theme.dart';
 
 class AppView extends StatefulWidget {
   const AppView({Key? key}) : super(key: key);

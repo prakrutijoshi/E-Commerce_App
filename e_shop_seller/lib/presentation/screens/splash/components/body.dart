@@ -1,8 +1,7 @@
-import '../../login/login_screen.dart';
-import '../../../../utils/constants.dart';
-import '../../../../utils/default_button.dart';
-import '../../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../utils/constants.dart';
+import '../../../../utils/size_config.dart';
 
 class Body extends StatelessWidget {
   Body({Key? key}) : super(key: key);

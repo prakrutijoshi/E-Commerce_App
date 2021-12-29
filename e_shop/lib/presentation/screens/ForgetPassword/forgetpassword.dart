@@ -1,7 +1,8 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/utils/default_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import '../../common_cubits/cubit/cubit/authentication_cubit.dart';
+import '../../widgets/constants.dart';
+import '../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ForgetPassword extends StatefulWidget {
   ForgetPassword({Key? key}) : super(key: key);
@@ -12,7 +13,6 @@ class ForgetPassword extends StatefulWidget {
 
 class _ForgetPasswordState extends State<ForgetPassword> {
   late String _email;
-  final auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           Text(
             "Enter the Email to send a request link\n           to reset the password!",
             style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold,
-                fontSize: 20),
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
@@ -53,7 +54,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             child: DefaultButton(
               text: "Send Request",
               press: () {
-                auth.sendPasswordResetEmail(email: _email);
+                BlocProvider.of<AuthenticationCubit>(context)
+                    .resetPassword(email: _email);
                 Navigator.of(context).pop();
               },
             ),

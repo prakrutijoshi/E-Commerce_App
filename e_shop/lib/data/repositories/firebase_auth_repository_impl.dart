@@ -35,4 +35,9 @@ class FirebaseAuthRepositoryImpl implements FirebaseAuthRepository {
   Future<void> signUp(UserEntity newUser, String password) async {
     await remoteDatasource.signUp(newUser as UserModel, password);
   }
+
+  @override
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    return await remoteDatasource.sendPasswordResetEmail(email: email);
+  }
 }
