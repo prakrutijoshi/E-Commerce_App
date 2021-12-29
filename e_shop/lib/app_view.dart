@@ -1,9 +1,11 @@
+import 'package:e_shop/presentation/screens/splash/splash_screen1.dart';
+
 import 'presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
 import 'utils/theme.dart';
 
 import 'presentation/screens/home/home_screen.dart';
 import 'presentation/screens/login/login_screen.dart';
-import 'presentation/screens/splash/splash_screen.dart';
+import 'presentation/screens/splash/splash_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,13 +27,13 @@ class _AppViewState extends State<AppView> {
         builder: (context, authState) {
           BlocProvider.of<AuthenticationCubit>(context).appStarted();
           if (authState is AuthInitial) {
-            return SplashScreen();
+            return SplashScreen1();
           } else if (authState is Unauthenticated) {
-            return LoginScreen();
+            return SplashScreen2();
           } else if (authState is Authenticated) {
             return HomeScreen();
           } else {
-            return SplashScreen();
+            return SplashScreen1();
           }
         },
       ),

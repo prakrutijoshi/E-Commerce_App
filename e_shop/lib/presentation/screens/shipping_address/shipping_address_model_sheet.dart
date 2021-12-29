@@ -110,6 +110,7 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kSecondaryColor,
         appBar: AppBar(
           title: Text("Address Sheet"),
         ),

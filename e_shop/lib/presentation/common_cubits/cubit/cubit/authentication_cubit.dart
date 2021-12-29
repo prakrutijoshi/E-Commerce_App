@@ -22,7 +22,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     try {
       bool isLoggedIn = await isLoggedInUseCase.call();
 
-      await Future.delayed(Duration(seconds: 5));
+      await Future.delayed(Duration(seconds: 2));
 
       if (isLoggedIn) {
         final loggedFirebase = await loggedFirebaseUserUseCase.call();
@@ -31,6 +31,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         emit(Unauthenticated());
       }
     } catch (e) {
+      //await Future.delayed(Duration(seconds: 1));
       emit(Unauthenticated());
     }
   }

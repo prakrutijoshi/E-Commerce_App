@@ -37,17 +37,6 @@ class Body extends StatelessWidget {
                 height: getProportionateScreenHeight(265),
                 width: getProportionateScreenWidth(250),
               ),
-              Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: DefaultButton(
-                  text: "Continue to Login",
-                  press: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                    );
-                  },
-                ),
-              ),
             ],
           ),
         ),
