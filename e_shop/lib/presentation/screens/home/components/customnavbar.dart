@@ -1,3 +1,4 @@
+import 'package:e_shop/presentation/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

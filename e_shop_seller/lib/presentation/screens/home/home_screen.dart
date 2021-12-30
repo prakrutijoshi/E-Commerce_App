@@ -1,3 +1,4 @@
+import 'package:e_shop_seller/utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants.dart';
@@ -25,42 +26,32 @@ class HomeScreen extends StatelessWidget {
             Center(
               child: Column(
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => AddProductScreen(),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
-                    ),
-                    child: Text(
-                      "Add New Product",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.all(35.0),
+                    child: DefaultButton(
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => AddProductScreen(),
+                          ),
+                        );
+                      },
+                      text: "Add New Product",
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => DisplayProductsBySellerScreen(),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
-                    ),
-                    child: Text(
-                      "Watch you products",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 35.0, right: 35.0),
+                    child: DefaultButton(
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DisplayProductsBySellerScreen(),
+                          ),
+                        );
+                      },
+                      text: "Watch you products",
                     ),
                   ),
                 ],

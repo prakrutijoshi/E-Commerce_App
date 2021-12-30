@@ -28,7 +28,7 @@ class SplashScreen1 extends StatelessWidget {
                   width: 180,
                   color: kPrimaryColor,
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 10),
                 Text(
                   "<--eShop-->",
                   style: TextStyle(

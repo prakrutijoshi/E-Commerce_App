@@ -1,3 +1,5 @@
+import 'package:e_shop_seller/utils/default_button.dart';
+
 import 'components/InStockProducts.dart';
 import '../../../utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ class DisplayProductsBySellerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kSecondaryColor,
         appBar: AppBar(
           title: Text("Your Products"),
           centerTitle: true,
@@ -18,42 +21,32 @@ class DisplayProductsBySellerScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => InStockProducts(),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: kPrimaryColor,
-                ),
-                child: Text(
-                  "In Stock Products",
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(right: 35.0, left: 35.0),
+                child: DefaultButton(
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => InStockProducts(),
+                      ),
+                    );
+                  },
+                  text: "In Stock Products",
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (_) => AddProductScreen(),
-                  //   ),
-                  // );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: kPrimaryColor,
-                ),
-                child: Text(
-                  "Out of Stock Products",
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
+              Padding(
+                padding: const EdgeInsets.all(35.0),
+                child: DefaultButton(
+                  press: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (_) => AddProductScreen(),
+                    //   ),
+                    // );
+                  },
+                  text: "Out of Stock Products",
                 ),
               ),
             ],
