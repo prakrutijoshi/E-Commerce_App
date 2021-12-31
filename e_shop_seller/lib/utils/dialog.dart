@@ -12,6 +12,7 @@ class UtilDialog {
       context: context,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: Colors.amber[50],
           title: Text(
             title ?? "message for you",
           ),
@@ -60,6 +61,7 @@ class UtilDialog {
       context: context,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: Colors.amber[50],
           title: Text(
             title,
           ),

@@ -195,7 +195,7 @@ class _RegisterFormState extends State<RegisterForm> {
       keyboardType: TextInputType.text,
       obscureText: !isShowPassword,
       decoration: InputDecoration(
-        hintText: '"Enter your Password',
+        hintText: "Enter your Password",
         labelText: "Password",
         labelStyle: TextStyle(color: kPrimaryColor),
         suffixIcon: IconButton(

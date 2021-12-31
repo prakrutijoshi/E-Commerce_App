@@ -17,7 +17,9 @@ class ProfileScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Body(),
-      bottomNavigationBar: CustomNavBar(selected: Menu.profile),
+      bottomNavigationBar: CustomNavBar(
+        selected: Menu.profile,
+      ),
     );
   }
 }

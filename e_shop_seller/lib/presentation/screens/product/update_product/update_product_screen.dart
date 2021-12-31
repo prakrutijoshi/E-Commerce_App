@@ -95,6 +95,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.amber[50],
         appBar: AppBar(
           title: Text("Update Product"),
           centerTitle: true,

@@ -1,3 +1,5 @@
+import 'package:e_shop_seller/presentation/screens/Profile/cubit/profile_cubit.dart';
+
 import 'presentation/screens/product/single_product_view/cubit/single_product_cubit.dart';
 import 'presentation/screens/product/update_product/cubit/update_product_cubit.dart';
 
@@ -96,6 +98,15 @@ Future<void> init() async {
   sl.registerFactory<SingleProductCubit>(
     () => SingleProductCubit(
       removeProductUseCase: sl.call(),
+    ),
+  );
+
+  sl.registerFactory<ProfileCubit>(
+    () => ProfileCubit(
+      getSellerByIdUseCase: sl.call(),
+      addSellerDataUseCase: sl.call(),
+      updateSellerDataUseCase: sl.call(),
+      loggedFirebaseSellerUseCase: sl.call(),
     ),
   );
 

@@ -1,4 +1,3 @@
-import 'package:e_shop/presentation/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -41,9 +40,10 @@ class CustomNavBar extends StatelessWidget {
                   color:
                       Menu.home == selected ? kPrimaryColor : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.push(
+                onPressed: () => Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => HomeScreen()),
+                  (Route<dynamic> route) => false,
                 ),
               ),
               IconButton(
@@ -62,9 +62,10 @@ class CustomNavBar extends StatelessWidget {
                         : inActiveIconColor,
                   ),
                   onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileScreen()))),
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()),
+                      )),
             ],
           )),
     );

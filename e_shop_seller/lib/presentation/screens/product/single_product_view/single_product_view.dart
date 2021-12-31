@@ -41,7 +41,7 @@ class _SingleProductViewState extends State<SingleProductView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kSecondaryColor,
+        backgroundColor: Colors.white,
         appBar: CustomAppBar(rating: product.rating),
         body: ListView(
           children: [

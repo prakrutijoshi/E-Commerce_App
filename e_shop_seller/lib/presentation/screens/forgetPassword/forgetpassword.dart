@@ -1,3 +1,5 @@
+import 'package:e_shop_seller/presentation/screens/register/register_screen.dart';
+import 'package:e_shop_seller/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,12 +27,16 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       body: Column(
         children: [
           SizedBox(height: 50),
-          Text(
-            "Enter the Email to send a request link\n           to reset the password!",
-            style: TextStyle(
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+            child: Text(
+              "Please enter your email and we will send you a link to return to your account",
+              style: TextStyle(
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           Padding(
@@ -59,6 +65,39 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     .resetPassword(email: _email);
                 Navigator.of(context).pop();
               },
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: _buildNoAccountText(context),
+    );
+  }
+
+  _buildNoAccountText(context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: getProportionateScreenHeight(10)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Don't Have a seller Account? ",
+            style: TextStyle(
+              fontSize: 17,
+            ),
+          ),
+          SizedBox(width: 5),
+          GestureDetector(
+            onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RegisterScreen()))
+            },
+            child: Text(
+              'Register',
+              style: TextStyle(
+                color: kPrimaryColor,
+                fontSize: 17,
+              ),
             ),
           ),
         ],
