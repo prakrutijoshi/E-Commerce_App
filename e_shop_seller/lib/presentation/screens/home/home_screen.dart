@@ -1,11 +1,11 @@
-import 'package:e_shop_seller/utils/default_button.dart';
+import '../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants.dart';
 import '../../../utils/customnavbar.dart';
 import '../../../utils/enum.dart';
-import '../product/add_product_screen.dart';
-import '../product/display_products_by_seller_screen.dart';
+import '../product/add_product/add_product_screen.dart';
+import '../product/display_products/display_products_by_seller_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

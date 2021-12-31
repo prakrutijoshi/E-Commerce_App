@@ -1,6 +1,7 @@
-import 'login_form.dart';
-import '../../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../utils/size_config.dart';
+import 'login_form.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

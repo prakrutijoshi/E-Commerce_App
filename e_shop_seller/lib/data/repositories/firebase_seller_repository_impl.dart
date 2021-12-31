@@ -1,7 +1,7 @@
-import '../datasources/remote_datasource/firebase_seller_remote_datasource.dart';
-import '../models/seller_model.dart';
 import '../../domain/entities/seller_entity.dart';
 import '../../domain/repositories/firebase_seller_repository.dart';
+import '../datasources/remote_datasource/firebase_seller_remote_datasource.dart';
+import '../models/seller_model.dart';
 
 class FirebaseSellerRepositoryImpl implements FirebaseSellerRepository {
   FirebaseSellerRemoteDatasource remoteDataSource;

@@ -1,4 +1,9 @@
-import 'presentation/screens/product/cubit/product_cubit.dart';
+import 'presentation/screens/product/single_product_view/cubit/single_product_cubit.dart';
+import 'presentation/screens/product/update_product/cubit/update_product_cubit.dart';
+
+import 'presentation/screens/product/add_product/cubit/product_cubit.dart';
+import 'presentation/screens/product/display_products/in_stock_products/cubit/instockproducts_cubit.dart';
+import 'presentation/screens/product/display_products/out_of_stock_products/cubit/outofstockproducts_cubit.dart';
 
 import 'app_view.dart';
 import 'presentation/common_cubits/authentication/authentication_cubit.dart';
@@ -25,6 +30,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.sl<ProductCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<InstockproductsCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<OutofstockproductsCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<UpdateProductCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<SingleProductCubit>(),
         ),
       ],
       child: AppView(),

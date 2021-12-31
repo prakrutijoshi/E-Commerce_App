@@ -1,6 +1,12 @@
+import 'presentation/screens/product/single_product_view/cubit/single_product_cubit.dart';
+import 'presentation/screens/product/update_product/cubit/update_product_cubit.dart';
+
+import 'presentation/screens/product/add_product/cubit/product_cubit.dart';
+import 'presentation/screens/product/display_products/in_stock_products/cubit/instockproducts_cubit.dart';
+import 'presentation/screens/product/display_products/out_of_stock_products/cubit/outofstockproducts_cubit.dart';
+
 import 'domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
 import 'domain/usecases/product_usecase/get_unAvailable_product_by_seller_id_usecase.dart';
-import 'presentation/screens/product/cubit/product_cubit.dart';
 
 import 'data/datasources/remote_datasource/firebase_product_remote_datasource.dart';
 import 'data/datasources/remote_datasource/firebase_storage_remote_datasource.dart';
@@ -68,8 +74,28 @@ Future<void> init() async {
       addProductDataUseCase: sl.call(),
       updateProductDataUseCase: sl.call(),
       loggedFirebaseSellerUseCase: sl.call(),
+    ),
+  );
+  sl.registerFactory<InstockproductsCubit>(
+    () => InstockproductsCubit(
       getAvailableProductBySellerIdUseCase: sl.call(),
+      loggedFirebaseSellerUseCase: sl.call(),
+    ),
+  );
+  sl.registerFactory<OutofstockproductsCubit>(
+    () => OutofstockproductsCubit(
       getUnAvailableProductBySellerIdUseCase: sl.call(),
+      loggedFirebaseSellerUseCase: sl.call(),
+    ),
+  );
+  sl.registerFactory<UpdateProductCubit>(
+    () => UpdateProductCubit(
+      updateProductDataUseCase: sl.call(),
+    ),
+  );
+  sl.registerFactory<SingleProductCubit>(
+    () => SingleProductCubit(
+      removeProductUseCase: sl.call(),
     ),
   );
 

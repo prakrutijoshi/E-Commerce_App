@@ -1,6 +1,7 @@
-import '../../../../utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../utils/constants.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({Key? key}) : super(key: key);

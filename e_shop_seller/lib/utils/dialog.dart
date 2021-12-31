@@ -1,3 +1,4 @@
+import 'constants.dart';
 import 'package:flutter/material.dart';
 
 class UtilDialog {
@@ -52,32 +53,49 @@ class UtilDialog {
 
   static Future<bool?> showConfirmation(
     BuildContext context, {
-    String? title,
-    required Widget content,
-    String confirmButtonText = "Yes",
+    required String title,
+    required void Function() onYesPressed,
   }) {
     return showDialog<bool>(
       context: context,
-      barrierDismissible: false,
       builder: (context) {
         return AlertDialog(
           title: Text(
-            title ?? "message for you",
+            title,
           ),
-          content: content,
           actions: <Widget>[
             TextButton(
               child: Text(
-                "close",
+                "No",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
+                ),
+              ),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green,
+                elevation: 5,
               ),
               onPressed: () => Navigator.pop(context, false),
             ),
+            SizedBox(
+              width: 10,
+            ),
             TextButton(
               child: Text(
-                confirmButtonText,
+                "Yes",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black54,
+                ),
               ),
-              onPressed: () => Navigator.pop(context, true),
-              style: TextButton.styleFrom(),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+                elevation: 5,
+              ),
+              onPressed: onYesPressed,
             ),
           ],
         );

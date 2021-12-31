@@ -24,6 +24,7 @@ dependencies:
   cloud_firestore: null
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
+  expandable_text: ^2.2.0
   firebase_auth: ^3.3.3
   firebase_core: ^1.10.5
   firebase_storage: ^10.2.3

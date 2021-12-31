@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../models/product_model.dart';
 
 abstract class FirebaseProductRemoteDatasource {
@@ -6,11 +7,11 @@ abstract class FirebaseProductRemoteDatasource {
 
   Future<void> updateProductData(ProductModel updateProduct);
 
-  Future<List<ProductModel>> getAvailableProductsBySellerId(String sellerId);
+  Stream<List<ProductModel>> getAvailableProductsBySellerId(String sellerId);
 
-  Future<List<ProductModel>> getUnAvailableProductsBySellerId(String sellerId);
+  Stream<List<ProductModel>> getUnAvailableProductsBySellerId(String sellerId);
 
-  Future<ProductModel> getProductById(String pid);
+  Stream<ProductModel> getProductById(String pid);
 
   Future<void> removeProduct(String pid);
 }
@@ -27,45 +28,80 @@ class FirebaseProductRemoteDatasourceImpl
         .catchError((error) => print(error));
   }
 
+  // @override
+  // Future<List<ProductModel>> getAvailableProductsBySellerId(
+  //     String sellerId) async {
+  //   return await _productCollection
+  //       .where("sellerId", isEqualTo: sellerId)
+  //       .where("isAvailable", isEqualTo: true)
+  //       .get()
+  //       .then((snapshot) => snapshot.docs
+  //           .map((doc) => ProductModel.fromMap(doc.data()))
+  //           .toList())
+  //       .catchError((error) {
+  //     print(error);
+  //   });
+  // }
+
   @override
-  Future<List<ProductModel>> getAvailableProductsBySellerId(
-      String sellerId) async {
-    return await _productCollection
+  Stream<List<ProductModel>> getAvailableProductsBySellerId(String sellerId) {
+    return _productCollection
         .where("sellerId", isEqualTo: sellerId)
         .where("isAvailable", isEqualTo: true)
-        .get()
-        .then((snapshot) => snapshot.docs
-            .map((doc) => ProductModel.fromMap(doc.data()))
-            .toList())
-        .catchError((error) {
-      print(error);
-    });
+        .snapshots()
+        .map((querySnapshot) {
+      return querySnapshot.docs
+          .map((doc) => ProductModel.fromMap(doc.data()))
+          .toList();
+    }).handleError((error) => print(error));
   }
 
+  // @override
+  // Future<List<ProductModel>> getUnAvailableProductsBySellerId(
+  //     String sellerId) async {
+  //   return await _productCollection
+  //       .where("sellerId", isEqualTo: sellerId)
+  //       .where("isAvailable", isEqualTo: false)
+  //       .get()
+  //       .then((snapshot) => snapshot.docs
+  //           .map((doc) => ProductModel.fromMap(doc.data()))
+  //           .toList())
+  //       .catchError((error) {
+  //     print(error);
+  //   });
+  // }
+
   @override
-  Future<List<ProductModel>> getUnAvailableProductsBySellerId(
-      String sellerId) async {
-    return await _productCollection
+  Stream<List<ProductModel>> getUnAvailableProductsBySellerId(String sellerId) {
+    return _productCollection
         .where("sellerId", isEqualTo: sellerId)
         .where("isAvailable", isEqualTo: false)
-        .get()
-        .then((snapshot) => snapshot.docs
-            .map((doc) => ProductModel.fromMap(doc.data()))
-            .toList())
-        .catchError((error) {
-      print(error);
-    });
+        .snapshots()
+        .map((querySnapshot) {
+      return querySnapshot.docs
+          .map((doc) => ProductModel.fromMap(doc.data()))
+          .toList();
+    }).handleError((error) => print(error));
   }
 
+  // @override
+  // Future<ProductModel> getProductById(String pid) async {
+  //   return await _productCollection
+  //       .doc(pid)
+  //       .get()
+  //       .then((doc) => ProductModel.fromMap(doc.data()!))
+  //       .catchError((error) {
+  //     print(error);
+  //   });
+  // }
+
   @override
-  Future<ProductModel> getProductById(String pid) async {
-    return await _productCollection
+  Stream<ProductModel> getProductById(String pid) {
+    return _productCollection
         .doc(pid)
-        .get()
-        .then((doc) => ProductModel.fromMap(doc.data()!))
-        .catchError((error) {
-      print(error);
-    });
+        .snapshots()
+        .map((doc) => ProductModel.fromMap(doc.data()!))
+        .handleError((error) => print(error));
   }
 
   @override

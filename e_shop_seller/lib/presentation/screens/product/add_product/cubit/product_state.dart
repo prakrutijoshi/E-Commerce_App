@@ -17,16 +17,6 @@ class ProductUploading extends ProductState {}
 
 class ProductUploaded extends ProductState {}
 
-class ProductsLoading extends ProductState {}
-
-class ProductsLoaded extends ProductState {
-  final List<ProductModel> products;
-
-  ProductsLoaded({required this.products});
-
-  List<Object> get props => [products];
-}
-
 class ImagesUploadError extends ProductState {
   final String message;
 
