@@ -1,44 +1,46 @@
+import 'package:e_shop/data/model/product_model.dart';
 import 'package:e_shop/presentation/screens/details/details_screen.dart';
-
-import '../../../../data/model/product_model.dart';
-import '../cubit/product_cubit.dart';
-import '../../../widgets/size_config.dart';
+import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Products extends StatefulWidget {
-  Products({Key? key}) : super(key: key);
+class SearchedScreen extends StatelessWidget {
+  const SearchedScreen({Key? key, required this.product}) : super(key: key);
 
-  @override
-  _ProductsState createState() => _ProductsState();
-}
+  final String product;
 
-class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(
-      builder: (context, state) {
-        if (state is ProductInitial) {
-          BlocProvider.of<ProductCubit>(context).fetchProducts();
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (state is ProductLoading) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (state is ProductLoaded) {
-          return productView(state.productDetails);
-        } else {
-          return Center(
-            child: Text("Something went wrong !!!"),
-          );
-        }
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('data'),
+      ),
+      body: BlocBuilder<SearchCubit, SearchState>(
+        builder: (context, state) {
+          print(state);
+          if (state is SearchInitial) {
+            BlocProvider.of<SearchCubit>(context)
+                .findProductByName(productname: product);
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is SearchLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is SearchLoaded) {
+            return productView(context, state.products);
+          } else {
+            return Center(
+              child: Text("Something went wrong !!!"),
+            );
+          }
+        },
+      ),
     );
   }
 
-  Widget productView(List<ProductModel> productDetails) {
+  Widget productView(BuildContext context, List<ProductModel> productDetails) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GridView.count(

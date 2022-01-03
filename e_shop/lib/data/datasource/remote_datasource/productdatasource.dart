@@ -3,8 +3,9 @@ import '../../model/product_model.dart';
 
 abstract class ProductDataSource {
   Future<List<ProductModel>> fetchProducts();
-  Future<void> addTocart();
-  Future<ProductModel> findProduct();
+  Future<ProductModel> findProductById(String pid);
+  Future<List<ProductModel>> findProductByCategory(String category);
+  Future<List<ProductModel>> findProductByName(String name);
 }
 
 class ProductDataSourceImpl extends ProductDataSource {
@@ -23,13 +24,45 @@ class ProductDataSourceImpl extends ProductDataSource {
   }
 
   @override
-  Future<void> addTocart() async {
-    // TODO: implement addTocart
+  Future<ProductModel> findProductById(String pid) async {
+    return await _productcollaction
+        .doc(pid)
+        .get()
+        .then((doc) => ProductModel.fromMap(doc.data()!))
+        .catchError((error) {
+      print(error);
+    });
   }
 
   @override
-  Future<ProductModel> findProduct() {
-    // TODO: implement findProduct
-    throw UnimplementedError();
+  Future<List<ProductModel>> findProductByCategory(String category) async {
+    return await _productcollaction
+        .where("category", isEqualTo: category)
+        .get()
+        .then((snapshot) => snapshot.docs
+            .map((doc) => ProductModel.fromMap(doc.data()))
+            .toList())
+        .catchError((error) {
+      print(error);
+    });
+  }
+
+  @override
+  Future<List<ProductModel>> findProductByName(String name) async {
+    return await _productcollaction
+        .where("name", isGreaterThanOrEqualTo: name)
+        .where(
+          "name",
+          isLessThan: name.substring(0, name.length - 1) +
+              String.fromCharCode(name.codeUnitAt(name.length - 1) + 1),
+        )
+        .get()
+        .then((snapshot) => snapshot.docs
+            .map((doc) => ProductModel.fromMap(doc.data()))
+            .toList())
+        .catchError((error) {
+      print(error);
+    });
   }
 }
+// (p) => p.name.toLowerCase().contains(keyword.toLowerCase())

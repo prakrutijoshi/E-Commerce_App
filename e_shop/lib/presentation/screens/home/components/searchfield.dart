@@ -1,10 +1,20 @@
+import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
+import 'package:e_shop/presentation/screens/searchedscreen/components/body.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
-class SearchField extends StatelessWidget {
+class SearchField extends StatefulWidget {
   const SearchField({Key? key}) : super(key: key);
 
+  @override
+  State<SearchField> createState() => _SearchFieldState();
+}
+
+class _SearchFieldState extends State<SearchField> {
+  TextEditingController searchNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +25,7 @@ class SearchField extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(
-        onChanged: (value) => print(value),
+        controller: searchNameController,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(20),
@@ -26,9 +36,21 @@ class SearchField extends StatelessWidget {
           enabledBorder: InputBorder.none,
           hintText: "Search any Product",
           hintStyle: TextStyle(fontSize: 15),
-          prefixIcon: Icon(
-            Icons.search,
-            color: kPrimaryColor,
+          prefixIcon: IconButton(
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SearchedScreen(
+                    product: searchNameController.text.trim(),
+                  ),
+                ),
+              ),
+            },
+            icon: Icon(
+              Icons.search,
+              color: kPrimaryColor,
+            ),
           ),
         ),
       ),

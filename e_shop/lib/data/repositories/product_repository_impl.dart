@@ -12,12 +12,17 @@ class ProductRepositoryImpl extends ProductRepository {
   }
 
   @override
-  Future<void> addTocart() async {
-    // TODO: implement addTocart
+  Future<ProductEntity> findProductById(String pid) async {
+    return await productDataSource.findProductById(pid);
   }
 
   @override
-  Future<ProductEntity> findProduct() async {
-    return await productDataSource.findProduct();
+  Future<List<ProductEntity>> findProductByCategory(String category) async {
+    return await productDataSource.findProductByCategory(category);
+  }
+
+  @override
+  Future<List<ProductEntity>> findProductByName(String name) async {
+    return await productDataSource.findProductByName(name);
   }
 }

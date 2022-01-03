@@ -1,10 +1,13 @@
+import 'package:e_shop/domain/usecases/product_usecases/find_product_by_category_usecase.dart';
+import 'package:e_shop/domain/usecases/product_usecases/find_product_by_name_usecase.dart';
+import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
+
 import 'data/datasource/remote_datasource/productdatasource.dart';
 import 'data/repositories/firebase_user_repository_impl.dart';
 import 'data/repositories/product_repository_impl.dart';
 import 'domain/repositories/firebase_user_repository.dart';
 import 'domain/repositories/product_repository.dart';
 import 'domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
-import 'domain/usecases/product_usecases/addtocart_usecase.dart';
 import 'domain/usecases/product_usecases/fetch_product_usecase.dart';
 import 'domain/usecases/user_usecases/add_user_data_usecase.dart';
 import 'domain/usecases/user_usecases/get_user_by_id_usecase.dart';
@@ -24,7 +27,7 @@ import 'domain/usecases/auth_usecases/log_in_with_email_and_password_usecase.dar
 import 'domain/usecases/auth_usecases/log_out_usecase.dart';
 import 'domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
 import 'domain/usecases/auth_usecases/sign_up_usecase.dart';
-import 'domain/usecases/product_usecases/find_product_usecase.dart';
+import 'domain/usecases/product_usecases/find_product_by_id_usecase.dart';
 import 'presentation/screens/login/cubit/login_cubit.dart';
 import 'presentation/screens/register/cubit/register_cubit.dart';
 
@@ -63,12 +66,16 @@ Future<void> init() async {
   );
   sl.registerFactory<ProductCubit>(
     () => ProductCubit(
-      addToCartUsecase: sl.call(),
-      findProductUsecase: sl.call(),
       fetchProductUsecase: sl.call(),
     ),
   );
-
+  sl.registerFactory<SearchCubit>(
+    () => SearchCubit(
+      findProductByIdUsecase: sl.call(),
+      findProductByCategoryUsecase: sl.call(),
+      findProductByNameUsecase: sl.call(),
+    ),
+  );
   // auth usecase
   sl.registerLazySingleton<IsLoggedInUseCase>(
       () => IsLoggedInUseCase(sl.call()));
@@ -94,9 +101,12 @@ Future<void> init() async {
   // Product Usecases
   sl.registerLazySingleton<FetchProductUsecase>(
       () => FetchProductUsecase(sl.call()));
-  sl.registerLazySingleton<FindProductUsecase>(
-      () => FindProductUsecase(sl.call()));
-  sl.registerLazySingleton<AddToCartUsecase>(() => AddToCartUsecase(sl.call()));
+  sl.registerLazySingleton<FindProductByIdUsecase>(
+      () => FindProductByIdUsecase(sl.call()));
+  sl.registerLazySingleton<FindProductByCategoryUsecase>(
+      () => FindProductByCategoryUsecase(sl.call()));
+  sl.registerLazySingleton<FindProductByNameUsecase>(
+      () => FindProductByNameUsecase(sl.call()));
 
   // repository
   sl.registerLazySingleton<FirebaseAuthRepository>(
