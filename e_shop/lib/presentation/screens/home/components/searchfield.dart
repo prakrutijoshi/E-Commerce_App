@@ -15,6 +15,7 @@ class SearchField extends StatefulWidget {
 
 class _SearchFieldState extends State<SearchField> {
   TextEditingController searchNameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,8 +37,14 @@ class _SearchFieldState extends State<SearchField> {
           enabledBorder: InputBorder.none,
           hintText: "Search any Product",
           hintStyle: TextStyle(fontSize: 15),
-          prefixIcon: IconButton(
-            onPressed: () => {
+          prefixIcon: Icon(
+            Icons.search,
+            color: kPrimaryColor,
+          ),
+        ),
+        onEditingComplete: () => {
+          if (searchNameController.text.isNotEmpty)
+            {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -47,12 +54,7 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
             },
-            icon: Icon(
-              Icons.search,
-              color: kPrimaryColor,
-            ),
-          ),
-        ),
+        },
       ),
     );
   }

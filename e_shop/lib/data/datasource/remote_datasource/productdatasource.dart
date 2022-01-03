@@ -50,12 +50,6 @@ class ProductDataSourceImpl extends ProductDataSource {
   @override
   Future<List<ProductModel>> findProductByName(String name) async {
     return await _productcollaction
-        .where("name", isGreaterThanOrEqualTo: name)
-        .where(
-          "name",
-          isLessThan: name.substring(0, name.length - 1) +
-              String.fromCharCode(name.codeUnitAt(name.length - 1) + 1),
-        )
         .get()
         .then((snapshot) => snapshot.docs
             .map((doc) => ProductModel.fromMap(doc.data()))
@@ -65,4 +59,3 @@ class ProductDataSourceImpl extends ProductDataSource {
     });
   }
 }
-// (p) => p.name.toLowerCase().contains(keyword.toLowerCase())

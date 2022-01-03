@@ -1,6 +1,7 @@
 import 'package:e_shop/domain/usecases/product_usecases/find_product_by_category_usecase.dart';
 import 'package:e_shop/domain/usecases/product_usecases/find_product_by_name_usecase.dart';
 import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
+import 'package:e_shop/presentation/screens/profile/cubit/profile_cubit.dart';
 
 import 'data/datasource/remote_datasource/productdatasource.dart';
 import 'data/repositories/firebase_user_repository_impl.dart';
@@ -74,8 +75,19 @@ Future<void> init() async {
       findProductByIdUsecase: sl.call(),
       findProductByCategoryUsecase: sl.call(),
       findProductByNameUsecase: sl.call(),
+      fetchProductUsecase: sl.call(),
     ),
   );
+
+  sl.registerFactory<ProfileCubit>(
+    () => ProfileCubit(
+      getUserByIdUseCase: sl.call(),
+      addUserDataUseCase: sl.call(),
+      updateUserDataUseCase: sl.call(),
+      loggedFirebaseUserUseCase: sl.call(),
+    ),
+  );
+
   // auth usecase
   sl.registerLazySingleton<IsLoggedInUseCase>(
       () => IsLoggedInUseCase(sl.call()));

@@ -11,11 +11,11 @@ class SearchInitial extends SearchState {}
 class SearchLoading extends SearchState {}
 
 class SearchLoaded extends SearchState {
-  final List<ProductModel> products;
+  final List<ProductModel> results;
 
-  const SearchLoaded(this.products);
+  const SearchLoaded(this.results);
 
-  List<Object> get props => [products];
+  List<Object> get props => [results];
 }
 
 class SearchError extends SearchState {
