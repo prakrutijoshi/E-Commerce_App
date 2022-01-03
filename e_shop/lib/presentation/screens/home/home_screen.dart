@@ -1,6 +1,6 @@
 import '../Cart/cart_screen.dart';
 import 'components/body.dart';
-import 'components/customnavbar.dart';
+import '../../../utils/customnavbar.dart';
 import 'components/iconbtnwithcounter.dart';
 import '../../widgets/constants.dart';
 import '../../../utils/enum.dart';

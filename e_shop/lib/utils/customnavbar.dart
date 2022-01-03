@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../utils/enum.dart';
-import '../../../widgets/constants.dart';
-import '../../profile/profile_screen.dart';
-import '../home_screen.dart';
+import 'enum.dart';
+import '../presentation/widgets/constants.dart';
+import '../presentation/screens/profile/profile_screen.dart';
+import '../presentation/screens/home/home_screen.dart';
 
 class CustomNavBar extends StatelessWidget {
   CustomNavBar({Key? key, required this.selected}) : super(key: key);
@@ -45,10 +45,6 @@ class CustomNavBar extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => HomeScreen()),
                   (Route<dynamic> route) => false,
                 ),
-              ),
-              IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
-                onPressed: () {},
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),

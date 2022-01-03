@@ -2,6 +2,7 @@ import 'package:e_shop/data/model/product_model.dart';
 import 'package:e_shop/presentation/screens/details/components/product_description.dart';
 import 'package:e_shop/presentation/screens/details/components/product_images.dart';
 import 'package:e_shop/presentation/screens/details/components/rounded_container.dart';
+import 'package:e_shop/presentation/widgets/constants.dart';
 import 'package:e_shop/presentation/widgets/size_config.dart';
 import 'package:e_shop/utils/default_button.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class Body extends StatelessWidget {
       children: [
         ProductImages(product: product),
         RoundedContainer(
-          color: Colors.white,
+          color: kSecondaryColor,
           child: Column(
             children: [
               ProductDescription(
@@ -24,11 +25,11 @@ class Body extends StatelessWidget {
                 SeeMore: () {},
               ),
               RoundedContainer(
-                color: Colors.white,
+                color: kSecondaryColor,
                 child: Column(
                   children: [
                     RoundedContainer(
-                      color: Colors.white,
+                      color: kSecondaryColor,
                       child: Padding(
                         padding: EdgeInsets.only(
                           left: SizeConfig.screenWidth * 0.15,
