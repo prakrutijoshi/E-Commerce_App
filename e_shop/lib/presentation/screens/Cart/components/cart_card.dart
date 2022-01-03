@@ -39,23 +39,24 @@ class CartCard extends StatelessWidget {
               maxLines: 2,
             ),
             SizedBox(height: 10),
-            Text.rich(
-              TextSpan(
-                text: "₹ price",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
-                ),
-                children: [
-                  TextSpan(
-                    text: "quantity",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: kPrimaryColor,
-                    ),
+            Row(
+              children: [
+                Text(
+                  "₹ price",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
                   ),
-                ],
-              ),
+                ),
+                SizedBox(width: 80),
+                Text(
+                  "quantity",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

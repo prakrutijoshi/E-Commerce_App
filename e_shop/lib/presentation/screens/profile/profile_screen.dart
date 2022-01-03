@@ -1,5 +1,5 @@
 import 'components/body.dart';
-import '../home/components/customnavbar.dart';
+import '../../../utils/customnavbar.dart';
 import '../../widgets/constants.dart';
 import '../../../utils/enum.dart';
 import 'package:flutter/material.dart';

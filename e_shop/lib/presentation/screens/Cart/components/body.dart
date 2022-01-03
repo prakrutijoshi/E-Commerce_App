@@ -1,3 +1,6 @@
+import 'package:e_shop/presentation/screens/Checkout/checkout_screen.dart';
+import 'package:e_shop/utils/default_button.dart';
+
 import 'cart_card.dart';
 import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
