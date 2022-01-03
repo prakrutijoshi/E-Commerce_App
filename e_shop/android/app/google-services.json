@@ -14,6 +14,43 @@
       },
       "oauth_client": [
         {
+          "client_id": "438463715368-rpflac9tl83r5id9ar1m5gp3t9btoc9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_shop",
+            "certificate_hash": "54b36021ccd9a2ed5dd21d552e1c9c825f20493c"
+          }
+        },
+        {
+          "client_id": "438463715368-2ulu0sil6ubsdejuluva8mvhk6gmq9mv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB06WcFTp--yBboxrST1X34jsB8XfS9pHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438463715368-2ulu0sil6ubsdejuluva8mvhk6gmq9mv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438463715368:android:354ce2a56bc5facc51bd1d",
+        "android_client_info": {
+          "package_name": "com.example.e_shop_seller"
+        }
+      },
+      "oauth_client": [
+        {
           "client_id": "438463715368-2ulu0sil6ubsdejuluva8mvhk6gmq9mv.apps.googleusercontent.com",
           "client_type": 3
         }

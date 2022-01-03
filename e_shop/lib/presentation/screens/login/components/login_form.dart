@@ -1,3 +1,5 @@
+import 'package:e_shop/domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
+
 import '../../ForgetPassword/forgetpassword.dart';
 
 import '../../../widgets/constants.dart';
@@ -45,6 +47,10 @@ class _LoginFormState extends State<LoginForm> {
         passwordController.text.trim(),
       );
     }
+  }
+
+  void onGoogleLogin() {
+    BlocProvider.of<LoginCubit>(context).googleLogin();
   }
 
   @override
@@ -111,6 +117,7 @@ class _LoginFormState extends State<LoginForm> {
                 _buildButtonLogin(),
                 SizedBox(height: getProportionateScreenHeight(10)),
                 _buildTextOr(),
+                _googleSignIn(),
               ],
             ),
           );
@@ -209,6 +216,13 @@ class _LoginFormState extends State<LoginForm> {
           ),
         ],
       ),
+    );
+  }
+
+  _googleSignIn() {
+    return Padding(
+      padding: EdgeInsets.only(left: 30.0, right: 30.0),
+      child: DefaultButton(text: "Sign In With Google", press: onGoogleLogin),
     );
   }
 }

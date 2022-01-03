@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../model/user_model.dart';
 import 'firebase_user_remote_datasource.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class FirebaseAuthRemoteDatasource {
   Future<User> get loggedFirebaseUser;
@@ -10,6 +11,10 @@ abstract class FirebaseAuthRemoteDatasource {
   Future<void> signUp(UserModel newUser, String password);
 
   Future<void> logInWithEmailAndPassword(String email, String password);
+
+  Future<void> signInwithGoogle();
+
+  Future<void> signOutFromGoogle();
 
   Future<bool> isLoggedIn();
 
@@ -20,6 +25,7 @@ abstract class FirebaseAuthRemoteDatasource {
 
 class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
   FirebaseUserRemoteDatasource _userDatasource =
       FirebaseUserRemoteDatasourceImpl();
   String _authException = "Authentication Failure";
@@ -50,6 +56,29 @@ class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
     } on FirebaseAuthException catch (e) {
       _authException = e.message.toString();
     }
+  }
+
+  @override
+  Future<void> signInwithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+      await _firebaseAuth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      _authException = e.message.toString();
+    }
+  }
+
+  @override
+  Future<void> signOutFromGoogle() async {
+    await _googleSignIn.signOut();
+    await _firebaseAuth.signOut();
   }
 
   @override

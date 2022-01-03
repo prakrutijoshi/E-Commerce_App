@@ -1,7 +1,9 @@
+import 'package:e_shop/domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
+import 'package:e_shop/domain/usecases/auth_usecases/log_out_from_google_usecase.dart';
 import 'package:e_shop/domain/usecases/product_usecases/find_product_by_category_usecase.dart';
 import 'package:e_shop/domain/usecases/product_usecases/find_product_by_name_usecase.dart';
-import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
 import 'package:e_shop/presentation/screens/profile/cubit/profile_cubit.dart';
+import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
 
 import 'data/datasource/remote_datasource/productdatasource.dart';
 import 'data/repositories/firebase_user_repository_impl.dart';
@@ -48,6 +50,7 @@ Future<void> init() async {
       logInWithEmailAndPasswordUseCase: sl.call(),
       isLoggedInUseCase: sl.call(),
       authExceptionUseCase: sl.call(),
+      logInWithGoogleUseCase: sl.call(),
     ),
   );
   sl.registerFactory<RegisterCubit>(
@@ -101,6 +104,10 @@ Future<void> init() async {
       () => AuthExceptionUseCase(sl.call()));
   sl.registerLazySingleton<SendPasswordResetEmailUseCase>(
       () => SendPasswordResetEmailUseCase(repository: sl.call()));
+  sl.registerLazySingleton<LogInWithGoogleUseCase>(
+      () => LogInWithGoogleUseCase(sl.call()));
+  sl.registerLazySingleton<LogOutFromGoogleUseCase>(
+      () => LogOutFromGoogleUseCase(sl.call()));
 
   // user usecase
   sl.registerLazySingleton<AddUserDataUseCase>(
