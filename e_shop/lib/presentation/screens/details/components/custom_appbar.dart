@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(24)),
         child: Row(
           children: [
             SizedBox(
@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget {
                 ),
                 onPressed: () => Navigator.pop(context),
                 child: SvgPicture.asset(
-                  "assets/icons/Back Icon.svg",
+                  "assets/icons/Back ICon.svg",
                   height: 15,
                 ),
               ),

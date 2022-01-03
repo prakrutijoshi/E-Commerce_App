@@ -1,3 +1,5 @@
+import 'package:e_shop_seller/data/models/seller_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -7,8 +9,13 @@ import 'constants.dart';
 import 'enum.dart';
 
 class CustomNavBar extends StatelessWidget {
-  const CustomNavBar({Key? key, required this.selected}) : super(key: key);
+  const CustomNavBar({
+    Key? key,
+    required this.selected,
+    //required this.user
+  }) : super(key: key);
   final Menu selected;
+  //final SellerModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +47,13 @@ class CustomNavBar extends StatelessWidget {
                 color:
                     Menu.home == selected ? kPrimaryColor : inActiveIconColor,
               ),
-              onPressed: () => Navigator.push(
+              onPressed: () => Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(
+                    builder: (context) => HomeScreen(
+                        //user: user,
+                        )),
+                (Route<dynamic> route) => false,
               ),
             ),
             IconButton(
@@ -60,8 +71,12 @@ class CustomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProfileScreen()))),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProfileScreen(
+                            //user: user
+                            )))),
           ],
         ),
       ),

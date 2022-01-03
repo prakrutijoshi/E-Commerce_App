@@ -6,7 +6,7 @@ class GetUnAvailableProductBySellerIdUseCase {
 
   GetUnAvailableProductBySellerIdUseCase({required this.repository});
 
-  Future<List<ProductEntity>> call({required String sellerId}) async {
-    return await repository.getUnAvailableProductsBySellerId(sellerId);
+  Stream<List<ProductEntity>> call({required String sellerId}) {
+    return repository.getUnAvailableProductsBySellerId(sellerId);
   }
 }

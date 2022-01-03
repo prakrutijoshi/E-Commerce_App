@@ -1,4 +1,5 @@
 import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
+import 'package:e_shop/presentation/screens/profile/cubit/profile_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.sl<SearchCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<ProfileCubit>(),
         ),
       ],
       child: AppView(),

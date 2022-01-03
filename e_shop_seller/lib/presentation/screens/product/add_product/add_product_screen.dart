@@ -1,16 +1,16 @@
 import 'dart:io';
 
+import 'cubit/product_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../data/models/product_model.dart';
-import '../../../utils/constants.dart';
-import '../../../utils/default_button.dart';
-import '../../../utils/utils.dart';
-import 'cubit/product_cubit.dart';
+import '../../../../data/models/product_model.dart';
+import '../../../../utils/constants.dart';
+import '../../../../utils/default_button.dart';
+import '../../../../utils/utils.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
   TextEditingController priceController = TextEditingController();
-  String dropdownValue = 'others';
+  String dropdownValue = categoryList[0];
   List<String> images = [];
 
   bool get isPopulated =>
@@ -101,31 +101,31 @@ class _AddProductScreenState extends State<AddProductScreen> {
           backgroundColor: kPrimaryColor,
           centerTitle: true,
         ),
-        body: BlocListener<ProductCubit, ProductState>(
-          listener: (context, state) {
-            if (state is ImagesUploading) {
-              UtilDialog.showWaiting(context);
-            }
+        body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: BlocListener<ProductCubit, ProductState>(
+            listener: (context, state) {
+              if (state is ImagesUploading) {
+                UtilDialog.showWaiting(context);
+              }
 
-            if (state is ImagesUploadError) {
-              UtilDialog.hideWaiting(context);
-              UtilDialog.showInformation(context, content: state.message);
-            }
+              if (state is ImagesUploadError) {
+                UtilDialog.hideWaiting(context);
+                UtilDialog.showInformation(context, content: state.message);
+              }
 
-            if (state is ProductUploaded) {
-              UtilDialog.hideWaiting(context);
-            }
+              if (state is ProductUploaded) {
+                UtilDialog.hideWaiting(context);
+              }
 
-            if (state is ProductError) {
-              UtilDialog.hideWaiting(context);
-              UtilDialog.showInformation(context, content: state.message);
-            }
-          },
-          child: BlocBuilder<ProductCubit, ProductState>(
-            builder: (context, state) {
-              return SingleChildScrollView(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: SafeArea(
+              if (state is ProductError) {
+                UtilDialog.hideWaiting(context);
+                UtilDialog.showInformation(context, content: state.message);
+              }
+            },
+            child: BlocBuilder<ProductCubit, ProductState>(
+              builder: (context, state) {
+                return SafeArea(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -133,9 +133,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       _buildSubmitButton(),
                     ],
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -154,9 +154,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
             // category input
             DropdownButtonFormField<String>(
               value: dropdownValue,
-              icon: const Icon(Icons.category_outlined),
+              icon: const Icon(Icons.arrow_drop_down_circle),
               elevation: 16,
-              style: const TextStyle(color: Colors.deepOrange),
+              style: const TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
               decoration: InputDecoration(
                 labelText: "Category",
                 labelStyle: TextStyle(color: kPrimaryColor),
@@ -166,15 +169,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>[
-                'electronics',
-                'fashion',
-                'grocery',
-                'home & kitchen',
-                'medicines',
-                'veg & fruits',
-                'others'
-              ].map<DropdownMenuItem<String>>((String value) {
+              items: categoryList.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -197,7 +192,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             // Description input
             TextFormField(
               controller: descriptionController,
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.multiline,
               decoration: InputDecoration(
                 labelText: "Description",
                 labelStyle: TextStyle(color: kPrimaryColor),
@@ -247,14 +242,22 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: GridView.builder(
                       shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                       itemCount: imageFileList!.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                       ),
                       itemBuilder: (BuildContext context, int index) {
-                        return Image.file(
-                          File(imageFileList![index].path),
-                          fit: BoxFit.cover,
+                        return Container(
+                          margin: EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: kPrimaryColor,
+                          )),
+                          child: Image.file(
+                            File(imageFileList![index].path),
+                            fit: BoxFit.cover,
+                          ),
                         );
                       },
                     ),

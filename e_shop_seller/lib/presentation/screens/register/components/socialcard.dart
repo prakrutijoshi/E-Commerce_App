@@ -1,6 +1,7 @@
-import '../../../../utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../utils/size_config.dart';
 
 class SocalCard extends StatelessWidget {
   const SocalCard({

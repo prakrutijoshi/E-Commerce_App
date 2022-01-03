@@ -1,12 +1,21 @@
-import 'package:e_shop_seller/utils/default_button.dart';
+import '../../../../utils/default_button.dart';
 
-import 'components/InStockProducts.dart';
-import '../../../utils/constants.dart';
+import 'out_of_stock_products/outOfStockProducts.dart';
+
+import 'in_stock_products/InStockProducts.dart';
+import '../../../../utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class DisplayProductsBySellerScreen extends StatelessWidget {
+class DisplayProductsBySellerScreen extends StatefulWidget {
   const DisplayProductsBySellerScreen({Key? key}) : super(key: key);
 
+  @override
+  _DisplayProductsBySellerScreenState createState() =>
+      _DisplayProductsBySellerScreenState();
+}
+
+class _DisplayProductsBySellerScreenState
+    extends State<DisplayProductsBySellerScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,12 +48,12 @@ class DisplayProductsBySellerScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(35.0),
                 child: DefaultButton(
                   press: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (_) => AddProductScreen(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => OutOfStockProducts(),
+                      ),
+                    );
                   },
                   text: "Out of Stock Products",
                 ),

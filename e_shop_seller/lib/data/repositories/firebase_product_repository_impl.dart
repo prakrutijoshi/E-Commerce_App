@@ -1,7 +1,7 @@
-import '../datasources/remote_datasource/firebase_product_remote_datasource.dart';
-import '../models/product_model.dart';
 import '../../domain/entities/product_entity.dart';
 import '../../domain/repositories/firebase_product_repository.dart';
+import '../datasources/remote_datasource/firebase_product_remote_datasource.dart';
+import '../models/product_model.dart';
 
 class FirebaseProductRepositoryImpl implements FirebaseProductRepository {
   final FirebaseProductRemoteDatasource remoteDatasource;
@@ -14,20 +14,19 @@ class FirebaseProductRepositoryImpl implements FirebaseProductRepository {
   }
 
   @override
-  Future<ProductEntity> getProductById(String pid) async {
-    return await remoteDatasource.getProductById(pid);
+  Stream<ProductEntity> getProductById(String pid) {
+    return remoteDatasource.getProductById(pid);
   }
 
   @override
-  Future<List<ProductEntity>> getAvailableProductsBySellerId(
-      String sellerId) async {
-    return await remoteDatasource.getAvailableProductsBySellerId(sellerId);
+  Stream<List<ProductEntity>> getAvailableProductsBySellerId(String sellerId) {
+    return remoteDatasource.getAvailableProductsBySellerId(sellerId);
   }
 
   @override
-  Future<List<ProductEntity>> getUnAvailableProductsBySellerId(
-      String sellerId) async {
-    return await remoteDatasource.getUnAvailableProductsBySellerId(sellerId);
+  Stream<List<ProductEntity>> getUnAvailableProductsBySellerId(
+      String sellerId) {
+    return remoteDatasource.getUnAvailableProductsBySellerId(sellerId);
   }
 
   @override

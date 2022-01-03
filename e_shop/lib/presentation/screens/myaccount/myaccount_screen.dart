@@ -1,3 +1,5 @@
+import 'package:e_shop/data/model/user_model.dart';
+
 import '../Cart/cart_screen.dart';
 
 import '../../widgets/constants.dart';
@@ -5,7 +7,9 @@ import '../profile/components/profile_list.dart';
 import 'package:flutter/material.dart';
 
 class MyAccount extends StatelessWidget {
-  const MyAccount({Key? key}) : super(key: key);
+  final UserModel user;
+
+  MyAccount({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +24,12 @@ class MyAccount extends StatelessWidget {
         child: Column(
           children: [
             ProfileList(
-              text: "Prakruti Joshi",
+              text: user.name,
               icon: "assets/icons/User.svg",
               press: () {},
             ),
             ProfileList(
-              text: "joshiprakruti7@gmail.com",
+              text: user.email,
               icon: "assets/icons/Mail.svg",
               press: () {},
             ),

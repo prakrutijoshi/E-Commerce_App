@@ -4,11 +4,16 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/customnavbar.dart';
 import '../../../utils/enum.dart';
-import '../product/add_product_screen.dart';
-import '../product/display_products_by_seller_screen.dart';
+import '../product/add_product/add_product_screen.dart';
+import '../product/display_products/display_products_by_seller_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  //final User currentUser;
+  //final SellerModel user;
+  const HomeScreen({
+    Key? key,
+    //required this.user
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      text: "Watch you products",
+                      text: "Watch your products",
                     ),
                   ),
                 ],
@@ -59,7 +64,10 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: CustomNavBar(selected: Menu.home),
+        bottomNavigationBar: CustomNavBar(
+          selected: Menu.home,
+          //user: user
+        ),
       ),
     );
   }

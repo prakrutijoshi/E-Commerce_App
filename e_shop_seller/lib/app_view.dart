@@ -1,3 +1,4 @@
+import 'package:e_shop_seller/data/models/seller_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,13 +9,25 @@ import 'presentation/screens/splash/splash_screen.dart';
 import 'utils/theme.dart';
 
 class AppView extends StatefulWidget {
-  const AppView({Key? key}) : super(key: key);
+  //final SellerModel user;
+  AppView({
+    Key? key,
+    //required this.user
+  }) : super(key: key);
 
   @override
-  _AppViewState createState() => _AppViewState();
+  _AppViewState createState() => _AppViewState(
+      //user: user
+      );
 }
 
 class _AppViewState extends State<AppView> {
+  //final SellerModel user;
+
+  _AppViewState(
+      //required this.user
+      );
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,7 +42,9 @@ class _AppViewState extends State<AppView> {
           } else if (authState is Unauthenticated) {
             return LoginScreen();
           } else if (authState is Authenticated) {
-            return HomeScreen();
+            return HomeScreen(
+                //user: user
+                );
           } else {
             return SplashScreen();
           }

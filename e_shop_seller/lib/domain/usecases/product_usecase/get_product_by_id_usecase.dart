@@ -6,7 +6,7 @@ class GetProductByIdUseCase {
 
   GetProductByIdUseCase({required this.repository});
 
-  Future<ProductEntity> call(String pid) async {
-    return await repository.getProductById(pid);
+  Stream<ProductEntity> call(String pid) {
+    return repository.getProductById(pid);
   }
 }
