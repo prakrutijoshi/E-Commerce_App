@@ -1,6 +1,6 @@
-import 'package:e_shop/presentation/screens/Checkout/checkout_screen.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
-import 'package:e_shop/utils/default_button.dart';
+import '../Checkout/checkout_screen.dart';
+import '../../widgets/size_config.dart';
+import '../../../utils/default_button.dart';
 
 import 'components/body.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ _buildOrderNowButton(context) {
         text: "Order Now",
         press: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => checkoutScreen()));
+              MaterialPageRoute(builder: (context) => CheckoutScreen()));
         },
       ),
     ),

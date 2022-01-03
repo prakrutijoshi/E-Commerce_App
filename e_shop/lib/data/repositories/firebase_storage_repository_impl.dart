@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import '../../domain/repositories/firebase_storage_repository.dart';
-import '../datasources/remote_datasource/firebase_storage_remote_datasource.dart';
+import '../datasource/remote_datasource/firebase_storage_remote_datasource.dart';
 
 class FirebaseStorageRepositoryImpl implements FirebaseStorageRepository {
   FirebaseStorageRemoteDatasource remoteDataSource;

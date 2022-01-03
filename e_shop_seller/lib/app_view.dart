@@ -1,4 +1,3 @@
-import 'package:e_shop_seller/data/models/seller_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,5 +1,5 @@
-import 'package:e_shop/presentation/screens/register/register_screen.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import '../register/register_screen.dart';
+import '../../widgets/size_config.dart';
 
 import '../../common_cubits/cubit/cubit/authentication_cubit.dart';
 import '../../widgets/constants.dart';

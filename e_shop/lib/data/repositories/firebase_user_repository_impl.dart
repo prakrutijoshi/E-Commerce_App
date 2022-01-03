@@ -1,7 +1,7 @@
-import '../datasource/remote_datasource/firebase_user_remote_datasource.dart';
-import '../model/user_model.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/firebase_user_repository.dart';
+import '../datasource/remote_datasource/firebase_user_remote_datasource.dart';
+import '../model/user_model.dart';
 
 class FirebaseUserRepositoryImpl implements FirebaseUserRepository {
   final FirebaseUserRemoteDatasource remoteDatasource;

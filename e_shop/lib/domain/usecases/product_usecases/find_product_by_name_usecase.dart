@@ -1,7 +1,6 @@
-import 'package:e_shop/domain/repositories/product_repository.dart';
+import '../../repositories/product_repository.dart';
 
 import '../../entities/product_entity.dart';
-import '../../repositories/product_repository.dart';
 
 class FindProductByNameUsecase {
   final ProductRepository repository;

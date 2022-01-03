@@ -1,11 +1,11 @@
-import 'components/shipping_address_card.dart';
-import 'shipping_address_model_sheet.dart';
-import '../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/model/shipping_address_model.dart';
+import '../../widgets/constants.dart';
+import 'components/shipping_address_card.dart';
 import 'cubit/address_cubit.dart';
+import 'shipping_address_model_sheet.dart';
 
 class ShippingAddressScreen extends StatelessWidget {
   final bool? showDefaultTick;

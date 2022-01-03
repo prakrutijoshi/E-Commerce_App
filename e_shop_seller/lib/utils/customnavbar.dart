@@ -1,6 +1,6 @@
-import 'package:e_shop_seller/data/models/seller_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import '../presentation/screens/Profile/cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../presentation/screens/Profile/profile_screen.dart';
@@ -61,18 +61,22 @@ class CustomNavBar extends StatelessWidget {
               onPressed: () {},
             ),
             IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/User Icon.svg",
-                  color: Menu.profile == selected
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ProfileScreen(
-                            //user: user
-                            )))),
+              icon: SvgPicture.asset(
+                "assets/icons/User Icon.svg",
+                color: Menu.profile == selected
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+              ),
+              onPressed: () {
+                BlocProvider.of<ProfileCubit>(context).getSeller();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

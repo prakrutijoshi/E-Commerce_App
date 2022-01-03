@@ -19,6 +19,18 @@ class ProfileLoaded extends ProfileState {
   List<Object> get props => [seller];
 }
 
+class ProfileImageUploading extends ProfileState {}
+
+class ProfileImageUploaded extends ProfileState {}
+
+class ProfileImageUploadError extends ProfileState {}
+
+class ProfileUpdating extends ProfileState {}
+
+class ProfileUpdated extends ProfileState {}
+
+class ProfileUpdateError extends ProfileState {}
+
 class ProfileError extends ProfileState {
   final String message;
 

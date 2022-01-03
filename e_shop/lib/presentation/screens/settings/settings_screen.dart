@@ -1,6 +1,7 @@
-import '../profile/components/profile_list.dart';
-import '../../widgets/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/constants.dart';
+import '../profile/components/profile_list.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);

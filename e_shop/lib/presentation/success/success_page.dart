@@ -1,6 +1,6 @@
-import 'package:e_shop/presentation/screens/home/home_screen.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/utils/default_button.dart';
+import '../screens/home/home_screen.dart';
+import '../widgets/constants.dart';
+import '../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {

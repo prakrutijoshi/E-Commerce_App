@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import '../../../../../data/models/product_model.dart';
 import '../../../../../domain/usecases/auth_usecases/logged_firebase_seller_usecase.dart';
 import '../../../../../domain/usecases/product_usecase/add_product_data_usecase.dart';
@@ -33,8 +34,12 @@ class ProductCubit extends Cubit<ProductState> {
   Future<List<String>> uploadImages({required List<XFile> images}) async {
     emit(ImagesUploading());
     try {
-      var imageURLs = await Future.wait(
-          images.map((image) => uploadImageFileUseCase.call(File(image.path))));
+      var productImageId = UniqueKey().toString() +
+          DateTime.now().millisecondsSinceEpoch.toString();
+
+      var imageURLs = await Future.wait(images.map((image) =>
+          uploadImageFileUseCase.call(
+              file: File(image.path), ref: "product_images/$productImageId")));
       emit(ImagesUploaded());
       return imageURLs;
     } catch (e) {

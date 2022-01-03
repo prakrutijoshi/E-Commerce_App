@@ -1,4 +1,4 @@
-import 'package:e_shop/domain/repositories/firebase_auth_repository.dart';
+import '../../repositories/firebase_auth_repository.dart';
 
 class LogInWithGoogleUseCase {
   final FirebaseAuthRepository repository;

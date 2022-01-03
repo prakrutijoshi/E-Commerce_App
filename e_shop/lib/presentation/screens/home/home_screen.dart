@@ -1,15 +1,12 @@
-import '../Cart/cart_screen.dart';
-import 'components/body.dart';
-import '../../../utils/customnavbar.dart';
-import 'components/iconbtnwithcounter.dart';
-import '../../widgets/constants.dart';
-import '../../../utils/enum.dart';
-
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  //final User currentUser;
+import '../../../utils/customnavbar.dart';
+import '../../../utils/enum.dart';
+import '../Cart/cart_screen.dart';
+import 'components/body.dart';
+import 'components/iconbtnwithcounter.dart';
 
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {

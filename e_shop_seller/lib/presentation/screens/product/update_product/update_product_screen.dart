@@ -1,11 +1,12 @@
-import '../../../../data/models/product_model.dart';
-import 'cubit/update_product_cubit.dart';
-import '../../../../utils/constants.dart';
-import '../../../../utils/default_button.dart';
-import '../../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../data/models/product_model.dart';
+import '../../../../utils/constants.dart';
+import '../../../../utils/default_button.dart';
+import '../../../../utils/utils.dart';
+import 'cubit/update_product_cubit.dart';
 
 class UpdateProductScreen extends StatefulWidget {
   final ProductModel product;

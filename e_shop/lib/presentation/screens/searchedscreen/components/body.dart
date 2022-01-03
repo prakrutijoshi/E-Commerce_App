@@ -1,9 +1,8 @@
-import 'package:e_shop/data/model/product_model.dart';
-import 'package:e_shop/presentation/screens/details/details_screen.dart';
-import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
+import '../../../../data/model/product_model.dart';
+import '../../details/details_screen.dart';
+import '../cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/src/widgets/navigator.dart';
 
 class SearchedScreen extends StatefulWidget {
   const SearchedScreen({Key? key, required this.product}) : super(key: key);
@@ -59,7 +58,7 @@ class _SearchedScreenState extends State<SearchedScreen> {
   }
 
   Widget productView(BuildContext context, List<ProductModel> productDetails) {
-    if (!productDetails.isEmpty)
+    if (productDetails.isNotEmpty)
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: GridView.count(

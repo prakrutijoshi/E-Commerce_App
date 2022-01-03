@@ -1,7 +1,8 @@
-import '../../../../data/model/product_model.dart';
-import '../../../../domain/usecases/product_usecases/fetch_product_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../data/model/product_model.dart';
+import '../../../../domain/usecases/product_usecases/fetch_product_usecase.dart';
 
 part 'product_state.dart';
 

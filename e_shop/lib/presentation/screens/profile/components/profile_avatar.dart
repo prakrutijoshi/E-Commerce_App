@@ -1,10 +1,13 @@
-import 'package:e_shop/data/model/user_model.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../data/model/user_model.dart';
+import '../../../../utils/utils.dart';
 import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../cubit/profile_cubit.dart';
 
 class ProfileAvatar extends StatefulWidget {
   final UserModel user;
@@ -21,9 +24,26 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
 
   _ProfileAvatarState({required this.user});
 
-  void takePhoto(ImageSource source) async {
-    final XFile? image = await _picker.pickImage(source: source);
-    setState(() {});
+  void takePhoto(BuildContext context, ImageSource source) async {
+    final XFile? imageFile = await _picker.pickImage(source: source);
+    if (imageFile != null) {
+      var profileImageURL = await BlocProvider.of<ProfileCubit>(context)
+          .uploadUserAvatar(imageFile: imageFile);
+
+      var updatedUser = user.cloneWith(
+        avatar: profileImageURL,
+      );
+
+      await BlocProvider.of<ProfileCubit>(context).updateUser(updatedUser);
+
+      Navigator.pop(context);
+      Navigator.pop(context);
+    } else {
+      UtilDialog.showInformation(
+        context,
+        content: "Image was not Picked.",
+      );
+    }
   }
 
   @override
@@ -36,7 +56,11 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
         clipBehavior: Clip.none,
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(user.avatar),
+            backgroundColor: kPrimaryColor,
+            backgroundImage: user.avatar.isNotEmpty
+                ? NetworkImage(user.avatar)
+                : AssetImage("assets/images/default_avatar.jpg")
+                    as ImageProvider<Object>,
           ),
           Positioned(
             right: -12,
@@ -56,7 +80,7 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
                 onPressed: () {
                   showModalBottomSheet(
                     context: context,
-                    builder: ((builder) => bottomSheet()),
+                    builder: (context) => bottomSheet(context),
                   );
                 },
                 child: SvgPicture.asset(
@@ -71,7 +95,7 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
     );
   }
 
-  Widget bottomSheet() {
+  Widget bottomSheet(BuildContext context) {
     return Container(
       height: 100.0,
       width: SizeConfig.screenWidth,
@@ -95,7 +119,7 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
                 flex: 1,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    takePhoto(ImageSource.camera);
+                    takePhoto(context, ImageSource.camera);
                   },
                   icon: Icon(Icons.camera),
                   label: Text("Camera"),
@@ -109,7 +133,7 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
                 flex: 1,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    takePhoto(ImageSource.gallery);
+                    takePhoto(context, ImageSource.gallery);
                   },
                   icon: Icon(Icons.image),
                   label: Text("Gallery"),

@@ -1,9 +1,14 @@
-import 'package:e_shop/domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
-import 'package:e_shop/domain/usecases/auth_usecases/log_out_from_google_usecase.dart';
-import 'package:e_shop/domain/usecases/product_usecases/find_product_by_category_usecase.dart';
-import 'package:e_shop/domain/usecases/product_usecases/find_product_by_name_usecase.dart';
-import 'package:e_shop/presentation/screens/profile/cubit/profile_cubit.dart';
-import 'package:e_shop/presentation/screens/searchedscreen/cubit/search_cubit.dart';
+import 'domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
+import 'domain/usecases/auth_usecases/log_out_from_google_usecase.dart';
+import 'domain/usecases/product_usecases/find_product_by_category_usecase.dart';
+import 'domain/usecases/product_usecases/find_product_by_name_usecase.dart';
+import 'presentation/screens/profile/cubit/profile_cubit.dart';
+import 'presentation/screens/searchedscreen/cubit/search_cubit.dart';
+
+import 'data/datasource/remote_datasource/firebase_storage_remote_datasource.dart';
+import 'data/repositories/firebase_storage_repository_impl.dart';
+import 'domain/repositories/firebase_storage_repository.dart';
+import 'domain/usecases/storage_usecases/upload_image_file_usecase.dart';
 
 import 'data/datasource/remote_datasource/productdatasource.dart';
 import 'data/repositories/firebase_user_repository_impl.dart';
@@ -85,9 +90,9 @@ Future<void> init() async {
   sl.registerFactory<ProfileCubit>(
     () => ProfileCubit(
       getUserByIdUseCase: sl.call(),
-      addUserDataUseCase: sl.call(),
       updateUserDataUseCase: sl.call(),
       loggedFirebaseUserUseCase: sl.call(),
+      uploadImageFileUseCase: sl.call(),
     ),
   );
 
@@ -127,6 +132,10 @@ Future<void> init() async {
   sl.registerLazySingleton<FindProductByNameUsecase>(
       () => FindProductByNameUsecase(sl.call()));
 
+  // Storage Usecases
+  sl.registerLazySingleton<UploadImageFileUseCase>(
+      () => UploadImageFileUseCase(repository: sl.call()));
+
   // repository
   sl.registerLazySingleton<FirebaseAuthRepository>(
       () => FirebaseAuthRepositoryImpl(sl.call()));
@@ -134,6 +143,8 @@ Future<void> init() async {
       () => FirebaseUserRepositoryImpl(sl.call()));
   sl.registerLazySingleton<ProductRepository>(
       () => ProductRepositoryImpl(sl.call()));
+  sl.registerLazySingleton<FirebaseStorageRepository>(
+      () => FirebaseStorageRepositoryImpl(remoteDataSource: sl.call()));
 
   // datasource
   sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(
@@ -141,4 +152,6 @@ Future<void> init() async {
   sl.registerLazySingleton<FirebaseUserRemoteDatasource>(
       () => FirebaseUserRemoteDatasourceImpl());
   sl.registerLazySingleton<ProductDataSource>(() => ProductDataSourceImpl());
+  sl.registerLazySingleton<FirebaseStorageRemoteDatasource>(
+      () => FirebaseStorageRemoteDatasourceImpl());
 }

@@ -1,8 +1,9 @@
-import 'components/body.dart';
-import '../../../utils/customnavbar.dart';
-import '../../widgets/constants.dart';
-import '../../../utils/enum.dart';
 import 'package:flutter/material.dart';
+
+import '../../../utils/customnavbar.dart';
+import '../../../utils/enum.dart';
+import '../../widgets/constants.dart';
+import 'components/body.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);

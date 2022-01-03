@@ -40,6 +40,8 @@ class FirebaseSellerRemoteDatasourceImpl
       if (doc.exists) {
         await doc.reference.update(updatedSeller.toMap());
       }
+    }).catchError((error) {
+      print(error);
     });
   }
 

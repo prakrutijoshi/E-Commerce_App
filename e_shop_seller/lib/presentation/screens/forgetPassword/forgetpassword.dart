@@ -1,11 +1,11 @@
-import 'package:e_shop_seller/presentation/screens/register/register_screen.dart';
-import 'package:e_shop_seller/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../utils/constants.dart';
 import '../../../utils/default_button.dart';
+import '../../../utils/size_config.dart';
 import '../../common_cubits/authentication/authentication_cubit.dart';
+import '../register/register_screen.dart';
 
 class ForgetPassword extends StatefulWidget {
   ForgetPassword({Key? key}) : super(key: key);

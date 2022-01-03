@@ -1,5 +1,6 @@
-import 'constants.dart';
 import 'package:flutter/material.dart';
+
+import 'constants.dart';
 
 class UtilDialog {
   static showInformation(
@@ -14,7 +15,7 @@ class UtilDialog {
         return AlertDialog(
           backgroundColor: Colors.amber[50],
           title: Text(
-            title ?? "message for you",
+            title ?? "Message for you",
           ),
           content: Text(content!),
           actions: <Widget>[

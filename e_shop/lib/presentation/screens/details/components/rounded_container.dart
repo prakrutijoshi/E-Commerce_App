@@ -1,5 +1,6 @@
-import 'package:e_shop/presentation/widgets/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../../widgets/size_config.dart';
 
 class RoundedContainer extends StatelessWidget {
   const RoundedContainer({

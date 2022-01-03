@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+
+import '../../../widgets/size_config.dart';
 import 'categories.dart';
 import 'discountbanner.dart';
 import 'products.dart';
 import 'searchfield.dart';
 import 'specialoffers.dart';
-import '../../../widgets/size_config.dart';
-import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

@@ -1,18 +1,18 @@
-import 'package:e_shop/data/model/product_model.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../data/model/product_model.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
 
 class ProductDescription extends StatelessWidget {
   const ProductDescription({
     Key? key,
     required this.product,
-    this.SeeMore,
   }) : super(key: key);
 
   final ProductModel product;
-  final GestureTapCallback? SeeMore;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,34 @@ class ProductDescription extends StatelessWidget {
             product.name,
             style: Theme.of(context).textTheme.headline6,
           ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Price: ",
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                TextSpan(
+                  text: "₹${product.price}",
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20,
         ),
         Align(
           alignment: Alignment.centerRight,
@@ -42,8 +70,6 @@ class ProductDescription extends StatelessWidget {
             ),
             child: SvgPicture.asset(
               "assets/icons/Heart Icon_2.svg",
-              // color:
-              //     product.isFavourite ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
               height: getProportionateScreenWidth(16),
             ),
           ),
@@ -53,33 +79,16 @@ class ProductDescription extends StatelessWidget {
             left: getProportionateScreenWidth(20),
             right: getProportionateScreenWidth(64),
           ),
-          child: Text(
+          child: ExpandableText(
             product.description,
-            maxLines: 3,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(20),
-            vertical: 10,
-          ),
-          child: GestureDetector(
-            onTap: () {},
-            child: Row(
-              children: [
-                Text(
-                  "See More Detail",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600, color: kPrimaryColor),
-                ),
-                SizedBox(width: 5),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  color: kPrimaryColor,
-                ),
-              ],
+            expandText: "See More Detail",
+            collapseText: "See Less Details",
+            linkStyle: TextStyle(
+              fontWeight: FontWeight.w600,
+              color: kPrimaryColor,
             ),
+            maxLines: 3,
+            animation: true,
           ),
         ),
       ],

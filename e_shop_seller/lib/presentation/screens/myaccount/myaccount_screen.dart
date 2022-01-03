@@ -1,7 +1,8 @@
-import 'package:e_shop_seller/data/models/seller_model.dart';
-import 'package:e_shop_seller/presentation/screens/Profile/components/profile_list.dart';
-import 'package:e_shop_seller/utils/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../../data/models/seller_model.dart';
+import '../../../utils/constants.dart';
+import '../Profile/components/profile_list.dart';
 
 class MyAccount extends StatelessWidget {
   final SellerModel seller;

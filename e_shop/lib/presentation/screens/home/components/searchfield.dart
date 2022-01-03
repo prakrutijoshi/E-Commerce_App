@@ -1,6 +1,4 @@
-import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
-import 'package:e_shop/presentation/screens/searchedscreen/components/body.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../searchedscreen/components/body.dart';
 
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';

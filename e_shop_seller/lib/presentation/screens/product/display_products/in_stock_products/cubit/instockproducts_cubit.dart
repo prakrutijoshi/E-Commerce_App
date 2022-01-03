@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import '../../../../../../domain/entities/product_entity.dart';
-import '../../../../../../data/models/product_model.dart';
-import '../../../../../../domain/usecases/auth_usecases/logged_firebase_seller_usecase.dart';
-import '../../../../../../domain/usecases/product_usecase/get_available_product_by_seller_id_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../../../../../data/models/product_model.dart';
+import '../../../../../../domain/entities/product_entity.dart';
+import '../../../../../../domain/usecases/auth_usecases/logged_firebase_seller_usecase.dart';
+import '../../../../../../domain/usecases/product_usecase/get_available_product_by_seller_id_usecase.dart';
 
 part 'instockproducts_state.dart';
 

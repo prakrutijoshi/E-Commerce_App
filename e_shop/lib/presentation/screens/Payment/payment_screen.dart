@@ -1,6 +1,6 @@
-import 'package:e_shop/presentation/success/success_page.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/utils/default_button.dart';
+import '../../success/success_page.dart';
+import '../../widgets/constants.dart';
+import '../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 class PaymentScreen extends StatefulWidget {

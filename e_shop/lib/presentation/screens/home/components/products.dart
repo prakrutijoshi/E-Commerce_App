@@ -1,9 +1,9 @@
-import 'package:e_shop/presentation/screens/details/details_screen.dart';
-
-import '../../../../data/model/product_model.dart';
-import '../cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../data/model/product_model.dart';
+import '../../details/details_screen.dart';
+import '../cubit/product_cubit.dart';
 
 class Products extends StatelessWidget {
   @override

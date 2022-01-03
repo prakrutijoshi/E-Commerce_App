@@ -1,11 +1,11 @@
-import '../../single_product_view/single_product_view.dart';
-
-import '../../../../../data/models/product_model.dart';
-import 'cubit/outofstockproducts_cubit.dart';
-import '../../../../../utils/constants.dart';
-import '../../../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../data/models/product_model.dart';
+import '../../../../../utils/constants.dart';
+import '../../../../../utils/utils.dart';
+import '../../single_product_view/single_product_view.dart';
+import 'cubit/outofstockproducts_cubit.dart';
 
 class OutOfStockProducts extends StatefulWidget {
   const OutOfStockProducts({Key? key}) : super(key: key);

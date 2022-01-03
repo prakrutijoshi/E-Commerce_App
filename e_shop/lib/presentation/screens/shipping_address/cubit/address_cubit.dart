@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../../../data/model/shipping_address_model.dart';
 import '../../../../data/model/user_model.dart';
 import '../../../../domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
 import '../../../../domain/usecases/user_usecases/add_user_data_usecase.dart';
 import '../../../../domain/usecases/user_usecases/get_user_by_id_usecase.dart';
 import '../../../../domain/usecases/user_usecases/update_user_data_usecase.dart';
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 part 'address_state.dart';
 

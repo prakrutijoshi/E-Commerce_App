@@ -1,6 +1,6 @@
-import 'package:e_shop/data/model/product_model.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import '../../../../data/model/product_model.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
 
 class ProductImages extends StatefulWidget {
@@ -22,7 +22,7 @@ class _ProductImagesState extends State<ProductImages> {
     return Column(
       children: [
         SizedBox(
-          width: getProportionateScreenWidth(200),
+          width: getProportionateScreenWidth(300),
           child: AspectRatio(
             aspectRatio: 1,
             child: Hero(
@@ -34,8 +34,10 @@ class _ProductImagesState extends State<ProductImages> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...List.generate(widget.product.images.length,
-                (index) => buildSmallProductPreview(index)),
+            ...List.generate(
+              widget.product.images.length,
+              (index) => buildSmallProductPreview(index),
+            ),
           ],
         ),
       ],
@@ -59,7 +61,8 @@ class _ProductImagesState extends State<ProductImages> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-              color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
+            color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0),
+          ),
         ),
         child: Image.network(widget.product.images[index]),
       ),

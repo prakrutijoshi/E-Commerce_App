@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
-import '../../../../../domain/usecases/product_usecase/remove_product_usecase.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../../domain/usecases/product_usecase/remove_product_usecase.dart';
 
 part 'single_product_state.dart';
 

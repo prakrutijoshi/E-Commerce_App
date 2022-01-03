@@ -1,10 +1,10 @@
-import 'package:e_shop/data/model/product_model.dart';
-import 'package:e_shop/presentation/screens/details/components/product_description.dart';
-import 'package:e_shop/presentation/screens/details/components/product_images.dart';
-import 'package:e_shop/presentation/screens/details/components/rounded_container.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
-import 'package:e_shop/utils/default_button.dart';
+import '../../../../data/model/product_model.dart';
+import 'product_description.dart';
+import 'product_images.dart';
+import 'rounded_container.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -22,7 +22,6 @@ class Body extends StatelessWidget {
             children: [
               ProductDescription(
                 product: product,
-                SeeMore: () {},
               ),
               RoundedContainer(
                 color: kSecondaryColor,

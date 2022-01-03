@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+
 import '../../../../domain/entities/user_entity.dart';
 import '../../../../domain/usecases/auth_usecases/auth_exception_usecase.dart';
 import '../../../../domain/usecases/auth_usecases/is_logged_in_usecase.dart';
 import '../../../../domain/usecases/auth_usecases/sign_up_usecase.dart';
-import 'package:equatable/equatable.dart';
 
 part 'register_state.dart';
 

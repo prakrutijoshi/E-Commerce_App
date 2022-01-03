@@ -1,4 +1,4 @@
-import 'package:e_shop_seller/utils/default_button.dart';
+import '../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants.dart';

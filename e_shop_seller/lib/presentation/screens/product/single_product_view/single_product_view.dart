@@ -1,14 +1,15 @@
+import 'package:expandable_text/expandable_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../data/models/product_model.dart';
-import 'components/custom_app_bar.dart';
-import 'cubit/single_product_cubit.dart';
-import '../update_product/update_product_screen.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/default_button.dart';
 import '../../../../utils/dialog.dart';
 import '../../../../utils/size_config.dart';
-import 'package:expandable_text/expandable_text.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../update_product/update_product_screen.dart';
+import 'components/custom_app_bar.dart';
+import 'cubit/single_product_cubit.dart';
 
 class SingleProductView extends StatefulWidget {
   final ProductModel product;
