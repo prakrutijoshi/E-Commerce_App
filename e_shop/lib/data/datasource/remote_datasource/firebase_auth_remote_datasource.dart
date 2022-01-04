@@ -96,7 +96,6 @@ class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
   @override
   Future<void> signOutFromGoogle() async {
     await _googleSignIn.signOut().catchError((error) => print(error));
-    await _googleSignIn.disconnect();
     await _firebaseAuth.signOut().catchError((error) => print(error));
   }
 
