@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_shop/domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../domain/entities/user_entity.dart';

@@ -59,7 +59,7 @@ class CustomNavBar extends StatelessWidget {
             ),
             IconButton(
               icon: SvgPicture.asset(
-                "assets/icons/Chat bubble Icon.svg",
+                "assets/icons/Bell.svg",
                 color: Menu.notification == selected
                     ? kPrimaryColor
                     : inActiveIconColor,
