@@ -413,7 +413,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
 <<<<<<< HEAD
+<<<<<<< HEAD
     version: "0.4.2"
+=======
+    version: "0.4.3"
+>>>>>>> f1d869a81b5410b21b849b7d93e757ebbf73fa9e
 =======
     version: "0.4.3"
 >>>>>>> f1d869a81b5410b21b849b7d93e757ebbf73fa9e
