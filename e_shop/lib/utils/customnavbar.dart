@@ -50,7 +50,20 @@ class CustomNavBar extends StatelessWidget {
                   : () {},
             ),
             IconButton(
-              icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                "assets/icons/Parcel.svg",
+                color:
+                    Menu.order == selected ? kPrimaryColor : inActiveIconColor,
+              ),
+            ),
+            IconButton(
+              icon: SvgPicture.asset(
+                "assets/icons/Chat bubble Icon.svg",
+                color: Menu.notification == selected
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+              ),
               onPressed: () {},
             ),
             IconButton(

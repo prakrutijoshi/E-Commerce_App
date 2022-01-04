@@ -1,1 +1,1 @@
-enum Menu { home, favorite, message, profile }
+enum Menu { home, order, notification, profile }

@@ -7,7 +7,6 @@ import '../profile/components/profile_list.dart';
 
 class MyAccount extends StatelessWidget {
   final UserModel user;
-
   MyAccount({Key? key, required this.user}) : super(key: key);
 
   @override
@@ -43,6 +42,8 @@ class MyAccount extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => CartScreen()));
                 }),
+            ProfileList(
+                text: "Orders", icon: "assets/icons/Parcel.svg", press: () {}),
           ],
         ),
       ),
