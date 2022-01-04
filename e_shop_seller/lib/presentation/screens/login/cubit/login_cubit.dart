@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_shop_seller/domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../domain/usecases/auth_usecases/auth_exception_usecase.dart';
@@ -11,11 +12,13 @@ class LoginCubit extends Cubit<LoginState> {
   final LogInWithEmailAndPasswordUseCase logInWithEmailAndPasswordUseCase;
   final IsLoggedInUseCase isLoggedInUseCase;
   final AuthExceptionUseCase authExceptionUseCase;
+  final LogInWithGoogleUseCase logInWithGoogleUseCase;
 
   LoginCubit({
     required this.logInWithEmailAndPasswordUseCase,
     required this.isLoggedInUseCase,
     required this.authExceptionUseCase,
+    required this.logInWithGoogleUseCase,
   }) : super(LoginInitial());
 
   Future<void> loginWithCredential(String email, String password) async {
@@ -23,6 +26,24 @@ class LoginCubit extends Cubit<LoginState> {
 
     try {
       await logInWithEmailAndPasswordUseCase.call(email, password);
+      bool isLoggedIn = await isLoggedInUseCase.call();
+
+      if (isLoggedIn) {
+        emit(LoginSuccess());
+      } else {
+        final message = authExceptionUseCase.call();
+        emit(LoginFailure(message: message));
+      }
+    } catch (e) {
+      emit(LoginFailure(message: "Login Failed"));
+    }
+  }
+
+  Future<void> googleLogin() async {
+    emit(Logging());
+
+    try {
+      await logInWithGoogleUseCase.call();
       bool isLoggedIn = await isLoggedInUseCase.call();
 
       if (isLoggedIn) {

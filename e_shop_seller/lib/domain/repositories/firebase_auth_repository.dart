@@ -10,6 +10,10 @@ abstract class FirebaseAuthRepository {
 
   Future<void> logInWithEmailAndPassword(String email, String password);
 
+  Future<void> signInwithGoogle();
+
+  Future<void> signOutFromGoogle();
+
   Future<bool> isLoggedIn();
 
   Future<void> logOut();

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
-import '../../../widgets/social_card.dart';
 import 'register_form.dart';
 
 class Body extends StatelessWidget {
@@ -29,23 +28,6 @@ class Body extends StatelessWidget {
                 SizedBox(height: SizeConfig.screenHeight * 0.05),
                 RegisterForm(),
                 SizedBox(height: SizeConfig.screenHeight * 0.05),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SocalCard(
-                      icon: "assets/icons/google-icon.svg",
-                      press: () {},
-                    ),
-                    SocalCard(
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {},
-                    ),
-                    SocalCard(
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
-                  ],
-                ),
               ],
             ),
           ),

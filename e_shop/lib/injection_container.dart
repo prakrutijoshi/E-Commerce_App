@@ -48,6 +48,7 @@ Future<void> init() async {
     () => AuthenticationCubit(
         isLoggedInUseCase: sl.call(),
         logOutUseCase: sl.call(),
+        logOutFromGoogleUseCase: sl.call(),
         loggedFirebaseUserUseCase: sl.call(),
         sendPasswordResetEmailUseCase: sl.call()),
   );

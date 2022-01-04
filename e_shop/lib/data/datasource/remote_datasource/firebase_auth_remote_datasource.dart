@@ -24,11 +24,13 @@ abstract class FirebaseAuthRemoteDatasource {
 }
 
 class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
-  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   FirebaseUserRemoteDatasource _userDatasource =
       FirebaseUserRemoteDatasourceImpl();
   String _authException = "Authentication Failure";
+  UserModel newGoogleUser = UserModel(
+      uid: "", email: "", name: "", avatar: "", phoneNumber: "", addresses: []);
 
   @override
   String get authException => _authException;
@@ -63,13 +65,29 @@ class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await _googleSignIn.signIn();
+
       final GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount!.authentication;
+
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
-      await _firebaseAuth.signInWithCredential(credential);
+
+      var userCredential = await _firebaseAuth.signInWithCredential(credential);
+
+      var isUser =
+          await _userDatasource.isExistInCollection(userCredential.user!.uid);
+      if (!isUser) {
+        newGoogleUser = newGoogleUser.cloneWith(
+            uid: userCredential.user!.uid,
+            name: userCredential.user!.displayName,
+            avatar: userCredential.user!.photoURL ?? "",
+            email: userCredential.user!.email,
+            phoneNumber: userCredential.user!.phoneNumber ?? "");
+
+        await _userDatasource.addUserData(newGoogleUser);
+      }
     } on FirebaseAuthException catch (e) {
       _authException = e.message.toString();
     }
@@ -77,8 +95,8 @@ class FirebaseAuthRemoteDatasourceImpl implements FirebaseAuthRemoteDatasource {
 
   @override
   Future<void> signOutFromGoogle() async {
-    await _googleSignIn.signOut();
-    await _firebaseAuth.signOut();
+    await _googleSignIn.signOut().catchError((error) => print(error));
+    await _firebaseAuth.signOut().catchError((error) => print(error));
   }
 
   @override

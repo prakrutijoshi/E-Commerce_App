@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +13,10 @@ import '../cubit/profile_cubit.dart';
 class ProfileAvatar extends StatefulWidget {
   final UserModel user;
 
-  ProfileAvatar({Key? key, required this.user}) : super(key: key);
+  ProfileAvatar({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   State<ProfileAvatar> createState() => _ProfileAvatarState(user: user);
@@ -21,7 +25,6 @@ class ProfileAvatar extends StatefulWidget {
 class _ProfileAvatarState extends State<ProfileAvatar> {
   final ImagePicker _picker = ImagePicker();
   final UserModel user;
-
   _ProfileAvatarState({required this.user});
 
   void takePhoto(BuildContext context, ImageSource source) async {

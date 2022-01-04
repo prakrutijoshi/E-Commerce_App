@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_shop_seller/domain/usecases/auth_usecases/log_out_from_google.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -12,12 +13,14 @@ part 'authentication_state.dart';
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final IsLoggedInUseCase isLoggedInUseCase;
   final LogOutUseCase logOutUseCase;
+  final LogOutFromGoogleUseCase logOutFromGoogleUseCase;
   final LoggedFirebaseSellerUseCase loggedFirebaseSellerUseCase;
   final SendPasswordResetEmailUseCase sendPasswordResetEmailUseCase;
 
   AuthenticationCubit({
     required this.isLoggedInUseCase,
     required this.logOutUseCase,
+    required this.logOutFromGoogleUseCase,
     required this.loggedFirebaseSellerUseCase,
     required this.sendPasswordResetEmailUseCase,
   }) : super(AuthenticationInitial());
@@ -46,6 +49,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   Future<void> loggedOut() async {
     await logOutUseCase.call();
+    await logOutFromGoogleUseCase.call();
     emit(Unauthenticated());
   }
 

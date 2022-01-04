@@ -28,6 +28,16 @@ class FirebaseAuthRepositoryImpl implements FirebaseAuthRepository {
   }
 
   @override
+  Future<void> signInwithGoogle() async {
+    return await remoteDatasource.signInwithGoogle();
+  }
+
+  @override
+  Future<void> signOutFromGoogle() async {
+    await remoteDatasource.signOutFromGoogle();
+  }
+
+  @override
   Future<void> logOut() async {
     return await remoteDatasource.logOut();
   }

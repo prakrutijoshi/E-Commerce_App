@@ -48,6 +48,10 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
+  void onGoogleLogin() {
+    BlocProvider.of<LoginCubit>(context).googleLogin();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
@@ -111,6 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                 _buildButtonLogin(),
                 SizedBox(height: getProportionateScreenHeight(10)),
                 _buildTextOr(),
+                _googleSignIn(),
               ],
             ),
           );
@@ -214,6 +219,13 @@ class _LoginFormState extends State<LoginForm> {
           ),
         ],
       ),
+    );
+  }
+
+  _googleSignIn() {
+    return Padding(
+      padding: EdgeInsets.only(left: 30.0, right: 30.0),
+      child: DefaultButton(text: "Sign In With Google", press: onGoogleLogin),
     );
   }
 }
