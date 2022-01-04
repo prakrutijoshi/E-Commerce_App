@@ -2,6 +2,7 @@ import 'domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
 import 'domain/usecases/auth_usecases/log_out_from_google_usecase.dart';
 import 'domain/usecases/product_usecases/find_product_by_category_usecase.dart';
 import 'domain/usecases/product_usecases/find_product_by_name_usecase.dart';
+import 'presentation/screens/categoryscreen/cubit/category_cubit.dart';
 import 'presentation/screens/profile/cubit/profile_cubit.dart';
 import 'presentation/screens/searchedscreen/cubit/search_cubit.dart';
 
@@ -80,9 +81,13 @@ Future<void> init() async {
   );
   sl.registerFactory<SearchCubit>(
     () => SearchCubit(
-      findProductByIdUsecase: sl.call(),
-      findProductByCategoryUsecase: sl.call(),
       findProductByNameUsecase: sl.call(),
+      fetchProductUsecase: sl.call(),
+    ),
+  );
+  sl.registerFactory<CategoryCubit>(
+    () => CategoryCubit(
+      findProductByCategoryUsecase: sl.call(),
       fetchProductUsecase: sl.call(),
     ),
   );
