@@ -1,3 +1,5 @@
+import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../ForgetPassword/forgetpassword.dart';
 
 import '../../../widgets/constants.dart';
@@ -116,6 +118,7 @@ class _LoginFormState extends State<LoginForm> {
                 SizedBox(height: getProportionateScreenHeight(10)),
                 _buildTextOr(),
                 _googleSignIn(),
+                _phoneSignIn(),
               ],
             ),
           );
@@ -219,8 +222,73 @@ class _LoginFormState extends State<LoginForm> {
 
   _googleSignIn() {
     return Padding(
-      padding: EdgeInsets.only(left: 30.0, right: 30.0),
-      child: DefaultButton(text: "Sign In With Google", press: onGoogleLogin),
+      padding: const EdgeInsets.all(15.0),
+      child: SizedBox(
+        width: double.infinity,
+        height: getProportionateScreenHeight(45),
+        child: ElevatedButton.icon(
+          onPressed: () {
+            onGoogleLogin();
+          },
+          icon: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(
+              "assets/icons/google-icon.svg",
+              height: 25,
+              width: 25,
+            ),
+          ),
+          label: Text(
+            "Google",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: getProportionateScreenWidth(18)),
+          ),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _phoneSignIn() {
+    return SizedBox(
+      width: double.infinity,
+      height: getProportionateScreenHeight(45),
+      child: ElevatedButton.icon(
+        onPressed: () {},
+        icon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SvgPicture.asset(
+            "assets/icons/Phone.svg",
+            color: Colors.white,
+            height: 25,
+            width: 25,
+          ),
+        ),
+        label: Text(
+          "Phone Number",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: getProportionateScreenWidth(18)),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

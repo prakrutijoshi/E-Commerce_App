@@ -23,7 +23,7 @@ class DiscountBanner extends StatelessWidget {
           style: TextStyle(color: Colors.white),
           children: [
             TextSpan(
-                text: "Christmas Surprise! \n",
+                text: "New Year Surprise! \n",
                 style: TextStyle(
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold,

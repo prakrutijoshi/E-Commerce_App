@@ -24,7 +24,8 @@ class _SearchedScreenState extends State<SearchedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('data'),
+        title: Text("Results for " + widget.product),
+        centerTitle: true,
       ),
       body: BlocBuilder<SearchCubit, SearchState>(
         builder: (context, state) {

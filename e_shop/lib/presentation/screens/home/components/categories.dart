@@ -25,7 +25,7 @@ class _CategoriesState extends State<Categories> {
       {"icon": "assets/icons/other.svg", "text": "others"},
     ];
     return Padding(
-      padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+      padding: EdgeInsets.all(getProportionateScreenWidth(15)),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -94,7 +94,14 @@ class CategoryCard extends StatelessWidget {
               ),
             ),
             SizedBox(height: 5),
-            Text(text!, textAlign: TextAlign.center)
+            Text(
+              text!,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor),
+            )
           ],
         ),
       ),
