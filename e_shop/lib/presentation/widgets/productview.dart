@@ -104,6 +104,14 @@ Widget productView(BuildContext context, List<ProductModel> productDetails) {
     );
   else
     return Center(
-      child: Text('We could not find any products'),
+      child: Text(
+        'We could not find any products',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 40,
+        ),
+        textAlign: TextAlign.center,
+      ),
     );
 }

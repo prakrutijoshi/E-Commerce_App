@@ -25,7 +25,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('data'),
+        title: Text(widget.categoryname),
+        centerTitle: true,
       ),
       body: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {

@@ -16,13 +16,13 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "electronics"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "fashion"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "grocery"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "home & kitchen"},
-      {"icon": "assets/icons/Discover.svg", "text": "medicines"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "veg & fruits"},
-      {"icon": "assets/icons/Discover.svg", "text": "others"},
+      {"icon": "assets/icons/electronics.svg", "text": "electronics"},
+      {"icon": "assets/icons/fashion.svg", "text": "fashion"},
+      {"icon": "assets/icons/grocery.svg", "text": "grocery"},
+      {"icon": "assets/icons/home_kitchen.svg", "text": "home & kitchen"},
+      {"icon": "assets/icons/medicine.svg", "text": "medicines"},
+      {"icon": "assets/icons/fruite.svg", "text": "veg & fruits"},
+      {"icon": "assets/icons/other.svg", "text": "others"},
     ];
     return Padding(
       padding: EdgeInsets.all(getProportionateScreenWidth(20)),
