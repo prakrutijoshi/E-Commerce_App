@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/screens/categoryscreen/components/body.dart';
+import '../../categoryscreen/components/body.dart';
 
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
@@ -16,13 +16,13 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/electronics.svg", "text": "electronics"},
-      {"icon": "assets/icons/fashion.svg", "text": "fashion"},
-      {"icon": "assets/icons/grocery.svg", "text": "grocery"},
-      {"icon": "assets/icons/home_kitchen.svg", "text": "home & kitchen"},
-      {"icon": "assets/icons/medicine.svg", "text": "medicines"},
-      {"icon": "assets/icons/fruite.svg", "text": "veg & fruits"},
-      {"icon": "assets/icons/other.svg", "text": "others"},
+      {"icon": "assets/icons/electronics.svg", "text": "Electronics"},
+      {"icon": "assets/icons/fashion.svg", "text": "Fashion"},
+      {"icon": "assets/icons/grocery.svg", "text": "Grocery"},
+      {"icon": "assets/icons/home_kitchen.svg", "text": "Home & Kitchen"},
+      {"icon": "assets/icons/medicine.svg", "text": "Medicines"},
+      {"icon": "assets/icons/fruite.svg", "text": "Veg & Fruits"},
+      {"icon": "assets/icons/other.svg", "text": "Others"},
     ];
     return Padding(
       padding: EdgeInsets.all(getProportionateScreenWidth(15)),
@@ -45,8 +45,10 @@ class _CategoriesState extends State<Categories> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => CategoryScreen(
-                            categoryname:
-                                categories[index]["text"].toString().trim(),
+                            categoryname: categories[index]["text"]
+                                .toString()
+                                .trim()
+                                .toLowerCase(),
                           ),
                         ),
                       ),
@@ -69,7 +71,7 @@ class CategoryCard extends StatelessWidget {
     required this.press,
   }) : super(key: key);
 
-  final String? icon, text;
+  final String icon, text;
   final GestureTapCallback press;
 
   @override
@@ -89,13 +91,14 @@ class CategoryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: SvgPicture.asset(
-                icon!,
+                icon,
                 color: kPrimaryColor,
+                fit: BoxFit.fitHeight,
               ),
             ),
             SizedBox(height: 5),
             Text(
-              text!,
+              text,
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 10,

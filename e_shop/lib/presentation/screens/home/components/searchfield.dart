@@ -1,8 +1,8 @@
-import '../../searchedscreen/components/body.dart';
+import 'package:flutter/material.dart';
 
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
-import 'package:flutter/material.dart';
+import '../../searchedscreen/components/body.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({Key? key}) : super(key: key);

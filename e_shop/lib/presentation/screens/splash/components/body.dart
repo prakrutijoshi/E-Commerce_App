@@ -1,9 +1,10 @@
-import '../../login/login_screen.dart';
-import 'splash_content.dart';
+import 'package:flutter/material.dart';
+
+import '../../../../utils/default_button.dart';
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
-import '../../../../utils/default_button.dart';
-import 'package:flutter/material.dart';
+import '../../login/login_screen.dart';
+import 'splash_content.dart';
 
 class Body extends StatefulWidget {
   Body({Key? key}) : super(key: key);

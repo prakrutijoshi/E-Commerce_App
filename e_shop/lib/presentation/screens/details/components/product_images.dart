@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import '../../../../data/model/product_model.dart';
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
-import 'package:flutter/material.dart';
 
 class ProductImages extends StatefulWidget {
   ProductImages({

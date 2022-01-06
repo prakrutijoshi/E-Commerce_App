@@ -1,5 +1,5 @@
-import 'package:e_shop/presentation/screens/categoryscreen/cubit/category_cubit.dart';
-import 'package:e_shop/presentation/widgets/productview.dart';
+import '../cubit/category_cubit.dart';
+import '../../../widgets/productview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

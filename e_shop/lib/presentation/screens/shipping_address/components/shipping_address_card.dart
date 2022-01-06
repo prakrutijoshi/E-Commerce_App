@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../../../../data/model/shipping_address_model.dart';
 import '../../../widgets/constants.dart';
-import 'package:flutter/material.dart';
 
 class ShippingAddressCard extends StatelessWidget {
   final ShippingAddressModel shippingAddress;

@@ -68,7 +68,7 @@ class UtilDialog {
           actions: <Widget>[
             TextButton(
               child: Text(
-                "close",
+                "Close",
               ),
               onPressed: () => Navigator.pop(context, false),
             ),

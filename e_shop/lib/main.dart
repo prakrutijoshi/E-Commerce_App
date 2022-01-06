@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'app_view.dart';
 import 'injection_container.dart' as di;
 import 'presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
+import 'presentation/screens/Cart/cubit/cart_cubit.dart';
 import 'presentation/screens/categoryscreen/cubit/category_cubit.dart';
 import 'presentation/screens/home/cubit/product_cubit.dart';
 import 'presentation/screens/profile/cubit/profile_cubit.dart';
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.sl<ProfileCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<CartCubit>(),
         ),
       ],
       child: AppView(),

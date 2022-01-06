@@ -1,12 +1,12 @@
-import '../presentation/screens/home/home_screen.dart';
-import '../presentation/screens/profile/cubit/profile_cubit.dart';
-import '../presentation/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'enum.dart';
+import '../presentation/screens/home/home_screen.dart';
+import '../presentation/screens/profile/cubit/profile_cubit.dart';
+import '../presentation/screens/profile/profile_screen.dart';
 import '../presentation/widgets/constants.dart';
+import 'enum.dart';
 
 class CustomNavBar extends StatelessWidget {
   CustomNavBar({Key? key, required this.selected}) : super(key: key);

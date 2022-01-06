@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/model/product_model.dart';
 import '../../../../domain/usecases/product_usecases/fetch_product_usecase.dart';
-
 import '../../../../domain/usecases/product_usecases/find_product_by_name_usecase.dart';
 
 part 'search_state.dart';

@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
+import '../../../utils/default_button.dart';
 import '../../success/success_page.dart';
 import '../../widgets/constants.dart';
-import '../../../utils/default_button.dart';
-import 'package:flutter/material.dart';
 
 class PaymentScreen extends StatefulWidget {
   final int totalPrice;

@@ -1,13 +1,12 @@
-import 'package:e_shop/domain/usecases/auth_usecases/log_out_from_google_usecase.dart';
-
-import '../../../../domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
-
-import '../../../../domain/usecases/auth_usecases/is_logged_in_usecase.dart';
-import '../../../../domain/usecases/auth_usecases/log_out_usecase.dart';
-import '../../../../domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../domain/usecases/auth_usecases/is_logged_in_usecase.dart';
+import '../../../../domain/usecases/auth_usecases/log_out_from_google_usecase.dart';
+import '../../../../domain/usecases/auth_usecases/log_out_usecase.dart';
+import '../../../../domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
+import '../../../../domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
 
 part 'authentication_state.dart';
 

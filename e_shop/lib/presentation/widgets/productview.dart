@@ -1,7 +1,8 @@
-import 'package:e_shop/data/model/product_model.dart';
-import 'package:e_shop/presentation/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import '../../data/model/product_model.dart';
+import '../screens/details/details_screen.dart';
 
 Widget productView(BuildContext context, List<ProductModel> productDetails) {
   if (productDetails.isNotEmpty)

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../model/user_model.dart';
 import 'firebase_user_remote_datasource.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class FirebaseAuthRemoteDatasource {
   Future<User> get loggedFirebaseUser;

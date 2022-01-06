@@ -1,13 +1,13 @@
-import '../../widgets/constants.dart';
-import '../../widgets/size_config.dart';
-
-import '../../../data/model/shipping_address_model.dart';
-import 'cubit/address_cubit.dart';
-import '../../../utils/default_button.dart';
-import '../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../data/model/shipping_address_model.dart';
+import '../../../utils/default_button.dart';
+import '../../../utils/utils.dart';
+import '../../widgets/constants.dart';
+import '../../widgets/size_config.dart';
+import 'cubit/address_cubit.dart';
 
 class ShippingAddressModelSheet extends StatefulWidget {
   final ShippingAddressModel? shippingAddress;

@@ -1,3 +1,9 @@
+import '../../../../data/model/cart_item_model.dart';
+import '../../Cart/cubit/cart_cubit.dart';
+import '../../../../utils/dialog.dart';
+import '../../../../utils/toast.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../data/model/product_model.dart';
 import 'product_description.dart';
 import 'product_images.dart';
@@ -10,6 +16,22 @@ import 'package:flutter/material.dart';
 class Body extends StatelessWidget {
   final ProductModel product;
   const Body({Key? key, required this.product}) : super(key: key);
+
+  Future<void> onAddToCart(BuildContext context) async {
+    CartItemModel newCartItem = CartItemModel(
+      cid: product.pid,
+      productId: product.pid,
+      quantity: "1",
+      price: product.price,
+    );
+
+    UtilDialog.showWaiting(context);
+
+    await BlocProvider.of<CartCubit>(context).addCartItem(newCartItem);
+
+    UtilDialog.hideWaiting(context);
+    UtilToast.showMessageForUser(context, "Added in cart Successfully");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +60,11 @@ class Body extends StatelessWidget {
                         ),
                         child: DefaultButton(
                           text: "Add to Cart",
-                          press: () {},
+                          press: int.parse(product.quantity) > 0
+                              ? () {
+                                  onAddToCart(context);
+                                }
+                              : () {},
                         ),
                       ),
                     ),

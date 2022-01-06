@@ -1,6 +1,7 @@
-import 'sectiontitle.dart';
-import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../../widgets/size_config.dart';
+import 'sectiontitle.dart';
 
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({Key? key}) : super(key: key);

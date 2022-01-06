@@ -1,6 +1,7 @@
-import 'components/body.dart';
-import '../../widgets/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/size_config.dart';
+import 'components/body.dart';
 
 class SplashScreen2 extends StatelessWidget {
   @override

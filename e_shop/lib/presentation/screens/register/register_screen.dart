@@ -1,9 +1,9 @@
-import 'components/body.dart';
-import '../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../injection_container.dart' as di;
+import '../../widgets/constants.dart';
+import 'components/body.dart';
 import 'cubit/register_cubit.dart';
 
 class RegisterScreen extends StatelessWidget {

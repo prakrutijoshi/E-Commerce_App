@@ -1,11 +1,15 @@
-import 'components/body.dart';
-import '../shipping_address/cubit/address_cubit.dart';
-import '../../widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widgets/constants.dart';
+import '../shipping_address/cubit/address_cubit.dart';
+import 'components/body.dart';
+
 class CheckoutScreen extends StatelessWidget {
-  const CheckoutScreen({Key? key}) : super(key: key);
+  final num priceOfGoods;
+
+  const CheckoutScreen({Key? key, required this.priceOfGoods})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +31,10 @@ class CheckoutScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is AddressLoaded) {
-            var address = state.addresses[0];
-            return Body(address: address);
+            var addresses = state.addresses;
+
+            return Body(addresses: addresses);
           } else {
-            print(state.toString());
             return Center(
               child: Text("Couldn't load data"),
             );
