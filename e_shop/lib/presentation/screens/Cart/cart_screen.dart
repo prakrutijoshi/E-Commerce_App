@@ -1,3 +1,5 @@
+import 'package:e_shop/presentation/widgets/constants.dart';
+
 import 'components/checkout_button.dart';
 import 'cubit/cart_cubit.dart';
 import '../../../utils/dialog.dart';
@@ -15,7 +17,7 @@ class CartScreen extends StatelessWidget {
       child: Scaffold(
         appBar: buildAppBar(context),
         body: Body(),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: kSecondaryColor,
         bottomNavigationBar: CheckOutButton(),
         // bottomNavigationBar: _buildOrderNowButton(context),
       ),
@@ -25,10 +27,8 @@ class CartScreen extends StatelessWidget {
 
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
-    title: Text(
-      "Your Cart",
-      style: TextStyle(color: Colors.white),
-    ),
+    title: Text("Your Cart"),
+    centerTitle: true,
     actions: [
       IconButton(
         icon: Icon(Icons.clear_all_rounded),

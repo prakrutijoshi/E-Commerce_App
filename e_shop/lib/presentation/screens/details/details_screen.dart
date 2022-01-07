@@ -8,9 +8,11 @@ class DetailScreen extends StatelessWidget {
   const DetailScreen({
     Key? key,
     required this.product,
+    required this.isWishListed,
   }) : super(key: key);
 
   final ProductModel product;
+  final bool isWishListed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class DetailScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(AppBar().preferredSize.height),
         child: CustomAppBar(rating: product.rating),
       ),
-      body: Body(product: product),
+      body: Body(product: product, isWishListed: isWishListed),
     );
   }
 }

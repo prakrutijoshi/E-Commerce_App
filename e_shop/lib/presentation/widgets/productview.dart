@@ -1,5 +1,7 @@
+import 'package:e_shop/presentation/screens/WishList/cubit/wishlist_cubit.dart';
+import 'package:e_shop/presentation/widgets/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/model/product_model.dart';
 import '../screens/details/details_screen.dart';
@@ -17,15 +19,19 @@ Widget productView(BuildContext context, List<ProductModel> productDetails) {
           productDetails.length,
           (index) {
             return InkWell(
-              onTap: () => {
+              onTap: () async {
+                bool isWishListed =
+                    await BlocProvider.of<WishlistCubit>(context)
+                        .isExistsInWishList(productDetails[index].pid);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => DetailScreen(
                       product: productDetails[index],
+                      isWishListed: isWishListed,
                     ),
                   ),
-                ),
+                );
               },
               splashColor: Colors.grey,
               child: Container(
@@ -109,9 +115,9 @@ Widget productView(BuildContext context, List<ProductModel> productDetails) {
       child: Text(
         'We could not find any products',
         style: TextStyle(
-          color: Colors.black,
+          color: kPrimaryColor,
           fontWeight: FontWeight.bold,
-          fontSize: 40,
+          fontSize: 20,
         ),
         textAlign: TextAlign.center,
       ),

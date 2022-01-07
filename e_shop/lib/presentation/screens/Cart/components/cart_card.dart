@@ -1,5 +1,7 @@
+import 'package:e_shop/presentation/screens/WishList/cubit/wishlist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../data/model/cart_item_model.dart';
 import '../../../../data/model/product_model.dart';
@@ -31,13 +33,21 @@ class CartCard extends StatelessWidget {
           Row(
             children: [
               InkWell(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailScreen(
-                        product: cartItem.productInfo as ProductModel),
-                  ),
-                ),
+                onTap: () async {
+                  bool isWishListed =
+                      await BlocProvider.of<WishlistCubit>(context)
+                          .isExistsInWishList(cartItem.productId);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailScreen(
+                        product: cartItem.productInfo as ProductModel,
+                        isWishListed: isWishListed,
+                      ),
+                    ),
+                  );
+                },
                 child: Image.network(
                   cartItem.productInfo!.images[0],
                   width: 90,
@@ -52,13 +62,21 @@ class CartCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailScreen(
-                              product: cartItem.productInfo as ProductModel),
-                        ),
-                      ),
+                      onTap: () async {
+                        bool isWishListed =
+                            await BlocProvider.of<WishlistCubit>(context)
+                                .isExistsInWishList(cartItem.productId);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailScreen(
+                              product: cartItem.productInfo as ProductModel,
+                              isWishListed: isWishListed,
+                            ),
+                          ),
+                        );
+                      },
                       child: Text(
                         cartItem.productInfo!.name,
                         style: TextStyle(color: Colors.black, fontSize: 15),
@@ -123,30 +141,29 @@ class CartCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 5),
             child: Divider(
               height: 0,
               thickness: 1,
             ),
           ),
-          TextButton(
+          ElevatedButton.icon(
+            icon: SvgPicture.asset("assets/icons/Trash.svg"),
             onPressed: () {
               _onRemoveCartItem(context);
             },
-            child: Text(
+            label: Text(
               "Remove",
               style: TextStyle(
-                fontWeight: FontWeight.normal,
-                color: Colors.black,
-                fontSize: getProportionateScreenWidth(16),
-              ),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: getProportionateScreenWidth(18)),
             ),
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
-              fixedSize: MaterialStateProperty.all(Size(100, 43)),
+              backgroundColor: MaterialStateProperty.all(kPrimaryColor),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),

@@ -67,7 +67,7 @@ class CheckOutButton extends StatelessWidget {
             height: 20,
           ),
         ),
-        SizedBox(width: 5),
+        SizedBox(width: 8),
         Text.rich(
           TextSpan(
             style: TextStyle(
@@ -76,7 +76,7 @@ class CheckOutButton extends StatelessWidget {
               fontSize: 18,
             ),
             children: [
-              TextSpan(text: "Total:\n"),
+              TextSpan(text: "Total: "),
               TextSpan(
                 text: "₹${state.priceOfGoods.toString()}",
                 style: TextStyle(

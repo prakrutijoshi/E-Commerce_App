@@ -1,3 +1,12 @@
+import 'package:e_shop/data/datasource/remote_datasource/firebase_wishlist_remote%20datasource.dart';
+import 'package:e_shop/data/repositories/firebase_wishlist_repository_impl.dart';
+import 'package:e_shop/domain/repositories/firebase_wishlist_repository.dart';
+import 'package:e_shop/domain/usecases/wishlist_usecases/add_wishlist_item_usecase.dart';
+import 'package:e_shop/domain/usecases/wishlist_usecases/clear_wishlist_usecase.dart';
+import 'package:e_shop/domain/usecases/wishlist_usecases/fetch_wishlist_usecase.dart';
+import 'package:e_shop/domain/usecases/wishlist_usecases/is_exists_in_wishlist_usecase.dart';
+import 'package:e_shop/domain/usecases/wishlist_usecases/remove_wishlist_item_usecase.dart';
+import 'package:e_shop/presentation/screens/WishList/cubit/wishlist_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasource/remote_datasource/firebase_auth_remote_datasource.dart';
@@ -120,6 +129,18 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerFactory<WishlistCubit>(
+    () => WishlistCubit(
+      loggedFirebaseUserUseCase: sl.call(),
+      fetchWishListUseCase: sl.call(),
+      addWishListItemUseCase: sl.call(),
+      removeWishListItemUseCase: sl.call(),
+      isExistsInWishListUseCase: sl.call(),
+      clearWishListUseCase: sl.call(),
+      findProductByIdUsecase: sl.call(),
+    ),
+  );
+
   // auth usecase
   sl.registerLazySingleton<IsLoggedInUseCase>(
       () => IsLoggedInUseCase(sl.call()));
@@ -172,6 +193,18 @@ Future<void> init() async {
   sl.registerLazySingleton<UpdateCartItemUseCase>(
       () => UpdateCartItemUseCase(repository: sl.call()));
 
+  // WishList Usecases
+  sl.registerLazySingleton<AddWishListItemUseCase>(
+      () => AddWishListItemUseCase(repository: sl.call()));
+  sl.registerLazySingleton<FetchWishListUseCase>(
+      () => FetchWishListUseCase(repository: sl.call()));
+  sl.registerLazySingleton<RemoveWishListItemUseCase>(
+      () => RemoveWishListItemUseCase(repository: sl.call()));
+  sl.registerLazySingleton<IsExistsInWishListUseCase>(
+      () => IsExistsInWishListUseCase(repository: sl.call()));
+  sl.registerLazySingleton<ClearWishListUseCase>(
+      () => ClearWishListUseCase(repository: sl.call()));
+
   // repository
   sl.registerLazySingleton<FirebaseAuthRepository>(
       () => FirebaseAuthRepositoryImpl(sl.call()));
@@ -183,6 +216,8 @@ Future<void> init() async {
       () => FirebaseStorageRepositoryImpl(remoteDataSource: sl.call()));
   sl.registerLazySingleton<FirebaseCartRepository>(
       () => FirebaseCartRepositoryImpl(remoteDatasource: sl.call()));
+  sl.registerLazySingleton<FirebaseWishListRepository>(
+      () => FirebaseWishListRepositoryImpl(remoteDatasource: sl.call()));
 
   // datasource
   sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(
@@ -194,4 +229,6 @@ Future<void> init() async {
       () => FirebaseStorageRemoteDatasourceImpl());
   sl.registerLazySingleton<FirebaseCartRemoteDatasource>(
       () => FirebaseCartRemoteDatasourceImpl());
+  sl.registerLazySingleton<FirebaseWishlistRemoteDatasource>(
+      () => FirebaseWishListRemoteDatasourceImpl());
 }

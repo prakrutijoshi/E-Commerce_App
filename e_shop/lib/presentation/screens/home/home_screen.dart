@@ -1,3 +1,4 @@
+import 'package:e_shop/presentation/screens/WishList/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/customnavbar.dart';
@@ -19,7 +20,12 @@ class HomeScreen extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/Heart Icon.svg",
             color: Colors.white,
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WishListScreen()),
+              );
+            },
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",

@@ -15,7 +15,9 @@ import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
   final ProductModel product;
-  const Body({Key? key, required this.product}) : super(key: key);
+  final bool isWishListed;
+  const Body({Key? key, required this.product, required this.isWishListed})
+      : super(key: key);
 
   Future<void> onAddToCart(BuildContext context) async {
     CartItemModel newCartItem = CartItemModel(
@@ -44,6 +46,7 @@ class Body extends StatelessWidget {
             children: [
               ProductDescription(
                 product: product,
+                isWishListed: isWishListed,
               ),
               RoundedContainer(
                 color: kSecondaryColor,
@@ -55,8 +58,8 @@ class Body extends StatelessWidget {
                         padding: EdgeInsets.only(
                           left: SizeConfig.screenWidth * 0.15,
                           right: SizeConfig.screenWidth * 0.15,
-                          bottom: getProportionateScreenWidth(40),
-                          top: getProportionateScreenWidth(15),
+                          bottom: getProportionateScreenWidth(30),
+                          //top: getProportionateScreenWidth(8),
                         ),
                         child: DefaultButton(
                           text: "Add to Cart",

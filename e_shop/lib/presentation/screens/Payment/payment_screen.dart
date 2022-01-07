@@ -1,7 +1,7 @@
+import 'package:e_shop/presentation/screens/success/success_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/default_button.dart';
-import '../../success/success_page.dart';
 import '../../widgets/constants.dart';
 
 class PaymentScreen extends StatefulWidget {
