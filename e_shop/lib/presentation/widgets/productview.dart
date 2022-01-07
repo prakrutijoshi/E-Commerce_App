@@ -104,7 +104,8 @@ Widget productView(BuildContext context, List<ProductModel> productDetails) {
       ),
     );
   else
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.only(top: 250),
       child: Text(
         'We could not find any products',
         style: TextStyle(

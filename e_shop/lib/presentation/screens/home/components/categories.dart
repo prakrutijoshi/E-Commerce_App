@@ -83,7 +83,7 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+              padding: EdgeInsets.all(getProportionateScreenWidth(12)),
               height: getProportionateScreenWidth(55),
               width: getProportionateScreenWidth(55),
               decoration: BoxDecoration(
@@ -101,9 +101,10 @@ class CategoryCard extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor),
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryColor,
+              ),
             )
           ],
         ),

@@ -42,7 +42,8 @@ class _SearchedScreenState extends State<SearchedScreen> {
               child: CircularProgressIndicator(),
             );
           } else if (state is SearchLoaded) {
-            return productView(context, state.results);
+            return SingleChildScrollView(
+                child: productView(context, state.results));
           } else if (state is SearchError) {
             return Center(
               child: Text(state.message),

@@ -42,7 +42,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
               child: CircularProgressIndicator(),
             );
           } else if (state is CategoryLoaded) {
-            return productView(context, state.products);
+            return SingleChildScrollView(
+                child: productView(context, state.products));
           } else if (state is CategoryError) {
             return Center(
               child: Text(state.message),
