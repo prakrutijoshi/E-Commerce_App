@@ -3,18 +3,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../model/product_model.dart';
 
 abstract class ProductDataSource {
-  Future<List<ProductModel>> fetchProducts();
+  Future<List<ProductModel>> fetchProducts(int page);
   Future<ProductModel> findProductById(String pid);
-  Future<List<ProductModel>> findProductByCategory(String category);
-  Future<List<ProductModel>> findProductByName(String name);
+  Future<List<ProductModel>> findProductByCategory(String category, int page);
 }
 
 class ProductDataSourceImpl extends ProductDataSource {
   var _productcollaction = FirebaseFirestore.instance.collection('products');
 
   @override
-  Future<List<ProductModel>> fetchProducts() async {
+  Future<List<ProductModel>> fetchProducts(int page) async {
+    print(page);
     return await _productcollaction
+        .limit(4 * page)
         .get()
         .then((snapshot) => snapshot.docs
             .map((doc) => ProductModel.fromMap(doc.data()))
@@ -36,21 +37,12 @@ class ProductDataSourceImpl extends ProductDataSource {
   }
 
   @override
-  Future<List<ProductModel>> findProductByCategory(String category) async {
+  Future<List<ProductModel>> findProductByCategory(
+      String category, int page) async {
+    print(page);
     return await _productcollaction
         .where("category", isEqualTo: category)
-        .get()
-        .then((snapshot) => snapshot.docs
-            .map((doc) => ProductModel.fromMap(doc.data()))
-            .toList())
-        .catchError((error) {
-      print(error);
-    });
-  }
-
-  @override
-  Future<List<ProductModel>> findProductByName(String name) async {
-    return await _productcollaction
+        .limit(4 * page)
         .get()
         .then((snapshot) => snapshot.docs
             .map((doc) => ProductModel.fromMap(doc.data()))

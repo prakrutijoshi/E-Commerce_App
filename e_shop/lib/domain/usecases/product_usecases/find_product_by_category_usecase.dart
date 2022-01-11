@@ -6,7 +6,7 @@ class FindProductByCategoryUsecase {
 
   FindProductByCategoryUsecase(this.repository);
 
-  Future<List<ProductEntity>> call(String category) async {
-    return await repository.findProductByCategory(category);
+  Future<List<ProductEntity>> call(String category, int page) async {
+    return await repository.findProductByCategory(category, page);
   }
 }

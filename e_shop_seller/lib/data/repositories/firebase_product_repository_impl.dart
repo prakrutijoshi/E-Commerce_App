@@ -19,14 +19,15 @@ class FirebaseProductRepositoryImpl implements FirebaseProductRepository {
   }
 
   @override
-  Stream<List<ProductEntity>> getAvailableProductsBySellerId(String sellerId) {
-    return remoteDatasource.getAvailableProductsBySellerId(sellerId);
+  Stream<List<ProductEntity>> getAvailableProductsBySellerId(
+      int page, String sellerId) {
+    return remoteDatasource.getAvailableProductsBySellerId(page, sellerId);
   }
 
   @override
   Stream<List<ProductEntity>> getUnAvailableProductsBySellerId(
-      String sellerId) {
-    return remoteDatasource.getUnAvailableProductsBySellerId(sellerId);
+      int page, String sellerId) {
+    return remoteDatasource.getUnAvailableProductsBySellerId(page, sellerId);
   }
 
   @override

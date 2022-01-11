@@ -32,7 +32,6 @@ import 'domain/usecases/cart_usecases/update_cart_item_usecase.dart';
 import 'domain/usecases/product_usecases/fetch_product_usecase.dart';
 import 'domain/usecases/product_usecases/find_product_by_category_usecase.dart';
 import 'domain/usecases/product_usecases/find_product_by_id_usecase.dart';
-import 'domain/usecases/product_usecases/find_product_by_name_usecase.dart';
 import 'domain/usecases/storage_usecases/upload_image_file_usecase.dart';
 import 'domain/usecases/user_usecases/add_user_data_usecase.dart';
 import 'domain/usecases/user_usecases/get_user_by_id_usecase.dart';
@@ -89,7 +88,6 @@ Future<void> init() async {
   );
   sl.registerFactory<SearchCubit>(
     () => SearchCubit(
-      findProductByNameUsecase: sl.call(),
       fetchProductUsecase: sl.call(),
     ),
   );
@@ -153,8 +151,6 @@ Future<void> init() async {
       () => FindProductByIdUsecase(sl.call()));
   sl.registerLazySingleton<FindProductByCategoryUsecase>(
       () => FindProductByCategoryUsecase(sl.call()));
-  sl.registerLazySingleton<FindProductByNameUsecase>(
-      () => FindProductByNameUsecase(sl.call()));
 
   // Storage Usecases
   sl.registerLazySingleton<UploadImageFileUseCase>(

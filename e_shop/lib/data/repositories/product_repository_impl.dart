@@ -7,8 +7,8 @@ class ProductRepositoryImpl extends ProductRepository {
 
   ProductRepositoryImpl(this.productDataSource);
   @override
-  Future<List<ProductEntity>> fetchProducts() async {
-    return await productDataSource.fetchProducts();
+  Future<List<ProductEntity>> fetchProducts(int page) async {
+    return await productDataSource.fetchProducts(page);
   }
 
   @override
@@ -17,12 +17,8 @@ class ProductRepositoryImpl extends ProductRepository {
   }
 
   @override
-  Future<List<ProductEntity>> findProductByCategory(String category) async {
-    return await productDataSource.findProductByCategory(category);
-  }
-
-  @override
-  Future<List<ProductEntity>> findProductByName(String name) async {
-    return await productDataSource.findProductByName(name);
+  Future<List<ProductEntity>> findProductByCategory(
+      String category, int page) async {
+    return await productDataSource.findProductByCategory(category, page);
   }
 }

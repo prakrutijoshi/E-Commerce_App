@@ -1,5 +1,7 @@
-import '../../categoryscreen/components/body.dart';
+import 'package:e_shop/presentation/screens/categoryscreen/cubit/category_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../categoryscreen/components/body.dart';
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
 import 'package:flutter/material.dart';

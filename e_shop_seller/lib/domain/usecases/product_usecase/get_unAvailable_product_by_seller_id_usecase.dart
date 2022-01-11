@@ -6,7 +6,7 @@ class GetUnAvailableProductBySellerIdUseCase {
 
   GetUnAvailableProductBySellerIdUseCase({required this.repository});
 
-  Stream<List<ProductEntity>> call({required String sellerId}) {
-    return repository.getUnAvailableProductsBySellerId(sellerId);
+  Stream<List<ProductEntity>> call(int page, {required String sellerId}) {
+    return repository.getUnAvailableProductsBySellerId(page, sellerId);
   }
 }
