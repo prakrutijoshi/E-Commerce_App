@@ -104,9 +104,9 @@ class CartCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 30,
-                        ),
+                        // SizedBox(
+                        //   width: 5,
+                        // ),
                         CircleIconButton(
                           icon: Icons.remove,
                           onPressed: () {
