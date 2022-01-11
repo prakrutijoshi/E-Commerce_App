@@ -25,7 +25,7 @@ class Body extends StatelessWidget {
             Categories(),
             SpecialOffers(),
             SizedBox(
-              height: getProportionateScreenWidth(30),
+              height: getProportionateScreenWidth(10),
             ),
             Products(),
             SizedBox(height: getProportionateScreenWidth(30)),

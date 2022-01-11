@@ -40,8 +40,10 @@ class _MyOrderScreenState extends State<MyOrderScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kSecondaryColor,
         appBar: AppBar(
-          title: Text("My Orders"),
+          title: Text("Your Orders"),
+          backgroundColor: Colors.deepPurple[300],
         ),
         body: BlocBuilder<MyOrderCubit, MyOrderState>(
           builder: (context, state) {
@@ -90,7 +92,7 @@ class _MyOrderScreenState extends State<MyOrderScreen>
       child: TabBar(
         controller: tabController,
         tabs: <Widget>[
-          Tab(text: "Delivering"),
+          Tab(text: "In Process"),
           Tab(text: "Delivered"),
         ],
         onTap: (index) {},

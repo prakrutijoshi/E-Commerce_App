@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/model/order_model.dart';
-import '../../../data/model/shipping_address_model.dart';
-import '../../../utils/default_button.dart';
-import '../../../utils/formatter.dart';
-import '../../../utils/toast.dart';
-import '../../widgets/constants.dart';
-import '../../widgets/size_config.dart';
-import '../my_orders/cubit/my_order_cubit.dart';
-import '../shipping_address/components/shipping_address_card.dart';
+import '../../../../data/model/order_model.dart';
+import '../../../../data/model/shipping_address_model.dart';
+import '../../../../utils/default_button.dart';
+import '../../../../utils/formatter.dart';
+import '../../../../utils/toast.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../cubit/my_order_cubit.dart';
+import '../../shipping_address/components/shipping_address_card.dart';
 
 class DetaileOrderScreen extends StatelessWidget {
   final OrderModel order;
-
+  external DateTime add(Duration duration);
   const DetaileOrderScreen({
     Key? key,
     required this.order,
@@ -23,13 +23,17 @@ class DetaileOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kSecondaryColor,
         appBar: AppBar(
-          title: Text("Detaile Order"),
+          title: Text("Order Details"),
+          centerTitle: true,
         ),
         body: ListView(
           padding: EdgeInsets.only(bottom: 10),
           children: [
+            header("Products"),
             _buildListOrderModelItems(),
+            header("Checkout Details"),
             _priceDetails(),
             _buildPaymentMethod(context),
             ShippingAddressCard(
@@ -47,26 +51,43 @@ class DetaileOrderScreen extends StatelessWidget {
   Widget _priceDetails() {
     return Column(
       children: [
-        Center(
-          child: Text(
-            "Price Details",
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              color: kPrimaryColor,
-            ),
-          ),
-        ),
         SizedBox(
           height: getProportionateScreenHeight(15),
         ),
         _rowdetails("Bag Total", order.priceOfGoods),
         _rowdetails("Discount", order.discount),
         _rowdetails("Shipping Charges", order.shippingCharges),
-        Divider(),
+        Divider(
+          color: Colors.grey,
+          thickness: 1,
+        ),
         _rowdetails("Total", order.priceToBePaid),
       ],
+    );
+  }
+
+  Widget header(String title) {
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blueGrey,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white, width: 2),
+        ),
+        child: Padding(
+          padding:
+              EdgeInsets.only(top: 7.0, bottom: 7.0, left: 20.0, right: 20.0),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -80,9 +101,9 @@ class DetaileOrderScreen extends StatelessWidget {
               child: Text(
                 text,
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor),
               ),
             ),
             Padding(
@@ -90,7 +111,7 @@ class DetaileOrderScreen extends StatelessWidget {
               child: Text(
                 "₹ $price",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -191,6 +212,7 @@ class DetaileOrderScreen extends StatelessWidget {
         children: [
           Text(
             "Payment Method",
+            style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
           ),
           Text(
             order.paymentMethod,
@@ -201,6 +223,8 @@ class DetaileOrderScreen extends StatelessWidget {
   }
 
   _buildDelivering(BuildContext context) {
+    var deliveryDate =
+        ((order.createdAt).toDate()).add(const Duration(days: 5));
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: 10,
@@ -209,15 +233,33 @@ class DetaileOrderScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            order.isDelivering ? "Delivering" : "Delivered",
-          ),
+          order.isDelivering
+              ? Row(
+                  children: [
+                    Text(
+                      "Delivering By: ",
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                        "${deliveryDate.day}/${deliveryDate.month}/${deliveryDate.year}"),
+                  ],
+                )
+              : Text(
+                  "Delivered",
+                  style: TextStyle(
+                      color: kPrimaryColor, fontWeight: FontWeight.bold),
+                ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 child: Text(
                   "Created At: ",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: kPrimaryColor),
                 ),
               ),
               Expanded(
@@ -239,7 +281,7 @@ class DetaileOrderScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 5),
         child: DefaultButton(
           press: () => _onCancelOrderModel(context),
-          text: "Cancle",
+          text: "Cancel Order",
         ),
       );
     }
