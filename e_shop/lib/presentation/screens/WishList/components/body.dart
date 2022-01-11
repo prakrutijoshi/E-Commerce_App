@@ -1,10 +1,11 @@
-import 'package:e_shop/data/model/wishlist_item_model.dart';
-import 'package:e_shop/presentation/screens/WishList/components/wishlist_card.dart';
-import 'package:e_shop/presentation/screens/WishList/cubit/wishlist_cubit.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/presentation/widgets/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../data/model/wishlist_item_model.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../cubit/wishlist_cubit.dart';
+import 'wishlist_card.dart';
 
 class Body extends StatefulWidget {
   Body({Key? key}) : super(key: key);

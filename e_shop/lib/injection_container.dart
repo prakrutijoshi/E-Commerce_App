@@ -1,26 +1,29 @@
-import 'package:e_shop/data/datasource/remote_datasource/firebase_wishlist_remote%20datasource.dart';
-import 'package:e_shop/data/repositories/firebase_wishlist_repository_impl.dart';
-import 'package:e_shop/domain/repositories/firebase_wishlist_repository.dart';
-import 'package:e_shop/domain/usecases/wishlist_usecases/add_wishlist_item_usecase.dart';
-import 'package:e_shop/domain/usecases/wishlist_usecases/clear_wishlist_usecase.dart';
-import 'package:e_shop/domain/usecases/wishlist_usecases/fetch_wishlist_usecase.dart';
-import 'package:e_shop/domain/usecases/wishlist_usecases/is_exists_in_wishlist_usecase.dart';
-import 'package:e_shop/domain/usecases/wishlist_usecases/remove_wishlist_item_usecase.dart';
-import 'package:e_shop/presentation/screens/WishList/cubit/wishlist_cubit.dart';
+import 'data/datasource/remote_datasource/firebase_wishlist_remote%20datasource.dart';
+import 'data/repositories/firebase_wishlist_repository_impl.dart';
+import 'domain/repositories/firebase_wishlist_repository.dart';
+import 'domain/usecases/wishlist_usecases/add_wishlist_item_usecase.dart';
+import 'domain/usecases/wishlist_usecases/clear_wishlist_usecase.dart';
+import 'domain/usecases/wishlist_usecases/fetch_wishlist_usecase.dart';
+import 'domain/usecases/wishlist_usecases/is_exists_in_wishlist_usecase.dart';
+import 'domain/usecases/wishlist_usecases/remove_wishlist_item_usecase.dart';
+import 'presentation/screens/WishList/cubit/wishlist_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasource/remote_datasource/firebase_auth_remote_datasource.dart';
 import 'data/datasource/remote_datasource/firebase_cart_remote_datasource.dart';
+import 'data/datasource/remote_datasource/firebase_order_remote_datasource.dart';
 import 'data/datasource/remote_datasource/firebase_storage_remote_datasource.dart';
 import 'data/datasource/remote_datasource/firebase_user_remote_datasource.dart';
 import 'data/datasource/remote_datasource/productdatasource.dart';
 import 'data/repositories/firbase_cart_repository_impl.dart';
 import 'data/repositories/firebase_auth_repository_impl.dart';
+import 'data/repositories/firebase_order_repository_impl.dart';
 import 'data/repositories/firebase_storage_repository_impl.dart';
 import 'data/repositories/firebase_user_repository_impl.dart';
 import 'data/repositories/product_repository_impl.dart';
 import 'domain/repositories/firebase_auth_repository.dart';
 import 'domain/repositories/firebase_cart_repository.dart';
+import 'domain/repositories/firebase_order_repository.dart';
 import 'domain/repositories/firebase_storage_repository.dart';
 import 'domain/repositories/firebase_user_repository.dart';
 import 'domain/repositories/product_repository.dart';
@@ -38,6 +41,9 @@ import 'domain/usecases/cart_usecases/clear_cart_usecase.dart';
 import 'domain/usecases/cart_usecases/fetch_cart_usecase.dart';
 import 'domain/usecases/cart_usecases/remove_cart_item_usecase.dart';
 import 'domain/usecases/cart_usecases/update_cart_item_usecase.dart';
+import 'domain/usecases/order_usecases/add_order_usecase.dart';
+import 'domain/usecases/order_usecases/get_orders_usecase.dart';
+import 'domain/usecases/order_usecases/remove_order_usecase.dart';
 import 'domain/usecases/product_usecases/fetch_product_usecase.dart';
 import 'domain/usecases/product_usecases/find_product_by_category_usecase.dart';
 import 'domain/usecases/product_usecases/find_product_by_id_usecase.dart';
@@ -51,6 +57,7 @@ import 'presentation/screens/Cart/cubit/cart_cubit.dart';
 import 'presentation/screens/categoryscreen/cubit/category_cubit.dart';
 import 'presentation/screens/home/cubit/product_cubit.dart';
 import 'presentation/screens/login/cubit/login_cubit.dart';
+import 'presentation/screens/my_orders/cubit/my_order_cubit.dart';
 import 'presentation/screens/profile/cubit/profile_cubit.dart';
 import 'presentation/screens/register/cubit/register_cubit.dart';
 import 'presentation/screens/searchedscreen/cubit/search_cubit.dart';
@@ -128,6 +135,12 @@ Future<void> init() async {
       findProductByIdUsecase: sl.call(),
     ),
   );
+  sl.registerFactory<MyOrderCubit>(() => MyOrderCubit(
+        getOrdersUseCase: sl.call(),
+        addOrderUseCase: sl.call(),
+        removeOrderUseCase: sl.call(),
+        loggedFirebaseUserUseCase: sl.call(),
+      ));
 
   sl.registerFactory<WishlistCubit>(
     () => WishlistCubit(
@@ -204,6 +217,13 @@ Future<void> init() async {
       () => IsExistsInWishListUseCase(repository: sl.call()));
   sl.registerLazySingleton<ClearWishListUseCase>(
       () => ClearWishListUseCase(repository: sl.call()));
+  // Order Usecase
+  sl.registerLazySingleton<AddOrderUseCase>(
+      () => AddOrderUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetOrdersUseCase>(
+      () => GetOrdersUseCase(repository: sl.call()));
+  sl.registerLazySingleton<RemoveOrderUseCase>(
+      () => RemoveOrderUseCase(repository: sl.call()));
 
   // repository
   sl.registerLazySingleton<FirebaseAuthRepository>(
@@ -218,6 +238,8 @@ Future<void> init() async {
       () => FirebaseCartRepositoryImpl(remoteDatasource: sl.call()));
   sl.registerLazySingleton<FirebaseWishListRepository>(
       () => FirebaseWishListRepositoryImpl(remoteDatasource: sl.call()));
+  sl.registerLazySingleton<FirebaseOrderRepository>(
+      () => FirebaseOrderRepositoryImpl(remoteDatasource: sl.call()));
 
   // datasource
   sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(
@@ -231,4 +253,6 @@ Future<void> init() async {
       () => FirebaseCartRemoteDatasourceImpl());
   sl.registerLazySingleton<FirebaseWishlistRemoteDatasource>(
       () => FirebaseWishListRemoteDatasourceImpl());
+  sl.registerLazySingleton<FirebaseOrderRemoteDatasource>(
+      () => FirebaseOrderRemoteDatasourceImpl());
 }

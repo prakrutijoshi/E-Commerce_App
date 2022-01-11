@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import '../../../../../data/models/product_model.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../../data/models/product_model.dart';
 import '../../../../../domain/usecases/product_usecase/update_product_data_usecase.dart';
 
 part 'update_product_state.dart';

@@ -1,6 +1,6 @@
-import 'package:e_shop_seller/presentation/screens/product/add_product/add_product_screen.dart';
-import 'package:e_shop_seller/presentation/screens/product/display_products/display_products_by_seller_screen.dart';
-import 'package:e_shop_seller/utils/default_button.dart';
+import '../../product/add_product/add_product_screen.dart';
+import '../../product/display_products/display_products_by_seller_screen.dart';
+import '../../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreenBody extends StatelessWidget {

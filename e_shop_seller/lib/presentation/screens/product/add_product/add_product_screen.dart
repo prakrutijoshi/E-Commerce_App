@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:uuid/uuid.dart';
+
 import 'cubit/product_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -63,11 +65,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
     User user = await BlocProvider.of<ProductCubit>(context).getSeller();
 
     if (isPopulated) {
-      var productId = UniqueKey().toString() +
-          DateTime.now().millisecondsSinceEpoch.toString();
+      var uuid = Uuid();
       // Create new product
       var newProduct = ProductModel(
-        pid: productId,
+        pid: uuid.v1(),
         name: productNameController.text.trim(),
         description: descriptionController.text.trim(),
         category: dropdownValue.trim(),
@@ -80,7 +81,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
         sellerId: user.uid,
       );
 
-      BlocProvider.of<ProductCubit>(context).addProduct(newProduct: newProduct);
+      await BlocProvider.of<ProductCubit>(context)
+          .addProduct(newProduct: newProduct);
 
       Navigator.pop(context);
     } else {

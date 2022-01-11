@@ -1,5 +1,3 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
-
 import '../cubit/category_cubit.dart';
 import '../../../widgets/productview.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +30,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
       ),
       body: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
-          print(state);
           if (state is CategoryInitial) {
             BlocProvider.of<CategoryCubit>(context)
                 .findProductByCategory(category: widget.categoryname);

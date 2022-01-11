@@ -1,7 +1,7 @@
-import 'package:e_shop/presentation/screens/WishList/components/body.dart';
-import 'package:e_shop/presentation/screens/WishList/cubit/wishlist_cubit.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/utils/dialog.dart';
+import 'components/body.dart';
+import 'cubit/wishlist_cubit.dart';
+import '../../widgets/constants.dart';
+import '../../../utils/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,5 +1,5 @@
-import 'package:e_shop/domain/entities/wishlist_item_entity.dart';
-import 'package:e_shop/domain/repositories/firebase_wishlist_repository.dart';
+import '../../entities/wishlist_item_entity.dart';
+import '../../repositories/firebase_wishlist_repository.dart';
 
 class AddWishListItemUseCase {
   final FirebaseWishListRepository repository;

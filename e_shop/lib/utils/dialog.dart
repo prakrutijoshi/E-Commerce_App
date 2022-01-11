@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../presentation/widgets/constants.dart';
+
 class UtilDialog {
   static showInformation(
     BuildContext context, {
@@ -12,13 +14,23 @@ class UtilDialog {
       builder: (context) {
         return AlertDialog(
           title: Text(
-            title ?? "message for you",
+            title ?? "Message for you",
+            style: TextStyle(
+              color: kPrimaryColor,
+            ),
           ),
           content: Text(content!),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: kSecondaryColor,
+              ),
               child: Text(
-                "close",
+                "Close",
+                style: TextStyle(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               onPressed: onClose ?? () => Navigator.of(context).pop(),
             )
@@ -62,22 +74,38 @@ class UtilDialog {
       builder: (context) {
         return AlertDialog(
           title: Text(
-            title ?? "message for you",
+            title ?? "Message for you",
+            style: TextStyle(
+              color: kPrimaryColor,
+            ),
           ),
           content: content,
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: kSecondaryColor,
+              ),
               child: Text(
                 "Close",
+                style: TextStyle(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               onPressed: () => Navigator.pop(context, false),
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: kSecondaryColor,
+              ),
               child: Text(
                 confirmButtonText,
+                style: TextStyle(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               onPressed: () => Navigator.pop(context, true),
-              style: TextButton.styleFrom(),
             ),
           ],
         );

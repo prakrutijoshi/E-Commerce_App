@@ -1,5 +1,6 @@
-import 'package:e_shop/domain/entities/product_entity.dart';
 import 'package:equatable/equatable.dart';
+
+import 'product_entity.dart';
 
 class WishListItemEntity extends Equatable {
   final String wid;

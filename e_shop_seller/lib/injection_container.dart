@@ -1,5 +1,5 @@
-import 'package:e_shop_seller/domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
-import 'package:e_shop_seller/domain/usecases/auth_usecases/log_out_from_google.dart';
+import 'domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
+import 'domain/usecases/auth_usecases/log_out_from_google.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasources/remote_datasource/firebase_auth_remote_datasource.dart';

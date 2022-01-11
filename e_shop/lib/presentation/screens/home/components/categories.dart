@@ -1,9 +1,9 @@
-import '../../categoryscreen/components/body.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../categoryscreen/components/body.dart';
 
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);

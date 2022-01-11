@@ -1,12 +1,11 @@
-import 'package:e_shop/presentation/widgets/constants.dart';
+import '../../widgets/constants.dart';
 
 import 'components/checkout_button.dart';
 import 'cubit/cart_cubit.dart';
 import '../../../utils/dialog.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'components/body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'components/body.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -50,19 +49,3 @@ _onClearCart(BuildContext context) async {
     await BlocProvider.of<CartCubit>(context).clearCart();
   }
 }
-
-// _buildOrderNowButton(context) {
-//   return Padding(
-//     padding: EdgeInsets.symmetric(vertical: getProportionateScreenHeight(10)),
-//     child: Padding(
-//       padding: const EdgeInsets.all(30.0),
-//       child: DefaultButton(
-//         text: "Order Now",
-//         press: () {
-//           Navigator.push(context,
-//               MaterialPageRoute(builder: (context) => CheckoutScreen()));
-//         },
-//       ),
-//     ),
-//   );
-// }

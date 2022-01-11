@@ -13,33 +13,35 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kSecondaryColor,
-      appBar: AppBar(
-        title: Text("Checkout"),
-        centerTitle: true,
-      ),
-      body: BlocBuilder<AddressCubit, AddressState>(
-        builder: (context, state) {
-          if (state is AddressInitial || state is AddressUpdated) {
-            BlocProvider.of<AddressCubit>(context).getAddresses();
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is AddressLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is AddressLoaded) {
-            var addresses = state.addresses;
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: kSecondaryColor,
+        appBar: AppBar(
+          title: Text("Checkout"),
+          centerTitle: true,
+        ),
+        body: BlocBuilder<AddressCubit, AddressState>(
+          builder: (context, state) {
+            if (state is AddressInitial || state is AddressUpdated) {
+              BlocProvider.of<AddressCubit>(context).getAddresses();
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is AddressLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is AddressLoaded) {
+              var addresses = state.addresses;
 
-            return Body(addresses: addresses);
-          } else {
-            return Center(
-              child: Text("Couldn't load data"),
-            );
-          }
-        },
+              return Body(addresses: addresses);
+            } else {
+              return Center(
+                child: Text("Couldn't load data"),
+              );
+            }
+          },
+        ),
       ),
     );
   }

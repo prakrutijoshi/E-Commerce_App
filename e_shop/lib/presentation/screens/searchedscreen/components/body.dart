@@ -1,7 +1,8 @@
-import '../../../widgets/productview.dart';
-import '../cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../widgets/productview.dart';
+import '../cubit/search_cubit.dart';
 
 class SearchedScreen extends StatefulWidget {
   const SearchedScreen({Key? key, required this.product}) : super(key: key);

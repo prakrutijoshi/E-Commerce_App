@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import '../../../../domain/usecases/cart_usecases/add_cart_item_usecase.dart';
-import '../../../../domain/usecases/cart_usecases/clear_cart_usecase.dart';
-import '../../../../domain/usecases/cart_usecases/remove_cart_item_usecase.dart';
-import '../../../../domain/usecases/cart_usecases/update_cart_item_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../data/model/cart_item_model.dart';
 import '../../../../domain/entities/cart_item_entity.dart';
 import '../../../../domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
+import '../../../../domain/usecases/cart_usecases/add_cart_item_usecase.dart';
+import '../../../../domain/usecases/cart_usecases/clear_cart_usecase.dart';
 import '../../../../domain/usecases/cart_usecases/fetch_cart_usecase.dart';
+import '../../../../domain/usecases/cart_usecases/remove_cart_item_usecase.dart';
+import '../../../../domain/usecases/cart_usecases/update_cart_item_usecase.dart';
 import '../../../../domain/usecases/product_usecases/find_product_by_id_usecase.dart';
 
 part 'cart_state.dart';

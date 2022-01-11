@@ -1,4 +1,4 @@
-import 'package:e_shop/domain/entities/wishlist_item_entity.dart';
+import '../entities/wishlist_item_entity.dart';
 
 abstract class FirebaseWishListRepository {
   Stream<List<WishListItemEntity>> fetchWishList(String uid);

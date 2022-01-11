@@ -1,11 +1,12 @@
-import 'package:e_shop/presentation/screens/WishList/wishlist_screen.dart';
-import 'package:e_shop/presentation/screens/profile/cubit/profile_cubit.dart';
-import 'package:e_shop/presentation/widgets/constants.dart';
-import 'package:e_shop/utils/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../utils/pages.dart';
+import '../../widgets/constants.dart';
 import '../Cart/cart_screen.dart';
+import '../WishList/wishlist_screen.dart';
+import '../profile/cubit/profile_cubit.dart';
 import 'components/iconbtnwithcounter.dart';
 
 class HomeScreen extends StatefulWidget {

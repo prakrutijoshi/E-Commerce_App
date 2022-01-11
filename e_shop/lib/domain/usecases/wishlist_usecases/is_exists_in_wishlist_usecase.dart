@@ -1,4 +1,4 @@
-import 'package:e_shop/domain/repositories/firebase_wishlist_repository.dart';
+import '../../repositories/firebase_wishlist_repository.dart';
 
 class IsExistsInWishListUseCase {
   final FirebaseWishListRepository repository;

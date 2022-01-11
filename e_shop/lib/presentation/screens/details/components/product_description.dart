@@ -1,7 +1,7 @@
-import 'package:e_shop/data/model/wishlist_item_model.dart';
-import 'package:e_shop/presentation/screens/WishList/cubit/wishlist_cubit.dart';
-import 'package:e_shop/utils/dialog.dart';
-import 'package:e_shop/utils/toast.dart';
+import '../../../../data/model/wishlist_item_model.dart';
+import '../../WishList/cubit/wishlist_cubit.dart';
+import '../../../../utils/dialog.dart';
+import '../../../../utils/toast.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +11,7 @@ import '../../../../data/model/product_model.dart';
 import '../../../widgets/constants.dart';
 import '../../../widgets/size_config.dart';
 
+// ignore: must_be_immutable
 class ProductDescription extends StatefulWidget {
   ProductDescription({
     Key? key,

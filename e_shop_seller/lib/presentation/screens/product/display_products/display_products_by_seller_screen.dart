@@ -1,10 +1,9 @@
-import '../../../../utils/default_button.dart';
-
-import 'out_of_stock_products/outOfStockProducts.dart';
-
-import 'in_stock_products/InStockProducts.dart';
-import '../../../../utils/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../utils/constants.dart';
+import '../../../../utils/default_button.dart';
+import 'in_stock_products/InStockProducts.dart';
+import 'out_of_stock_products/outOfStockProducts.dart';
 
 class DisplayProductsBySellerScreen extends StatefulWidget {
   const DisplayProductsBySellerScreen({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
-import 'package:e_shop_seller/presentation/screens/Profile/cubit/profile_cubit.dart';
-import 'package:e_shop_seller/utils/pages_list.dart';
+import '../Profile/cubit/profile_cubit.dart';
+import '../../../utils/pages_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
