@@ -45,6 +45,7 @@ class _OutOfStockProductsState extends State<OutOfStockProducts> {
           return true;
         },
         child: Scaffold(
+          backgroundColor: kSecondaryColor,
           appBar: AppBar(
             title: Text("Out of Stock Products"),
             centerTitle: true,

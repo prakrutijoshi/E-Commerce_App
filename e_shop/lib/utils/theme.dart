@@ -23,6 +23,9 @@ TextTheme texttheme() {
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
     foregroundColor: Colors.white,
+    titleTextStyle: TextStyle(
+        fontWeight: FontWeight.bold, fontSize: 28, fontStyle: FontStyle.italic),
+    centerTitle: true,
     color: kPrimaryColor,
     elevation: 0,
     // ignore: deprecated_member_use
