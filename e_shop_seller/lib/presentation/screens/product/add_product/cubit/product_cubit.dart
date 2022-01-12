@@ -1,17 +1,17 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
+
 import '../../../../../data/models/product_model.dart';
 import '../../../../../domain/usecases/auth_usecases/logged_firebase_seller_usecase.dart';
 import '../../../../../domain/usecases/product_usecase/add_product_data_usecase.dart';
 import '../../../../../domain/usecases/product_usecase/update_product_data_usecase.dart';
 import '../../../../../domain/usecases/storage_usecase/upload_image_file_usecase.dart';
-import 'package:equatable/equatable.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:image_picker/image_picker.dart';
 
 part 'product_state.dart';
 

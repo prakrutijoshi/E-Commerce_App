@@ -18,7 +18,6 @@ class CartScreen extends StatelessWidget {
         body: Body(),
         backgroundColor: kSecondaryColor,
         bottomNavigationBar: CheckOutButton(),
-        // bottomNavigationBar: _buildOrderNowButton(context),
       ),
     );
   }

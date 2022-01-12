@@ -15,6 +15,12 @@ class _SearchFieldState extends State<SearchField> {
   TextEditingController searchNameController = TextEditingController();
 
   @override
+  void dispose() {
+    searchNameController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: SizeConfig.screenWidth * 0.9,

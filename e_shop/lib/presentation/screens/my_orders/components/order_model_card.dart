@@ -16,8 +16,6 @@ class OrderModelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var deliveryDate =
-        ((order.createdAt).toDate()).add(const Duration(days: 5));
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -92,7 +90,7 @@ class OrderModelCard extends StatelessWidget {
                     textRow(
                       title: "Estimated Delivery By",
                       content:
-                          "${deliveryDate.day}/${deliveryDate.month}/${deliveryDate.year}",
+                          UtilFormatter.formatTimeStamp(order.receivedDate),
                     ),
                   ],
                 ),

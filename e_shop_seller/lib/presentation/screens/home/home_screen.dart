@@ -1,3 +1,5 @@
+import '../orders/cubit/order_cubit.dart';
+
 import '../Profile/cubit/profile_cubit.dart';
 import '../../../utils/pages_list.dart';
 import 'package:flutter/material.dart';
@@ -24,12 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: kSecondaryColor,
-        appBar: AppBar(
-          title: Text("e-Shop Seller"),
-          backgroundColor: kPrimaryColor,
-          centerTitle: true,
+        appBar: appBars[pageIndex],
+        body: IndexedStack(
+          index: pageIndex,
+          children: pages,
         ),
-        body: pages[pageIndex],
         bottomNavigationBar: Container(
           padding: EdgeInsets.symmetric(vertical: 14),
           decoration: BoxDecoration(
@@ -64,10 +65,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       }),
                   IconButton(
                     icon: SvgPicture.asset(
-                      "assets/icons/Bell.svg",
+                      "assets/icons/Parcel.svg",
                       color: pageIndex == 1 ? kPrimaryColor : inActiveIconColor,
                     ),
                     onPressed: () {
+                      BlocProvider.of<OrderCubit>(context).getOrders();
                       setState(() {
                         pageIndex = 1;
                       });
@@ -79,8 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: pageIndex == 2 ? kPrimaryColor : inActiveIconColor,
                     ),
                     onPressed: () {
+                      BlocProvider.of<ProfileCubit>(context).getSeller();
                       setState(() {
-                        BlocProvider.of<ProfileCubit>(context).getSeller();
                         pageIndex = 2;
                       });
                     },

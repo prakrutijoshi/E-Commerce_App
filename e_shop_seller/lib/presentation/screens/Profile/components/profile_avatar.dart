@@ -1,13 +1,13 @@
-import '../../../../data/models/seller_model.dart';
-import '../cubit/profile_cubit.dart';
-import '../../../../utils/size_config.dart';
-import '../../../../utils/utils.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../data/models/seller_model.dart';
 import '../../../../utils/constants.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../utils/size_config.dart';
+import '../../../../utils/utils.dart';
+import '../cubit/profile_cubit.dart';
 
 class ProfileAvatar extends StatefulWidget {
   final SellerModel seller;

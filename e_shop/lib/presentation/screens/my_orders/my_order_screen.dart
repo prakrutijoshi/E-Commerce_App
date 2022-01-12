@@ -1,3 +1,4 @@
+import 'components/my_order_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,7 +8,12 @@ import 'components/order_model_card.dart';
 import 'cubit/my_order_cubit.dart';
 
 class MyOrderScreen extends StatefulWidget {
-  const MyOrderScreen({Key? key}) : super(key: key);
+  final bool showAppBar;
+
+  const MyOrderScreen({
+    Key? key,
+    required this.showAppBar,
+  }) : super(key: key);
 
   @override
   _MyOrderScreenState createState() => _MyOrderScreenState();
@@ -17,6 +23,8 @@ class _MyOrderScreenState extends State<MyOrderScreen>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   int currentTabIndex = 0;
+
+  bool get showAppBar => widget.showAppBar;
 
   @override
   void initState() {
@@ -41,9 +49,8 @@ class _MyOrderScreenState extends State<MyOrderScreen>
     return SafeArea(
       child: Scaffold(
         backgroundColor: kSecondaryColor,
-        appBar: AppBar(
-          title: Text("Your Orders"),
-          backgroundColor: Colors.deepPurple[300],
+        appBar: MyOrderAppBar(
+          showAppBar: showAppBar,
         ),
         body: BlocBuilder<MyOrderCubit, MyOrderState>(
           builder: (context, state) {
@@ -118,7 +125,10 @@ class _MyOrderScreenState extends State<MyOrderScreen>
             physics: BouncingScrollPhysics(),
             itemCount: orders.length,
             itemBuilder: (context, index) {
-              return OrderModelCard(order: orders[index]);
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: OrderModelCard(order: orders[index]),
+              );
             },
           );
   }

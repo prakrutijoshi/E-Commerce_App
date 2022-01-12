@@ -12,9 +12,8 @@ class SearchLoading extends SearchState {}
 
 class SearchLoaded extends SearchState {
   final List<ProductModel> results;
-  final bool isLoading;
 
-  const SearchLoaded(this.results, this.isLoading);
+  const SearchLoaded(this.results);
 
   List<Object> get props => [results];
 }

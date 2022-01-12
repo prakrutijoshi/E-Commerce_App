@@ -1,26 +1,30 @@
-import 'domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
-import 'domain/usecases/auth_usecases/log_out_from_google.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasources/remote_datasource/firebase_auth_remote_datasource.dart';
+import 'data/datasources/remote_datasource/firebase_order_remote_datasource.dart';
 import 'data/datasources/remote_datasource/firebase_product_remote_datasource.dart';
 import 'data/datasources/remote_datasource/firebase_seller_remote_datasource.dart';
 import 'data/datasources/remote_datasource/firebase_storage_remote_datasource.dart';
 import 'data/repositories/firbase_storage_repository_impl.dart';
 import 'data/repositories/firebase_auth_repository_impl.dart';
+import 'data/repositories/firebase_order_repository_impl.dart';
 import 'data/repositories/firebase_product_repository_impl.dart';
 import 'data/repositories/firebase_seller_repository_impl.dart';
 import 'domain/repositories/firebase_auth_repository.dart';
+import 'domain/repositories/firebase_order_repository.dart';
 import 'domain/repositories/firebase_product_repository.dart';
 import 'domain/repositories/firebase_seller_repository.dart';
 import 'domain/repositories/firebase_storage_repository.dart';
 import 'domain/usecases/auth_usecases/auth_exception_usecase.dart';
 import 'domain/usecases/auth_usecases/is_logged_in_usecase.dart';
 import 'domain/usecases/auth_usecases/log_in_with_email_and_password.dart';
+import 'domain/usecases/auth_usecases/log_in_with_google_usecase.dart';
+import 'domain/usecases/auth_usecases/log_out_from_google.dart';
 import 'domain/usecases/auth_usecases/log_out_usecase.dart';
 import 'domain/usecases/auth_usecases/logged_firebase_seller_usecase.dart';
 import 'domain/usecases/auth_usecases/send_password_reset_email_usecase.dart';
 import 'domain/usecases/auth_usecases/sign_up_usecase.dart';
+import 'domain/usecases/order_usecases/get_orders_usecase.dart';
 import 'domain/usecases/product_usecase/add_product_data_usecase.dart';
 import 'domain/usecases/product_usecase/get_available_product_by_seller_id_usecase.dart';
 import 'domain/usecases/product_usecase/get_product_by_id_usecase.dart';
@@ -35,6 +39,7 @@ import 'domain/usecases/storage_usecase/upload_image_file_usecase.dart';
 import 'presentation/common_cubits/authentication/authentication_cubit.dart';
 import 'presentation/screens/Profile/cubit/profile_cubit.dart';
 import 'presentation/screens/login/cubit/login_cubit.dart';
+import 'presentation/screens/orders/cubit/order_cubit.dart';
 import 'presentation/screens/product/add_product/cubit/product_cubit.dart';
 import 'presentation/screens/product/display_products/in_stock_products/cubit/instockproducts_cubit.dart';
 import 'presentation/screens/product/display_products/out_of_stock_products/cubit/outofstockproducts_cubit.dart';
@@ -108,6 +113,12 @@ Future<void> init() async {
       uploadImageFileUseCase: sl.call(),
     ),
   );
+  sl.registerFactory<OrderCubit>(
+    () => OrderCubit(
+      getOrdersUseCase: sl.call(),
+      loggedFirebaseSellerUseCase: sl.call(),
+    ),
+  );
 
   // auth usecase
   sl.registerLazySingleton<IsLoggedInUseCase>(
@@ -155,6 +166,10 @@ Future<void> init() async {
   sl.registerLazySingleton<UploadImageFileUseCase>(
       () => UploadImageFileUseCase(repository: sl.call()));
 
+  // Order Usecase
+  sl.registerLazySingleton<GetOrdersUseCase>(
+      () => GetOrdersUseCase(repository: sl.call()));
+
   // repository
   sl.registerLazySingleton<FirebaseAuthRepository>(
       () => FirebaseAuthRepositoryImpl(sl.call()));
@@ -164,6 +179,8 @@ Future<void> init() async {
       () => FirebaseProductRepositoryImpl(sl.call()));
   sl.registerLazySingleton<FirebaseStorageRepository>(
       () => FirebaseStorageRepositoryImpl(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<FirebaseOrderRepository>(
+      () => FirebaseOrderRepositoryImpl(remoteDatasource: sl.call()));
 
   // datasource
   sl.registerLazySingleton<FirebaseAuthRemoteDatasource>(
@@ -174,4 +191,6 @@ Future<void> init() async {
       () => FirebaseProductRemoteDatasourceImpl());
   sl.registerLazySingleton<FirebaseStorageRemoteDatasource>(
       () => FirebaseStorageRemoteDatasourceImpl());
+  sl.registerLazySingleton<FirebaseOrderRemoteDatasource>(
+      () => FirebaseOrderRemoteDatasourceImpl());
 }

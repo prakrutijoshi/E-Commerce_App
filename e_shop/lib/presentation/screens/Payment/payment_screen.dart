@@ -1,4 +1,3 @@
-import '../success/success_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +12,7 @@ import '../../common_cubits/cubit/cubit/authentication_cubit.dart';
 import '../../widgets/constants.dart';
 import '../Cart/cubit/cart_cubit.dart';
 import '../my_orders/cubit/my_order_cubit.dart';
+import '../success/success_page.dart';
 
 class PaymentScreen extends StatefulWidget {
   final num priceToBePaid;

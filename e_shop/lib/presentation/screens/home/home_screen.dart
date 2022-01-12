@@ -4,10 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../utils/pages.dart';
 import '../../widgets/constants.dart';
-import '../Cart/cart_screen.dart';
-import '../WishList/wishlist_screen.dart';
 import '../profile/cubit/profile_cubit.dart';
-import 'components/iconbtnwithcounter.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -24,38 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kSecondaryColor,
-      appBar: AppBar(
-        title: Text("e-Shop"),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: IconBtnWithCounter(
-              svgSrc: "assets/icons/Heart Icon.svg",
-              color: Colors.white,
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => WishListScreen()),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5.0),
-            child: IconBtnWithCounter(
-              svgSrc: "assets/icons/Cart Icon.svg",
-              color: Colors.white,
-              press: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CartScreen()));
-              },
-            ),
-          ),
-        ],
-      ),
-      body: Center(
-        child: pages[pageIndex],
+      appBar: appBars[pageIndex],
+      body: IndexedStack(
+        index: pageIndex,
+        children: pages,
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(vertical: 10),
@@ -98,24 +67,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 }),
             IconButton(
               icon: SvgPicture.asset(
-                "assets/icons/Bell.svg",
+                "assets/icons/User Icon.svg",
                 color: pageIndex == 2 ? kPrimaryColor : inActiveIconColor,
               ),
               onPressed: () {
                 setState(() {
-                  pageIndex = 2;
-                });
-              },
-            ),
-            IconButton(
-              icon: SvgPicture.asset(
-                "assets/icons/User Icon.svg",
-                color: pageIndex == 3 ? kPrimaryColor : inActiveIconColor,
-              ),
-              onPressed: () {
-                setState(() {
                   BlocProvider.of<ProfileCubit>(context).getUser();
-                  pageIndex = 3;
+                  pageIndex = 2;
                 });
               },
             ),

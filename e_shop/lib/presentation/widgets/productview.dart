@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'size_config.dart';
 
 import '../screens/WishList/cubit/wishlist_cubit.dart';
 import 'constants.dart';
@@ -14,7 +14,7 @@ Widget productView(
 ) {
   if (productDetails.isNotEmpty)
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 3),
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
       child: GridView.count(
         mainAxisSpacing: 3,
         crossAxisSpacing: 3,
@@ -56,7 +56,7 @@ Widget productView(
                       padding: const EdgeInsets.all(5.0),
                       child: Image.network(
                         productDetails[index].images[0],
-                        height: getProportionateScreenHeight(240),
+                        height: getProportionateScreenHeight(220),
                         fit: BoxFit.cover,
                       ),
                     ),

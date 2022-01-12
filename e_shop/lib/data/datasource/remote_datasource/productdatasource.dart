@@ -6,6 +6,7 @@ abstract class ProductDataSource {
   Future<List<ProductModel>> fetchProducts(int page);
   Future<ProductModel> findProductById(String pid);
   Future<List<ProductModel>> findProductByCategory(String category, int page);
+  Future<List<ProductModel>> getAllProducts();
 }
 
 class ProductDataSourceImpl extends ProductDataSource {
@@ -15,7 +16,7 @@ class ProductDataSourceImpl extends ProductDataSource {
   Future<List<ProductModel>> fetchProducts(int page) async {
     print(page);
     return await _productcollaction
-        .limit(4 * page)
+        .limit(6 * page)
         .get()
         .then((snapshot) => snapshot.docs
             .map((doc) => ProductModel.fromMap(doc.data()))
@@ -42,7 +43,19 @@ class ProductDataSourceImpl extends ProductDataSource {
     print(page);
     return await _productcollaction
         .where("category", isEqualTo: category)
-        .limit(4 * page)
+        .limit(6 * page)
+        .get()
+        .then((snapshot) => snapshot.docs
+            .map((doc) => ProductModel.fromMap(doc.data()))
+            .toList())
+        .catchError((error) {
+      print(error);
+    });
+  }
+
+  @override
+  Future<List<ProductModel>> getAllProducts() async {
+    return await _productcollaction
         .get()
         .then((snapshot) => snapshot.docs
             .map((doc) => ProductModel.fromMap(doc.data()))

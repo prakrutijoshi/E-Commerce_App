@@ -52,7 +52,7 @@ class FirebaseProductRemoteDatasourceImpl
     return _productCollection
         .where("sellerId", isEqualTo: sellerId)
         .where("isAvailable", isEqualTo: true)
-        .limit(4 * page)
+        .limit(6 * page)
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs
@@ -82,7 +82,7 @@ class FirebaseProductRemoteDatasourceImpl
     return _productCollection
         .where("sellerId", isEqualTo: sellerId)
         .where("isAvailable", isEqualTo: false)
-        .limit(4 * page)
+        .limit(6 * page)
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs

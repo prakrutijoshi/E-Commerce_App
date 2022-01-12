@@ -1,9 +1,10 @@
-import 'components/body.dart';
-import 'cubit/wishlist_cubit.dart';
-import '../../widgets/constants.dart';
-import '../../../utils/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../utils/dialog.dart';
+import '../../widgets/constants.dart';
+import 'components/body.dart';
+import 'cubit/wishlist_cubit.dart';
 
 class WishListScreen extends StatelessWidget {
   const WishListScreen({Key? key}) : super(key: key);
