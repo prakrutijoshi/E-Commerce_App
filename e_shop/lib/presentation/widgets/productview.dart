@@ -1,5 +1,7 @@
+import '../screens/WishList/cubit/wishlist_cubit.dart';
+import 'constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/model/product_model.dart';
 import '../screens/details/details_screen.dart';
@@ -39,6 +41,44 @@ Widget productView(
                         color: Colors.grey.shade300,
                         width: 0.5,
                       ),
+      child: GridView.count(
+        shrinkWrap: true,
+        crossAxisCount: 2,
+        childAspectRatio: 0.58,
+        physics: NeverScrollableScrollPhysics(),
+        children: List.generate(
+          productDetails.length,
+          (index) {
+            return InkWell(
+              onTap: () async {
+                bool isWishListed =
+                    await BlocProvider.of<WishlistCubit>(context)
+                        .isExistsInWishList(productDetails[index].pid);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailScreen(
+                      product: productDetails[index],
+                      isWishListed: isWishListed,
+                    ),
+                  ),
+                );
+              },
+              splashColor: Colors.grey,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey.shade300,
+                    width: 0.5,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.network(
+                      productDetails[index].images[0],
+                      height: 250,
+                      fit: BoxFit.cover,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,9 +156,9 @@ Widget productView(
       child: Text(
         'We could not find any products',
         style: TextStyle(
-          color: Colors.black,
+          color: kPrimaryColor,
           fontWeight: FontWeight.bold,
-          fontSize: 40,
+          fontSize: 20,
         ),
         textAlign: TextAlign.center,
       ),

@@ -1,8 +1,6 @@
+import '../../widgets/constants.dart';
+import '../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils/default_button.dart';
-import '../screens/home/home_screen.dart';
-import '../widgets/constants.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({Key? key}) : super(key: key);
@@ -35,8 +33,10 @@ class SuccessScreen extends StatelessWidget {
             child: DefaultButton(
                 text: "Go back to Home",
                 press: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.popUntil(
+                    context,
+                    ModalRoute.withName("/"),
+                  );
                 }),
           )
         ],

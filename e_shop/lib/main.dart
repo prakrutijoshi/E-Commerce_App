@@ -1,3 +1,4 @@
+import 'presentation/screens/WishList/cubit/wishlist_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'presentation/common_cubits/cubit/cubit/authentication_cubit.dart';
 import 'presentation/screens/Cart/cubit/cart_cubit.dart';
 import 'presentation/screens/categoryscreen/cubit/category_cubit.dart';
 import 'presentation/screens/home/cubit/product_cubit.dart';
+import 'presentation/screens/my_orders/cubit/my_order_cubit.dart';
 import 'presentation/screens/profile/cubit/profile_cubit.dart';
 import 'presentation/screens/searchedscreen/cubit/search_cubit.dart';
 import 'presentation/screens/shipping_address/cubit/address_cubit.dart';
@@ -44,6 +46,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.sl<CartCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<WishlistCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<MyOrderCubit>(),
         ),
       ],
       child: AppView(),

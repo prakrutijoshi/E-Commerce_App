@@ -1,6 +1,7 @@
-import '../../../widgets/productview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../widgets/productview.dart';
 import '../cubit/product_cubit.dart';
 
 class Products extends StatefulWidget {

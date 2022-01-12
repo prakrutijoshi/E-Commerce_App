@@ -34,8 +34,9 @@ dependencies:
   flutter_svg: ^0.22.0
   form_field_validator: ^1.1.0
   get_it: ^7.2.0
-  google_sign_in: ^5.2.1
+  google_sign_in: ^5.1.0
   image_picker: ^0.8.4+1
+  uuid: ^3.0.5
 
 dev_dependencies:
   flutter_test:

@@ -98,12 +98,26 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
     }
   }
 
-  void onRemoveAddress() {
-    BlocProvider.of<AddressCubit>(context).addUpdateDeleteAddress(
-      shippingAddress: shippingAddress!,
-      method: ListMethod.DELETE,
-    );
-    Navigator.pop(context);
+  Future<void> onRemoveAddress() async {
+    final response = await UtilDialog.showConfirmation(
+      context,
+      title: "Delete Address",
+      content: Text("Are you sure you want to delete address?"),
+      confirmButtonText: "Delete",
+    ) as bool;
+
+    if (response) {
+      UtilDialog.showWaiting(context);
+
+      await BlocProvider.of<AddressCubit>(context).addUpdateDeleteAddress(
+        shippingAddress: shippingAddress!,
+        method: ListMethod.DELETE,
+      );
+
+      UtilDialog.hideWaiting(context);
+
+      Navigator.pop(context);
+    }
   }
 
   @override
@@ -122,8 +136,8 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
               children: [
                 _buildInput(),
                 _buildSwitchDefaultAddress(),
-                _buildDeleteButton(),
                 _buildSubmitButton(),
+                _buildDeleteButton(),
               ],
             ),
           ),
@@ -264,8 +278,8 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
     return shippingAddress != null && !shippingAddress!.isDefault
         ? Padding(
             padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
+              vertical: 15,
+              horizontal: 30,
             ),
             child: DefaultButton(
               press: onRemoveAddress,

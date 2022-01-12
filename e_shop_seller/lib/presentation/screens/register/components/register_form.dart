@@ -1,15 +1,15 @@
-import '../../../../utils/constants.dart';
-import '../../../../utils/default_button.dart';
-import '../../../../utils/size_config.dart';
-
-import '../../../../data/models/seller_model.dart';
-import '../../../../domain/entities/seller_entity.dart';
-import '../../../common_cubits/authentication/authentication_cubit.dart';
-import '../cubit/register_cubit.dart';
-import '../../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+
+import '../../../../data/models/seller_model.dart';
+import '../../../../domain/entities/seller_entity.dart';
+import '../../../../utils/constants.dart';
+import '../../../../utils/default_button.dart';
+import '../../../../utils/size_config.dart';
+import '../../../../utils/utils.dart';
+import '../../../common_cubits/authentication/authentication_cubit.dart';
+import '../cubit/register_cubit.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({Key? key}) : super(key: key);

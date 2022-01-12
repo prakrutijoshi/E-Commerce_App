@@ -1,11 +1,10 @@
-import '../../../../data/model/cart_item_model.dart';
-import 'cart_card.dart';
-import '../../../widgets/size_config.dart';
-
-import '../cubit/cart_cubit.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter/material.dart';
+import '../../../../data/model/cart_item_model.dart';
+import '../../../widgets/size_config.dart';
+import '../cubit/cart_cubit.dart';
+import 'cart_card.dart';
 
 class Body extends StatefulWidget {
   Body({Key? key}) : super(key: key);

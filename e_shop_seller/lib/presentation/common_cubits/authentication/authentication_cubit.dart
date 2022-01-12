@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_shop_seller/domain/usecases/auth_usecases/log_out_from_google.dart';
+import '../../../domain/usecases/auth_usecases/log_out_from_google.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
