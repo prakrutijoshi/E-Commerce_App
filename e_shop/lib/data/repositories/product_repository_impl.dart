@@ -21,4 +21,9 @@ class ProductRepositoryImpl extends ProductRepository {
       String category, int page) async {
     return await productDataSource.findProductByCategory(category, page);
   }
+
+  @override
+  Future<List<ProductEntity>> getAllProducts() async {
+    return await productDataSource.getAllProducts();
+  }
 }

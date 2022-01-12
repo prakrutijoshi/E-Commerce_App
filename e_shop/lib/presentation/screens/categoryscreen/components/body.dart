@@ -1,3 +1,4 @@
+import 'package:e_shop/presentation/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,6 +54,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         return true;
       },
       child: Scaffold(
+        backgroundColor: kSecondaryColor,
         appBar: AppBar(
           title: Text(widget.categoryname),
           centerTitle: true,
@@ -73,7 +75,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               return SingleChildScrollView(
                   controller: _scrollController,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 15.0),
+                    padding: const EdgeInsets.only(top: 5.0),
                     child: productView(context, state.products),
                   ));
             } else if (state is CategoryError) {

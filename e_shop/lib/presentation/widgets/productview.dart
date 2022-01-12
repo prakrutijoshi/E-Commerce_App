@@ -14,7 +14,7 @@ Widget productView(
 ) {
   if (productDetails.isNotEmpty)
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 3),
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
       child: GridView.count(
         mainAxisSpacing: 3,
         crossAxisSpacing: 3,

@@ -1,3 +1,4 @@
+import 'package:e_shop/domain/usecases/product_usecases/get_all_products_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/datasource/remote_datasource/firebase_auth_remote_datasource.dart';
@@ -104,7 +105,7 @@ Future<void> init() async {
   );
   sl.registerFactory<SearchCubit>(
     () => SearchCubit(
-      fetchProductUsecase: sl.call(),
+      getAllProductsUseCase: sl.call(),
     ),
   );
   sl.registerFactory<CategoryCubit>(
@@ -185,6 +186,8 @@ Future<void> init() async {
       () => FindProductByIdUsecase(sl.call()));
   sl.registerLazySingleton<FindProductByCategoryUsecase>(
       () => FindProductByCategoryUsecase(sl.call()));
+  sl.registerLazySingleton<GetAllProductsUseCase>(
+      () => GetAllProductsUseCase(sl.call()));
 
   // Storage Usecases
   sl.registerLazySingleton<UploadImageFileUseCase>(
