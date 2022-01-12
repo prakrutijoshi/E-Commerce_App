@@ -86,9 +86,11 @@ class _InStockProductsState extends State<InStockProducts> {
             child: Text("There are no Products in here"),
           )
         : Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
             child: GridView.count(
               controller: _scrollController,
+              mainAxisSpacing: 3,
+              crossAxisSpacing: 3,
               crossAxisCount: 2,
               childAspectRatio: 0.58,
               children: List.generate(
@@ -107,18 +109,22 @@ class _InStockProductsState extends State<InStockProducts> {
                     splashColor: Colors.grey,
                     child: Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.shade300,
-                          width: 0.5,
-                        ),
-                      ),
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(10)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            products[index].images[0],
-                            height: 250,
-                            fit: BoxFit.cover,
+                          Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Image.network(
+                              products[index].images[0],
+                              height: 240,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           Container(
                             padding: EdgeInsets.all(8),

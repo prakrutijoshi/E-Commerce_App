@@ -62,12 +62,12 @@ class _BodyState extends State<Body> {
       child: Column(
         children: [
           //_CartProductList(),
-          SizedBox(height: 10),
+          //SizedBox(height: 10),
           _priceDetails(),
-          SizedBox(height: 15),
+          //SizedBox(height: 15),
           _buildAddress(context),
           Padding(
-            padding: EdgeInsets.all(30.0),
+            padding: EdgeInsets.all(25.0),
             child: DefaultButton(
               text: "Proceed",
               press: () {

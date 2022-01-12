@@ -51,7 +51,7 @@ class _BodyState extends State<Body> {
             Categories(),
             SpecialOffers(),
             SizedBox(
-              height: getProportionateScreenWidth(30),
+              height: getProportionateScreenWidth(10),
             ),
             Products(),
             SizedBox(height: getProportionateScreenWidth(30)),

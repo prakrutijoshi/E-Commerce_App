@@ -1,3 +1,4 @@
+import 'package:e_shop/presentation/widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 class NotificationsScreen extends StatelessWidget {
@@ -5,6 +6,8 @@ class NotificationsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      decoration: BoxDecoration(color: kSecondaryColor),
+    );
   }
 }

@@ -47,6 +47,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
   List<OrderModelItem> get listOrderModelItem => widget.listOrderModelItem;
   ShippingAddressModel get shippingAddress => widget.shippingAddress;
 
+  Future<void> _clearCart(BuildContext context) async {
+    await BlocProvider.of<CartCubit>(context).clearCart();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,6 +151,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 press: () {
                   if (_method == PaymentMethods.COD) {
                     _addNewOrder(paymentMethod: _method.toString());
+                    _clearCart(context);
                   } else {
                     UtilDialog.showInformation(
                       context,
