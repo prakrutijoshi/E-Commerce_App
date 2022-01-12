@@ -16,37 +16,65 @@ class InStockProducts extends StatefulWidget {
 }
 
 class _InStockProductsState extends State<InStockProducts> {
+  ScrollController _scrollController = ScrollController();
+  void initState() {
+    super.initState();
+    BlocProvider.of<InstockproductsCubit>(context)
+        .getAvailableProductsBySeller();
+    setupscrollcontroller(context);
+  }
+
+  void setupscrollcontroller(
+    BuildContext context,
+  ) {
+    _scrollController.addListener(() {
+      if (_scrollController.position.atEdge) {
+        if (_scrollController.position.pixels != 0) {
+          BlocProvider.of<InstockproductsCubit>(context)
+              .getAvailableProductsBySeller();
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("In Stock Products"),
-          centerTitle: true,
-          backgroundColor: kPrimaryColor,
-        ),
-        body: BlocBuilder<InstockproductsCubit, InstockproductsState>(
-          builder: (context, state) {
-            if (state is InstockproductsInitial) {
-              BlocProvider.of<InstockproductsCubit>(context)
-                  .getAvailableProductsBySeller();
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is InstockproductsLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is InstockproductsLoaded) {
-              return availableProductsView(state.products);
-            } else if (state is InstockproductsError) {
-              return UtilDialog.showInformation(context, title: state.message);
-            } else {
-              return Center(
-                child: Text("Something went wrong !!!"),
-              );
-            }
-          },
+      child: WillPopScope(
+        onWillPop: () async {
+          BlocProvider.of<InstockproductsCubit>(context).page = 1;
+          return true;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("In Stock Products"),
+            centerTitle: true,
+            backgroundColor: kPrimaryColor,
+          ),
+          body: BlocBuilder<InstockproductsCubit, InstockproductsState>(
+            builder: (context, state) {
+              if (state is InstockproductsInitial) {
+                // BlocProvider.of<InstockproductsCubit>(context)
+                //     .getAvailableProductsBySeller();
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is InstockproductsLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is InstockproductsLoaded) {
+                return availableProductsView(state.products);
+              } else if (state is InstockproductsError) {
+                return UtilDialog.showInformation(context,
+                    title: state.message);
+              } else {
+                return Center(
+                  child: Text("Something went wrong !!!"),
+                );
+              }
+            },
+          ),
         ),
       ),
     );
@@ -58,8 +86,11 @@ class _InStockProductsState extends State<InStockProducts> {
             child: Text("There are no Products in here"),
           )
         : Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
             child: GridView.count(
+              controller: _scrollController,
+              mainAxisSpacing: 3,
+              crossAxisSpacing: 3,
               crossAxisCount: 2,
               childAspectRatio: 0.58,
               children: List.generate(
@@ -78,18 +109,22 @@ class _InStockProductsState extends State<InStockProducts> {
                     splashColor: Colors.grey,
                     child: Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.shade300,
-                          width: 0.5,
-                        ),
-                      ),
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(10)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            products[index].images[0],
-                            height: 250,
-                            fit: BoxFit.cover,
+                          Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Image.network(
+                              products[index].images[0],
+                              height: 240,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           Container(
                             padding: EdgeInsets.all(8),

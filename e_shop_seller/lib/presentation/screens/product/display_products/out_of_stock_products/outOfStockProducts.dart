@@ -15,37 +15,65 @@ class OutOfStockProducts extends StatefulWidget {
 }
 
 class _OutOfStockProductsState extends State<OutOfStockProducts> {
+  ScrollController _scrollController = ScrollController();
+  void initState() {
+    super.initState();
+    BlocProvider.of<OutofstockproductsCubit>(context)
+        .getUnAvailableProductsBySeller();
+    setupscrollcontroller(context);
+  }
+
+  void setupscrollcontroller(
+    BuildContext context,
+  ) {
+    _scrollController.addListener(() {
+      if (_scrollController.position.atEdge) {
+        if (_scrollController.position.pixels != 0) {
+          BlocProvider.of<OutofstockproductsCubit>(context)
+              .getUnAvailableProductsBySeller();
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Out of Stock Products"),
-          centerTitle: true,
-          backgroundColor: kPrimaryColor,
-        ),
-        body: BlocBuilder<OutofstockproductsCubit, OutofstockproductsState>(
-          builder: (context, state) {
-            if (state is OutofstockproductsInitial) {
-              BlocProvider.of<OutofstockproductsCubit>(context)
-                  .getUnAvailableProductsBySeller();
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is OutofstockproductsLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is OutofstockproductsLoaded) {
-              return unAvailableProductsView(state.products);
-            } else if (state is OutofstockproductsError) {
-              return UtilDialog.showInformation(context, title: state.message);
-            } else {
-              return Center(
-                child: Text("Something went wrong !!!"),
-              );
-            }
-          },
+      child: WillPopScope(
+        onWillPop: () async {
+          BlocProvider.of<OutofstockproductsCubit>(context).page = 1;
+          return true;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("Out of Stock Products"),
+            centerTitle: true,
+            backgroundColor: kPrimaryColor,
+          ),
+          body: BlocBuilder<OutofstockproductsCubit, OutofstockproductsState>(
+            builder: (context, state) {
+              if (state is OutofstockproductsInitial) {
+                // BlocProvider.of<OutofstockproductsCubit>(context)
+                //     .getUnAvailableProductsBySeller();
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is OutofstockproductsLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is OutofstockproductsLoaded) {
+                return unAvailableProductsView(state.products);
+              } else if (state is OutofstockproductsError) {
+                return UtilDialog.showInformation(context,
+                    title: state.message);
+              } else {
+                return Center(
+                  child: Text("Something went wrong !!!"),
+                );
+              }
+            },
+          ),
         ),
       ),
     );
@@ -57,8 +85,9 @@ class _OutOfStockProductsState extends State<OutOfStockProducts> {
             child: Text("There are no Products in here"),
           )
         : Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 15),
             child: GridView.count(
+              controller: _scrollController,
               crossAxisCount: 2,
               childAspectRatio: 0.58,
               children: List.generate(

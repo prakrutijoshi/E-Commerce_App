@@ -15,6 +15,9 @@ class InstockproductsCubit extends Cubit<InstockproductsState> {
   final GetAvailableProductBySellerIdUseCase
       getAvailableProductBySellerIdUseCase;
   final LoggedFirebaseSellerUseCase loggedFirebaseSellerUseCase;
+  var page = 1;
+  var isLoading = false;
+  var oldProducts = [];
 
   late StreamSubscription<List<ProductEntity>> getProductsSub;
 
@@ -24,15 +27,20 @@ class InstockproductsCubit extends Cubit<InstockproductsState> {
   }) : super(InstockproductsInitial());
 
   Future<void> getAvailableProductsBySeller() async {
-    emit(InstockproductsLoading());
     try {
       User loggedUser = await loggedFirebaseSellerUseCase.call();
       String sid = loggedUser.uid;
+
+      isLoading = true;
       var streamProducts =
-          getAvailableProductBySellerIdUseCase.call(sellerId: sid);
+          getAvailableProductBySellerIdUseCase.call(page, sellerId: sid);
 
       getProductsSub = streamProducts.listen((products) {
-        emit(InstockproductsLoaded(products: products as List<ProductModel>));
+        oldProducts = products;
+        emit(
+            InstockproductsLoaded(products: oldProducts as List<ProductModel>));
+        page++;
+        isLoading = false;
       });
     } catch (e) {
       emit(InstockproductsError(message: 'Failed to Load Products'));

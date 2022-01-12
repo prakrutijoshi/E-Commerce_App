@@ -23,28 +23,34 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kSecondaryColor,
       appBar: AppBar(
         title: Text("e-Shop"),
         centerTitle: true,
         actions: [
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/Heart Icon.svg",
-            color: Colors.white,
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => WishListScreen()),
-              );
-            },
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: IconBtnWithCounter(
+              svgSrc: "assets/icons/Heart Icon.svg",
+              color: Colors.white,
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WishListScreen()),
+                );
+              },
+            ),
           ),
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/Cart Icon.svg",
-            color: Colors.white,
-            press: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CartScreen()));
-            },
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: IconBtnWithCounter(
+              svgSrc: "assets/icons/Cart Icon.svg",
+              color: Colors.white,
+              press: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CartScreen()));
+              },
+            ),
           ),
         ],
       ),
@@ -55,12 +61,16 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: kSecondaryColor,
-          // borderRadius: BorderRadius.only(
-          //   topLeft: Radius.circular(40),
-          //   topRight: Radius.circular(40),
-          //   bottomLeft: Radius.circular(40),
-          //   bottomRight: Radius.circular(40),
-          // ),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, -3),
+              blurRadius: 20,
+              color: (Colors.deepPurple[300])!,
+            ),
+          ],
+          border: Border.all(width: 1, color: Colors.grey),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25), topRight: Radius.circular(25)),
         ),
         child: SafeArea(
           top: false,

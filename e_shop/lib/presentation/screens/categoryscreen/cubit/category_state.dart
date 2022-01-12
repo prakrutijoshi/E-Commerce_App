@@ -12,8 +12,9 @@ class CategoryLoading extends CategoryState {}
 
 class CategoryLoaded extends CategoryState {
   final List<ProductModel> products;
+  final bool isLoading;
 
-  const CategoryLoaded(this.products);
+  const CategoryLoaded(this.products, this.isLoading);
 
   List<Object> get props => [products];
 }

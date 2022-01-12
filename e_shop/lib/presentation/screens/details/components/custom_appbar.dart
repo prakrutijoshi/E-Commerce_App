@@ -19,25 +19,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SafeArea(
         child: Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(24)),
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(15)),
           child: Row(
             children: [
-              SizedBox(
-                height: getProportionateScreenWidth(40),
-                width: getProportionateScreenWidth(40),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(60),
+              Padding(
+                padding: EdgeInsets.all(3.0),
+                child: SizedBox(
+                  height: getProportionateScreenWidth(40),
+                  width: getProportionateScreenWidth(40),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(60),
+                      ),
+                      primary: kPrimaryColor,
+                      backgroundColor: kSecondaryColor,
+                      padding: EdgeInsets.zero,
                     ),
-                    primary: kPrimaryColor,
-                    backgroundColor: kSecondaryColor,
-                    padding: EdgeInsets.zero,
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  child: SvgPicture.asset(
-                    "assets/icons/Back ICon.svg",
-                    height: 15,
+                    onPressed: () => Navigator.pop(context),
+                    child: SvgPicture.asset(
+                      "assets/icons/Back ICon.svg",
+                      height: 15,
+                    ),
                   ),
                 ),
               ),

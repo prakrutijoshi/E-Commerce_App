@@ -12,8 +12,9 @@ class ProductLoading extends ProductState {}
 
 class ProductLoaded extends ProductState {
   final List<ProductModel> productDetails;
+  final bool isLoading;
 
-  const ProductLoaded(this.productDetails);
+  const ProductLoaded(this.productDetails, this.isLoading);
 
   List<Object> get props => [productDetails];
 }

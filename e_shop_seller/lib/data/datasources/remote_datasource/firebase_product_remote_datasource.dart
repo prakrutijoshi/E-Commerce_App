@@ -7,9 +7,11 @@ abstract class FirebaseProductRemoteDatasource {
 
   Future<void> updateProductData(ProductModel updateProduct);
 
-  Stream<List<ProductModel>> getAvailableProductsBySellerId(String sellerId);
+  Stream<List<ProductModel>> getAvailableProductsBySellerId(
+      int page, String sellerId);
 
-  Stream<List<ProductModel>> getUnAvailableProductsBySellerId(String sellerId);
+  Stream<List<ProductModel>> getUnAvailableProductsBySellerId(
+      int page, String sellerId);
 
   Stream<ProductModel> getProductById(String pid);
 
@@ -44,10 +46,13 @@ class FirebaseProductRemoteDatasourceImpl
   // }
 
   @override
-  Stream<List<ProductModel>> getAvailableProductsBySellerId(String sellerId) {
+  Stream<List<ProductModel>> getAvailableProductsBySellerId(
+      int page, String sellerId) {
+    print(page);
     return _productCollection
         .where("sellerId", isEqualTo: sellerId)
         .where("isAvailable", isEqualTo: true)
+        .limit(4 * page)
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs
@@ -72,10 +77,12 @@ class FirebaseProductRemoteDatasourceImpl
   // }
 
   @override
-  Stream<List<ProductModel>> getUnAvailableProductsBySellerId(String sellerId) {
+  Stream<List<ProductModel>> getUnAvailableProductsBySellerId(
+      int page, String sellerId) {
     return _productCollection
         .where("sellerId", isEqualTo: sellerId)
         .where("isAvailable", isEqualTo: false)
+        .limit(4 * page)
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs

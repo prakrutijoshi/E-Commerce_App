@@ -8,15 +8,20 @@ part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
   final FetchProductUsecase fetchProductUsecase;
+  var page = 1;
+  var isLoading = false;
+  var oldProducts = [];
 
   ProductCubit({required this.fetchProductUsecase}) : super(ProductInitial());
 
   Future<void> fetchProducts() async {
-    emit(ProductLoading());
-
     try {
-      var productDetails = await fetchProductUsecase.call();
-      emit(ProductLoaded(productDetails as List<ProductModel>));
+      isLoading = true;
+      var productDetails = await fetchProductUsecase.call(page);
+      oldProducts = productDetails;
+      emit(ProductLoaded(oldProducts as List<ProductModel>, isLoading));
+      page++;
+      isLoading = false;
     } catch (e) {
       emit(ProductError(message: 'Failed to Load Products'));
     }

@@ -5,9 +5,11 @@ abstract class FirebaseProductRepository {
 
   Future<void> updateProductData(ProductEntity updateProduct);
 
-  Stream<List<ProductEntity>> getAvailableProductsBySellerId(String sellerId);
+  Stream<List<ProductEntity>> getAvailableProductsBySellerId(
+      int page, String sellerId);
 
-  Stream<List<ProductEntity>> getUnAvailableProductsBySellerId(String sellerId);
+  Stream<List<ProductEntity>> getUnAvailableProductsBySellerId(
+      int page, String sellerId);
 
   Stream<ProductEntity> getProductById(String pid);
 
