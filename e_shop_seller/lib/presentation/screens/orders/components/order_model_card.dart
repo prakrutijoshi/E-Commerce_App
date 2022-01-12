@@ -25,13 +25,12 @@ class OrderModelCard extends StatelessWidget {
         );
       },
       child: Container(
-        margin:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
+        margin: EdgeInsets.all(5.0),
         padding: EdgeInsets.all(getProportionateScreenWidth(12)),
         decoration: BoxDecoration(
-          color: kPrimaryColor.withOpacity(0.4),
-          shape: BoxShape.rectangle,
-        ),
+            color: Colors.white,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: [
             Expanded(
@@ -78,10 +77,19 @@ class OrderModelCard extends StatelessWidget {
                   textRow(
                       title: "Created At",
                       content: UtilFormatter.formatTimeStamp(order.createdAt)),
+
+                  //Estimated Delivery
+                  textRow(
+                    title: "Estimated Delivery By",
+                    content: UtilFormatter.formatTimeStamp(order.receivedDate),
+                  ),
                 ],
               ),
             ),
-            Icon(Icons.arrow_forward_ios)
+            Icon(
+              Icons.arrow_forward_ios,
+              color: kPrimaryColor,
+            ),
           ],
         ),
       ),
@@ -89,21 +97,28 @@ class OrderModelCard extends StatelessWidget {
   }
 
   textRow({required String title, required String content}) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 110,
-          child: Text(
-            title,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 110,
+            child: Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kPrimaryColor,
+              ),
+            ),
           ),
-        ),
-        Expanded(
-          child: Text(
-            content,
+          Expanded(
+            child: Text(
+              content,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

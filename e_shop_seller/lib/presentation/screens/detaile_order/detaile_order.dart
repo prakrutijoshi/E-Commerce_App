@@ -1,3 +1,5 @@
+import 'package:e_shop_seller/utils/default_button.dart';
+
 import '../../../data/models/order_model.dart';
 import '../../../data/models/shipping_address_model.dart';
 import '../../widgets/shipping_address_card.dart';
@@ -18,13 +20,17 @@ class DetaileOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kSecondaryColor,
         appBar: AppBar(
-          title: Text("Detaile Order"),
+          title: Text("Order Details"),
+          centerTitle: true,
         ),
         body: ListView(
           padding: EdgeInsets.only(bottom: 10),
           children: [
+            header("Products"),
             _buildListOrderModelItems(),
+            header("Price Details"),
             _priceDetails(),
             _buildPaymentMethod(context),
             ShippingAddressCard(
@@ -32,6 +38,7 @@ class DetaileOrderScreen extends StatelessWidget {
               showDefautTick: false,
             ),
             _buildDelivering(context),
+            _buildShippingButton(context),
           ],
         ),
       ),
@@ -140,25 +147,42 @@ class DetaileOrderScreen extends StatelessWidget {
 
     return Column(
       children: [
-        Center(
-          child: Text(
-            "Price Details",
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              color: kPrimaryColor,
-            ),
-          ),
-        ),
         SizedBox(
           height: getProportionateScreenHeight(15),
         ),
         _rowdetails("Bag Total", bagTotal.toString()),
         _rowdetails("Discount", discount.toString()),
-        Divider(),
+        Divider(
+          color: Colors.grey,
+          thickness: 1,
+        ),
         _rowdetails("Total", payablePrice.toString()),
       ],
+    );
+  }
+
+  Widget header(String title) {
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.orange[700],
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white, width: 2),
+        ),
+        child: Padding(
+          padding:
+              EdgeInsets.only(top: 7.0, bottom: 7.0, left: 20.0, right: 20.0),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -172,8 +196,9 @@ class DetaileOrderScreen extends StatelessWidget {
               child: Text(
                 text,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -182,7 +207,7 @@ class DetaileOrderScreen extends StatelessWidget {
               child: Text(
                 "₹ $price",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -205,6 +230,7 @@ class DetaileOrderScreen extends StatelessWidget {
         children: [
           Text(
             "Payment Method",
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           Text(
             order.paymentMethod,
@@ -223,15 +249,32 @@ class DetaileOrderScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            order.isDelivering ? "Delivering" : "Delivered",
-          ),
+          order.isDelivering
+              ? Row(
+                  children: [
+                    Text(
+                      "Delivering By: ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(UtilFormatter.formatTimeStamp(order.receivedDate)),
+                  ],
+                )
+              : Text(
+                  "Delivered",
+                  style: TextStyle(
+                      color: kPrimaryColor, fontWeight: FontWeight.bold),
+                ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 child: Text(
                   "Created At: ",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
                 ),
               ),
               Expanded(
@@ -244,5 +287,17 @@ class DetaileOrderScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _buildShippingButton(BuildContext context) {
+    if (order.isDelivering) {
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 5),
+        child: DefaultButton(
+          press: () {},
+          text: "Confirm Shipment",
+        ),
+      );
+    }
   }
 }

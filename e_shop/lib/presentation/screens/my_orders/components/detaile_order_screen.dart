@@ -13,7 +13,6 @@ import '../../shipping_address/components/shipping_address_card.dart';
 
 class DetaileOrderScreen extends StatelessWidget {
   final OrderModel order;
-  external DateTime add(Duration duration);
   const DetaileOrderScreen({
     Key? key,
     required this.order,
@@ -223,8 +222,6 @@ class DetaileOrderScreen extends StatelessWidget {
   }
 
   _buildDelivering(BuildContext context) {
-    var deliveryDate =
-        ((order.createdAt).toDate()).add(const Duration(days: 5));
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: 10,
@@ -244,7 +241,8 @@ class DetaileOrderScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                        "${deliveryDate.day}/${deliveryDate.month}/${deliveryDate.year}"),
+                      UtilFormatter.formatTimeStamp(order.receivedDate),
+                    ),
                   ],
                 )
               : Text(

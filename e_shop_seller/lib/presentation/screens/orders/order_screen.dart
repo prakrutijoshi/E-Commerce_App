@@ -97,7 +97,7 @@ class _OrderScreenState extends State<OrderScreen>
       child: TabBar(
         controller: tabController,
         tabs: <Widget>[
-          Tab(text: "Delivering"),
+          Tab(text: "In Process"),
           Tab(text: "Delivered"),
         ],
         onTap: (index) {},
