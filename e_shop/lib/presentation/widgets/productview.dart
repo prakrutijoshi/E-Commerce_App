@@ -14,7 +14,7 @@ Widget productView(
 ) {
   if (productDetails.isNotEmpty)
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 3),
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 3),
       child: GridView.count(
         mainAxisSpacing: 3,
         crossAxisSpacing: 3,
@@ -56,78 +56,68 @@ Widget productView(
                       padding: const EdgeInsets.all(5.0),
                       child: Image.network(
                         productDetails[index].images[0],
-                        height: getProportionateScreenHeight(250),
+                        height: getProportionateScreenHeight(240),
                         fit: BoxFit.cover,
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.network(
-                          productDetails[index].images[0],
-                          height: 250,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                productDetails[index].name,
-                                maxLines: 1,
-                                softWrap: true,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            productDetails[index].name,
+                            maxLines: 1,
+                            softWrap: true,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "₹${productDetails[index].price}",
+                            maxLines: 1,
+                            softWrap: true,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
+                          ),
+                          Container(
+                            height: 20,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.teal,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(2),
                               ),
-                              Text(
-                                "₹${productDetails[index].price}",
-                                maxLines: 1,
-                                softWrap: true,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                ),
-                              ),
-                              Container(
-                                height: 20,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  color: Colors.teal,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(2),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  productDetails[index].rating,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      productDetails[index].rating,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.star_rounded,
-                                      color: Colors.white,
-                                      size: 16,
-                                    ),
-                                  ],
+                                Icon(
+                                  Icons.star_rounded,
+                                  color: Colors.white,
+                                  size: 16,
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   else
