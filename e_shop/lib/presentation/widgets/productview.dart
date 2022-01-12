@@ -53,7 +53,7 @@ Widget productView(BuildContext context, List<ProductModel> productDetails) {
                       padding: const EdgeInsets.all(5.0),
                       child: Image.network(
                         productDetails[index].images[0],
-                        height: 200,
+                        height: getProportionateScreenHeight(250),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -118,16 +118,18 @@ Widget productView(BuildContext context, List<ProductModel> productDetails) {
       ),
     );
   else
-    return Padding(
-      padding: const EdgeInsets.only(top: 250),
-      child: Text(
-        'We could not find any products',
-        style: TextStyle(
-          color: kPrimaryColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.only(top: getProportionateScreenHeight(300)),
+        child: Text(
+          'We could not find any products',
+          style: TextStyle(
+            color: kPrimaryColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+          textAlign: TextAlign.center,
         ),
-        textAlign: TextAlign.center,
       ),
     );
 }
