@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '../../forgetPassword/forgetpassword.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/default_button.dart';
@@ -224,8 +226,39 @@ class _LoginFormState extends State<LoginForm> {
 
   _googleSignIn() {
     return Padding(
-      padding: EdgeInsets.only(left: 30.0, right: 30.0),
-      child: DefaultButton(text: "Sign In With Google", press: onGoogleLogin),
+      padding: const EdgeInsets.all(20.0),
+      child: SizedBox(
+        width: double.infinity,
+        height: getProportionateScreenHeight(45),
+        child: ElevatedButton.icon(
+          onPressed: () {
+            onGoogleLogin();
+          },
+          icon: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(
+              "assets/icons/google-icon.svg",
+              height: 25,
+              width: 25,
+            ),
+          ),
+          label: Text(
+            "Google",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: getProportionateScreenWidth(18)),
+          ),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
