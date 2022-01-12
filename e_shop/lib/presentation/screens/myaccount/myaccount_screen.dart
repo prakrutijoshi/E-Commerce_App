@@ -1,3 +1,6 @@
+import 'package:e_shop/presentation/screens/my_orders/cubit/my_order_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../WishList/wishlist_screen.dart';
 import '../my_orders/my_order_screen.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +56,7 @@ class MyAccount extends StatelessWidget {
               text: "Orders",
               icon: "assets/icons/Parcel.svg",
               press: () {
+                BlocProvider.of<MyOrderCubit>(context).getOrders();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

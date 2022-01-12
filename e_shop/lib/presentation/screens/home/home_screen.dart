@@ -1,3 +1,4 @@
+import 'package:e_shop/presentation/screens/my_orders/cubit/my_order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -61,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: pageIndex == 1 ? kPrimaryColor : inActiveIconColor,
                 ),
                 onPressed: () {
+                  BlocProvider.of<MyOrderCubit>(context).getOrders();
                   setState(() {
                     pageIndex = 1;
                   });
