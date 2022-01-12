@@ -1,25 +1,25 @@
-import 'components/my_order_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/model/order_model.dart';
-import '../../widgets/constants.dart';
+import '../../../data/models/order_model.dart';
+import '../../../utils/constants.dart';
+import 'components/order_appbar.dart';
 import 'components/order_model_card.dart';
-import 'cubit/my_order_cubit.dart';
+import 'cubit/order_cubit.dart';
 
-class MyOrderScreen extends StatefulWidget {
+class OrderScreen extends StatefulWidget {
   final bool showAppBar;
 
-  const MyOrderScreen({
+  const OrderScreen({
     Key? key,
     required this.showAppBar,
   }) : super(key: key);
 
   @override
-  _MyOrderScreenState createState() => _MyOrderScreenState();
+  _OrderScreenState createState() => _OrderScreenState();
 }
 
-class _MyOrderScreenState extends State<MyOrderScreen>
+class _OrderScreenState extends State<OrderScreen>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   int currentTabIndex = 0;
@@ -28,8 +28,6 @@ class _MyOrderScreenState extends State<MyOrderScreen>
 
   @override
   void initState() {
-    BlocProvider.of<MyOrderCubit>(context).getOrders();
-
     tabController = TabController(
       length: 2,
       vsync: this,
@@ -49,20 +47,20 @@ class _MyOrderScreenState extends State<MyOrderScreen>
     return SafeArea(
       child: Scaffold(
         backgroundColor: kSecondaryColor,
-        appBar: MyOrderAppBar(
+        appBar: OrderAppBar(
           showAppBar: showAppBar,
         ),
-        body: BlocBuilder<MyOrderCubit, MyOrderState>(
+        body: BlocBuilder<OrderCubit, OrderState>(
           builder: (context, state) {
-            if (state is MyOrderInitial) {
+            if (state is OrderInitial) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is MyOrdersLoading) {
+            } else if (state is OrdersLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is MyOrdersLoaded) {
+            } else if (state is OrdersLoaded) {
               return Column(
                 children: <Widget>[
                   _buildTabs(),
@@ -78,7 +76,7 @@ class _MyOrderScreenState extends State<MyOrderScreen>
                   )
                 ],
               );
-            } else if (state is MyOrdersFailure) {
+            } else if (state is OrdersFailure) {
               return Center(
                 child: Text(state.error),
               );
@@ -99,7 +97,7 @@ class _MyOrderScreenState extends State<MyOrderScreen>
       child: TabBar(
         controller: tabController,
         tabs: <Widget>[
-          Tab(text: "In Process"),
+          Tab(text: "Delivering"),
           Tab(text: "Delivered"),
         ],
         onTap: (index) {},

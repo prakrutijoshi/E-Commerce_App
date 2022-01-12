@@ -5,6 +5,8 @@ import '../../../../data/models/seller_model.dart';
 import '../../../../utils/dialog.dart';
 import '../../../common_cubits/authentication/authentication_cubit.dart';
 import '../../myaccount/myaccount_screen.dart';
+import '../../orders/cubit/order_cubit.dart';
+import '../../orders/order_screen.dart';
 import '../cubit/profile_cubit.dart';
 import 'profile_avatar.dart';
 import 'profile_list.dart';
@@ -73,7 +75,17 @@ Widget _listView(BuildContext context, {required SellerModel seller}) {
         ProfileList(
           text: "Orders",
           icon: "assets/icons/Parcel.svg",
-          press: () {},
+          press: () {
+            BlocProvider.of<OrderCubit>(context).getOrders();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OrderScreen(
+                  showAppBar: true,
+                ),
+              ),
+            );
+          },
         ),
         ProfileList(
           text: "Logout",

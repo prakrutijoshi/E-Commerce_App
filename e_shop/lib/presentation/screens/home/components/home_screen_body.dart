@@ -1,22 +1,22 @@
-import 'package:e_shop/presentation/screens/home/cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widgets/size_config.dart';
+import '../cubit/product_cubit.dart';
 import 'categories.dart';
 import 'discountbanner.dart';
 import 'products.dart';
 import 'searchfield.dart';
 import 'specialoffers.dart';
 
-class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+class HomeScreenBody extends StatefulWidget {
+  const HomeScreenBody({Key? key}) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
+  State<HomeScreenBody> createState() => _HomeScreenBodyState();
 }
 
-class _BodyState extends State<Body> {
+class _HomeScreenBodyState extends State<HomeScreenBody> {
   ScrollController _scrollController = ScrollController();
   void initState() {
     super.initState();

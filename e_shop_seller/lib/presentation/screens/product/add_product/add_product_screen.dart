@@ -1,18 +1,17 @@
 import 'dart:io';
 
-import 'package:uuid/uuid.dart';
-
-import 'cubit/product_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../data/models/product_model.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/default_button.dart';
 import '../../../../utils/utils.dart';
+import 'cubit/product_cubit.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({Key? key}) : super(key: key);

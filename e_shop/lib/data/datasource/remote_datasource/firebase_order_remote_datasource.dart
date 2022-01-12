@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../model/order_model.dart';
 
 abstract class FirebaseOrderRemoteDatasource {
@@ -15,7 +16,7 @@ class FirebaseOrderRemoteDatasourceImpl
 
   @override
   Future<List<OrderModel>> getOrders(String uid) async {
-    return _orderCollection
+    return await _orderCollection
         .where("uid", isEqualTo: uid)
         .get()
         .then((snapshot) =>

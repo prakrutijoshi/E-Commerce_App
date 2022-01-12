@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/widgets/size_config.dart';
+import 'size_config.dart';
 
 import '../screens/WishList/cubit/wishlist_cubit.dart';
 import 'constants.dart';
@@ -56,7 +56,7 @@ Widget productView(
                       padding: const EdgeInsets.all(5.0),
                       child: Image.network(
                         productDetails[index].images[0],
-                        height: getProportionateScreenHeight(240),
+                        height: getProportionateScreenHeight(220),
                         fit: BoxFit.cover,
                       ),
                     ),

@@ -1,3 +1,5 @@
+import '../WishList/wishlist_screen.dart';
+import '../my_orders/my_order_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/model/user_model.dart';
@@ -34,7 +36,12 @@ class MyAccount extends StatelessWidget {
             ProfileList(
                 text: "Wishlist",
                 icon: "assets/icons/Heart Icon.svg",
-                press: () {}),
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WishListScreen()),
+                  );
+                }),
             ProfileList(
                 text: "Cart",
                 icon: "assets/icons/Cart Icon.svg",
@@ -43,7 +50,17 @@ class MyAccount extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => CartScreen()));
                 }),
             ProfileList(
-                text: "Orders", icon: "assets/icons/Parcel.svg", press: () {}),
+              text: "Orders",
+              icon: "assets/icons/Parcel.svg",
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyOrderScreen(showAppBar: true),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

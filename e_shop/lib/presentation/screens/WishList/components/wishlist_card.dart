@@ -1,16 +1,17 @@
-import '../../../../data/model/cart_item_model.dart';
-import '../../../../data/model/product_model.dart';
-import '../../../../data/model/wishlist_item_model.dart';
-import '../../Cart/cubit/cart_cubit.dart';
-import '../cubit/wishlist_cubit.dart';
-import '../../details/details_screen.dart';
-import '../../../widgets/constants.dart';
-import '../../../widgets/size_config.dart';
-import '../../../../utils/dialog.dart';
-import '../../../../utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../data/model/cart_item_model.dart';
+import '../../../../data/model/product_model.dart';
+import '../../../../data/model/wishlist_item_model.dart';
+import '../../../../utils/dialog.dart';
+import '../../../../utils/toast.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
+import '../../Cart/cubit/cart_cubit.dart';
+import '../../details/details_screen.dart';
+import '../cubit/wishlist_cubit.dart';
 
 class WishListCard extends StatelessWidget {
   final WishListItemModel wishlistItem;

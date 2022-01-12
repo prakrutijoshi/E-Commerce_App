@@ -1,14 +1,14 @@
-import '../../../widgets/constants.dart';
-import '../../../widgets/size_config.dart';
-import '../../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 import '../../../../data/model/user_model.dart';
 import '../../../../domain/entities/user_entity.dart';
+import '../../../../utils/default_button.dart';
 import '../../../../utils/utils.dart';
 import '../../../common_cubits/cubit/cubit/authentication_cubit.dart';
+import '../../../widgets/constants.dart';
+import '../../../widgets/size_config.dart';
 import '../cubit/register_cubit.dart';
 
 class RegisterForm extends StatefulWidget {

@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../../../data/model/wishlist_item_model.dart';
 import '../../../../domain/entities/wishlist_item_entity.dart';
 import '../../../../domain/usecases/auth_usecases/logged_firebase_user_usecase.dart';
@@ -10,8 +13,6 @@ import '../../../../domain/usecases/wishlist_usecases/clear_wishlist_usecase.dar
 import '../../../../domain/usecases/wishlist_usecases/fetch_wishlist_usecase.dart';
 import '../../../../domain/usecases/wishlist_usecases/is_exists_in_wishlist_usecase.dart';
 import '../../../../domain/usecases/wishlist_usecases/remove_wishlist_item_usecase.dart';
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 part 'wishlist_state.dart';
 

@@ -1,7 +1,8 @@
-import '../cubit/category_cubit.dart';
-import '../../../widgets/productview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../widgets/productview.dart';
+import '../cubit/category_cubit.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({Key? key, required this.categoryname})

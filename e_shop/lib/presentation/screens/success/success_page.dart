@@ -1,6 +1,7 @@
-import '../../widgets/constants.dart';
-import '../../../utils/default_button.dart';
 import 'package:flutter/material.dart';
+
+import '../../../utils/default_button.dart';
+import '../../widgets/constants.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({Key? key}) : super(key: key);
