@@ -46,6 +46,7 @@ class _InStockProductsState extends State<InStockProducts> {
           return true;
         },
         child: Scaffold(
+          backgroundColor: kSecondaryColor,
           appBar: AppBar(
             title: Text("In Stock Products"),
             centerTitle: true,
@@ -122,7 +123,7 @@ class _InStockProductsState extends State<InStockProducts> {
                             padding: EdgeInsets.all(5.0),
                             child: Image.network(
                               products[index].images[0],
-                              height: 240,
+                              height: 200,
                               fit: BoxFit.cover,
                             ),
                           ),
