@@ -61,7 +61,9 @@ _The User and seller both module has a profile page that contains the loggedIn u
 
 _If the seller wants to update the details of their products, seller can increase or decrease the price and quantity of the products. Moreover, the Instock products and Out Of Stock products could be viewed in the seller module of the application. The backend Firebase Firestore constantly gathers and updates the details._
 
-- ### Following are pages of the application:
+ ```
+ 
+Following are pages of the application:
 
 ### Customer Module:
 Welcome Page
@@ -86,6 +88,7 @@ Update Product details
 Check placed orders 
 Profile Page
 
+```
 - ### User Interface
 
 _The UI of both the application are user friendly and with some elegant and bright color designs that lets the user/seller to work efficiently and effectively throughout the application._
