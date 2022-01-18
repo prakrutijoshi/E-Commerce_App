@@ -35,4 +35,4 @@ It is customer side application who wants to buy a products online.
 
 - Logout from account
 
-(https://user-images.githubusercontent.com/84366746/149885847-4e291dfa-fce3-4b65-915e-d8ed2d308b06.png)
+![Screenshot_1641994800](https://user-images.githubusercontent.com/84366746/149885906-72204a24-b2f3-429d-b116-67605dac9e8f.png)
