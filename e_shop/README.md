@@ -9,15 +9,15 @@ It is customer side application who wants to buy a products online.
 - See all following details in profile page.
 	- Profile image
 	- Account detail
-	     -- Name, Email
-	     -- Wishlist
-	     -- Cart
-	     -- Oredrs(In Process, Delivered)
+	     - Name and Email
+	     - Wishlist
+	     - Cart
+	     - Oredrs(In Process, Delivered)
 	- Notifications
 	- Settings
 	- Adresses
-	     -- Add update and delete the address
-	     -- Set default address
+	     - Add update and delete the address
+	     - Set default address
 
 - User can see order history in My Orders psge.
 	
