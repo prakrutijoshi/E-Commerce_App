@@ -29,6 +29,8 @@ It is customer side application who wants to buy a products online.
 
 - Add products in cart, Remove products from cart.
 
+- Increase or Decrease quantity of product in cart.
+
 - Add or Remove products in WishList.
 
 - Can see the bill in checkout screen.
@@ -114,8 +116,8 @@ It is customer side application who wants to buy a products online.
 <table>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/84366746/149889223-f427289f-6c0f-40aa-856f-bd2adc3e9a07.png" width="300" height="600"></td>
-    <td><img src="https://user-images.githubusercontent.com/84366746/149889230-d72b768f-3982-4935-8946-3bab5aca1381.png" width="300" height="600"></td>
     <td><img src="https://user-images.githubusercontent.com/84366746/149889227-8dadf150-ed21-419a-bb52-56a6695e3f69.png" width="300" height="600"></td>
+    <td><img src="https://user-images.githubusercontent.com/84366746/149889230-d72b768f-3982-4935-8946-3bab5aca1381.png" width="300" height="600"></td>
   </tr>
    <tr>
     <td><img src="https://user-images.githubusercontent.com/84366746/149889216-cb29643e-b25d-4baa-be3a-1fc0f16a53eb.png" width="300" height="600"></td>
