@@ -46,7 +46,7 @@ It is customer side application who wants to buy a products online.
   </tr>
 </table>
 	
-### Login and Signup
+### Home Page
 	
 <table>
   <tr>
