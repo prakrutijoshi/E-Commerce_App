@@ -1,16 +1,35 @@
 # e_shop_seller
 
-A new Flutter project.
+It is seller side application who wants to sell a products online.
 
-## Getting Started
+## e_shop_seller can be used by seller for following activities.
 
-This project is a starting point for a Flutter application.
+- SignUp with app or login to existing acccount.
 
-A few resources to get you started if this is your first Flutter project:
+- See all following details in profile page.
+ 	- Profile image
+	- Account detail
+	     -- Name and Email
+	- Oredrs(In Process, Delivered)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- User can see order history in My Orders page.
+	- In Progress orders
+	- Delivered orders
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Add products in app to sell.
+	- Select product category
+	- Product name
+	- Product discription
+	- Product price
+	- Product quantity
+	- Multiple images of product
+
+- Update or delete the products.
+
+- Seller can see Instock products and Out of stock products.
+
+- Receive order from customer.
+
+- Confirm the order if product is available in stock.
+
+- Logout from account.
