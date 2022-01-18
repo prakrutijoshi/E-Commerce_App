@@ -9,7 +9,7 @@ It is seller side application who wants to sell a products online.
 - See all following details in profile page.
  	- Profile image
 	- Account detail
-	     -- Name and Email
+	     - Name and Email
 	- Oredrs(In Process, Delivered)
 
 - User can see order history in My Orders page.
