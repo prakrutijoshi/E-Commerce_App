@@ -30,8 +30,6 @@ It is seller side application who wants to sell a products online.
 
 - Receive order from customer.
 
-- Confirm the order if product is available in stock.
-
 - Logout from account.
 
 ### Login and Signup
