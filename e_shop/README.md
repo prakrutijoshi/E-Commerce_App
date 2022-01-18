@@ -40,11 +40,11 @@ It is customer side application who wants to buy a products online.
 <table>
   <tr>
     <td><img src="![Screenshot_1641994800](https://user-images.githubusercontent.com/84366746/149885906-72204a24-b2f3-429d-b116-67605dac9e8f.png)" width="300" height="600"></td>
-    <td><img src="![Screenshot_1641994831](https://user-images.githubusercontent.com/84366746/149886179-9c013d21-e479-4c62-93cc-fdd42ded7661.png)
+<!--     <td><img src="![Screenshot_1641994831](https://user-images.githubusercontent.com/84366746/149886179-9c013d21-e479-4c62-93cc-fdd42ded7661.png)
 " width="300" height="600"></td>
       <td><img src="![Screenshot_1641994885](https://user-images.githubusercontent.com/84366746/149886183-5bf5d05a-bfa1-485c-8a21-9e11f03b670f.png)
 " width="300" height="600"></td>
       <td><img src="![Screenshot_1641994814](https://user-images.githubusercontent.com/84366746/149886186-124a7e8f-af31-40ab-8ce7-e01af1814a57.png)
-" width="300" height="600"></td>
+" width="300" height="600"></td> -->
   </tr>
 </table>
