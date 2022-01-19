@@ -83,7 +83,7 @@ It is seller side application who wants to sell a products online.
 <table>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/84366746/149902565-f223ca3d-b6a0-4c64-9ab3-e3cca4aa7051.png" width="300" height="600"></td>
-    <td><img src="https://user-images.githubusercontent.com/84366746/149902569-cb89fdcf-c819-4043-9221-03285d7e37e2.png" width="300" height="600"></td>
+    <td><img src="https://user-images.githubusercontent.com/84366746/150122833-770018c4-1755-4375-b6dd-aad8fe99fa22.png" width="300" height="600"></td>
   </tr>
 </table>
 
