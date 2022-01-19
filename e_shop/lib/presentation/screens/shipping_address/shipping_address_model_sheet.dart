@@ -50,11 +50,11 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
 
   bool get isPopulated =>
       fullNameController.text.trim().isNotEmpty &&
-      phoneNumberController.text.trim().isNotEmpty &&
+      phoneNumberController.text.trim().length == 10 &&
       detailAddressController.text.trim().isNotEmpty &&
       cityController.text.trim().isNotEmpty &&
       stateController.text.trim().isNotEmpty &&
-      postalController.text.trim().isNotEmpty &&
+      postalController.text.trim().length == 6 &&
       countryController.text.trim().isNotEmpty;
 
   Function(bool value)? onSwitchButtonChanged() {
@@ -168,7 +168,7 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
             // Phone number input
             TextFormField(
               controller: phoneNumberController,
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.number,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
                 labelText: "Phone Number",
@@ -180,12 +180,13 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
 
             TextFormField(
               controller: detailAddressController,
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.multiline,
+              minLines: 1,
               decoration: InputDecoration(
                 labelText: "Address",
                 labelStyle: TextStyle(color: kPrimaryColor),
               ),
-              maxLines: null,
+              maxLines: 8,
             ),
 
             SizedBox(height: getProportionateScreenHeight(12)),
@@ -214,9 +215,9 @@ class _ShippingAddressModelSheetState extends State<ShippingAddressModelSheet> {
 
             TextFormField(
               controller: postalController,
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: "Poatal",
+                labelText: "Postal Code",
                 labelStyle: TextStyle(color: kPrimaryColor),
               ),
             ),
