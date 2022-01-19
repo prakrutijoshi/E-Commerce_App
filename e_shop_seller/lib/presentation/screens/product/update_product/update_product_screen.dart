@@ -187,6 +187,8 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
             TextFormField(
               controller: descriptionController,
               keyboardType: TextInputType.multiline,
+              minLines: 1,
+              maxLines: 15,
               decoration: InputDecoration(
                 labelText: "Description",
                 labelStyle: TextStyle(color: kPrimaryColor),
