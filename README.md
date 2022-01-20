@@ -1,6 +1,8 @@
 # **E-Commerce App**
 *_made by <a href="https://github.com/prakrutijoshi">Prakruti Joshi</a>, <a href="https://github.com/Niraj-Vasani">Niraj Vasani</a>, <a href="https://github.com/hiren018">Hiren Sanghani</a>, <a href="https://github.com/rprajapati4889">Ravi Prajapati</a>_*
 
+# Note: The main branch consists of the raw code of the project, which will be analyzed & merged with the developed branch later after generating a merge request.
+
 ## ***Abstract***
 
 _A business where a variety of products are bought and sold through the electronics networks such as the internet is known as Electronic Commerce (E-Commerce). In such a fast-paced world where almost everyone is using smart mobile phones, having an application that could be used for shopping at finger-tips from wherever and whenever. A project with an idea to build one such E-commerce application is what you will find here. An Android Application that works for the User for buying products and Sellers for selling their business products._
